@@ -4,7 +4,11 @@ import { Image } from "react-bootstrap";
 
 function Home() {
     return <div>
-            <Image src="https://tse4.mm.bing.net/th?id=OIP.xG2OSpg5HhDPs9Daj7mZEwHaEQ&pid=Api"/>
+            <h1>Teach Your Child How to Manage Money</h1>
+            <div>
+                <h2>Get Started With a Virtual Piggy Bank Today</h2>
+                <p>Money4Kids is a way for parents to teach their children how to manage money in an interactive way where everyone is involved!</p>
+            </div>
     </div>
 }
 
