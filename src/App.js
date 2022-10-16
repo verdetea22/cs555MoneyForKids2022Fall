@@ -5,6 +5,7 @@ import About from "./pages/about/About";
 import SignUp from "./pages/signup/SignUp";
 import Header from "./components/Header/Header";
 import Login from "./pages/login/Login";
+import ModulesDashboard from "./pages/moduleDashboard/modulesDashboard";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/About" element={<About />} />{" "}
         <Route path="/Signup" element={<SignUp />} />{" "}
         <Route path="/Login" element={<Login />} />{" "}
+        <Route path="/Modules" element={<ModulesDashboard />} />{" "}
       </Routes>{" "}
     </BrowserRouter>
   );
