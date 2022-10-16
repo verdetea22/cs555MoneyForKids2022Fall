@@ -16,7 +16,7 @@
     margin-top: 20px;
     width: inherit;
     margin-left: 40px;
-    margin-right: 40px;
+    align-self: center;
 }
 
 #box {
