@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Image, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import "./login.css";
@@ -11,6 +11,10 @@ function SignUp() {
   } = useForm();
 
   const onSubmit = (data) => console.log(data);
+
+  function confirmation() {
+    alert("Your account has been created!");
+  }
 
   return (
     <div>
@@ -26,7 +30,8 @@ function SignUp() {
           <br />
           <h2> Create an Account </h2>
           <br />
-          <form>
+          {/* Form Start */}
+          <form onSubmit={handleSubmit(onSubmit)}>
             {/* Name */}
             <a id="text">Name:</a>
             <input
@@ -72,8 +77,14 @@ function SignUp() {
 
             {/* Submit */}
             <a target="_blank">
-              <Button id="button"> Submit </Button>{" "}
+              <Button id="button" type={"submit"} onClick={confirmation}>
+                {" "}
+                Submit{" "}
+              </Button>{" "}
+              <br />
             </a>
+
+            {/* End of Form */}
           </form>
         </a>
       </div>
