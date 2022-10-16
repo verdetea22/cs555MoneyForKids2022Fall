@@ -38,6 +38,7 @@ function SignUp() {
             {/* Password */}
             <a id="text">Password:</a>
             <input id="input" type="Password" />
+            <br />
           </form>
         </a>
       </div>
