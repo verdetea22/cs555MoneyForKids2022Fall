@@ -1,8 +1,17 @@
 import React from "react";
 import { Image, Button } from "react-bootstrap";
+import { useForm } from "react-hook-form";
 import "./login.css";
 
 function SignUp() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => console.log(data);
+
   return (
     <div>
       <div id="box">
@@ -20,25 +29,51 @@ function SignUp() {
           <form>
             {/* Name */}
             <a id="text">Name:</a>
-            <input id="input" type="Name" />
+            <input
+              id="input"
+              type="Name"
+              {...register("name", { required: true })}
+            />
 
             {/* Age */}
             <a id="text">Age:</a>
-            <input id="input" type="Age" />
+            <input
+              id="input"
+              type="Age"
+              {...register("age", { required: true })}
+            />
             <br />
 
             {/* Caregiver Email */}
             <a id="text">Caregiver's Email:</a>
-            <input id="input" type="Email" />
+            <input
+              id="input"
+              type="Email"
+              {...register("email", { required: true })}
+            />
 
             {/* Username */}
             <a id="text">Username:</a>
-            <input id="input" type="Username" />
+            <input
+              id="input"
+              type="Username"
+              {...register("username", { required: true })}
+            />
 
             {/* Password */}
             <a id="text">Password:</a>
-            <input id="input" type="Password" />
+            <input
+              id="input"
+              type="Password"
+              {...register("password", { required: true })}
+            />
             <br />
+            <br />
+
+            {/* Submit */}
+            <a target="_blank">
+              <Button id="button"> Submit </Button>{" "}
+            </a>
           </form>
         </a>
       </div>
