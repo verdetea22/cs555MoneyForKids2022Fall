@@ -1,4 +1,7 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "./firebase-config";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+
+auth.tenantId = "<myTenantId1>"
 
 const createUser = ({ email, password }) => {
     return new Promise((resolve, reject) => {
@@ -19,5 +22,19 @@ const login = ({ email, password }) => {
         });
     });
 };
+
+const loginWithGoogle = () => {
+    return new Promise((resolve, reject) => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider).then((result) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            // const token = credential.accessToken;
+            resolve(true);
+        }).catch((error) => {
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            reject(error);
+        });
+    });
+}
 
 export { createUser, login }
