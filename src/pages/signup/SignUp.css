@@ -1,4 +1,4 @@
-.Login {
+.SignUp {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -9,13 +9,13 @@
     border-radius: 0 0 10px 10px;
 }
 
-#input {
+.form__input {
     border: 1px solid rgb(172, 171, 171);
     border-radius: 10px;
     outline: none;
     margin-top: 20px;
     width: inherit;
-    margin-left: 40px;
+    margin-left: 20px;
     align-self: center;
 }
 

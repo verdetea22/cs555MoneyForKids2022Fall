@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Image, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import "./SignUp.css";
@@ -6,12 +6,47 @@ import "./SignUp.css";
 function SignUp() {
   const {
     register,
-    handleSubmit,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => console.log(data);
 
+  {
+    /* Setting Form Variables */
+  }
+  const [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [username, setUsername] = useState(null);
+  const [password, setPassword] = useState(null);
+
+  {
+    /* Handle State */
+  }
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    if (id === "name") {
+      setName(value);
+    }
+
+    if (id === "email") {
+      setEmail(value);
+    }
+
+    if (id === "username") {
+      setUsername(value);
+    }
+    if (id === "password") {
+      setPassword(value);
+    }
+  };
+
+  const handleSubmit = () => {
+    console.log(name, email, username, password);
+  };
+
+  {
+    /* Button Confirmation */
+  }
   function confirmation() {
     alert("Your account has been created!");
   }
@@ -27,45 +62,79 @@ function SignUp() {
       <div id="box">
         <a id="header">
           <br />
-          <h2> Create an Account </h2> <br /> {/* Form Start */}{" "}
+          <h2> Create an Account </h2> <br />
+          {/* Form Start */}{" "}
           <form onSubmit={handleSubmit(onSubmit)}>
             {" "}
-            {/* Name */} <a id="text"> Name : </a>{" "}
+            {/* Name */}
+            <label id="text" className="form__label" for="name">
+              {" "}
+              Name :{" "}
+            </label>
             <input
-              id="input"
-              type="Name"
+              type="text"
+              name=""
+              id="name"
+              value={name}
+              className="form__input"
+              onChange={(e) => handleInputChange(e)}
+              placeholder="Name"
               {...register("name", { required: true })}
             />
-            {/* Age */} <a id="text"> Age: </a>{" "}
-            <input
-              id="input"
-              type="Age"
-              {...register("age", { required: true })}
-            />{" "}
             <br />
-            {/* Caregiver Email */} <a id="text"> Caregiver 's Email:</a>{" "}
+            {/* Caregiver Email */}{" "}
+            <label id="text" className="form__label" for="email">
+              {" "}
+              Caregiver's Email :
+            </label>{" "}
             <input
-              id="input"
-              type="Email"
+              className="form__input"
+              id="email"
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => handleInputChange(e)}
               {...register("email", { required: true })}
             />
-            {/* Username */} <a id="text"> Username: </a>{" "}
+            {/* Username */}{" "}
+            <label id="text" className="form__label" for="username">
+              {" "}
+              Username :{" "}
+            </label>{" "}
             <input
-              id="input"
-              type="Username"
+              className="form__input"
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => handleInputChange(e)}
+              placeholder="Username"
               {...register("username", { required: true })}
             />
-            {/* Password */} <a id="text"> Password: </a>{" "}
+            <br />
+            {/* Password */}{" "}
+            <label className="form__label" for="password">
+              {" "}
+              Password :{" "}
+            </label>{" "}
             <input
-              id="input"
-              type="Password"
+              className="form__input"
+              type="password"
+              id="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => handleInputChange(e)}
               {...register("password", { required: true })}
             />{" "}
             <br />
             <br />
             {/* Submit */}{" "}
             <a target="_blank">
-              <Button id="button" type={"submit"} onClick={confirmation}>
+              <Button
+                onClick={() => handleSubmit()}
+                onClick={confirmation}
+                type="submit"
+                id="button"
+              >
                 {" "}
                 Submit{" "}
               </Button>{" "}
