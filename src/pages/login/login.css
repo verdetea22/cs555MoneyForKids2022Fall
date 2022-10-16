@@ -1,16 +1,20 @@
 #box {
-    width: 200px;
-    height: 120px;
+    width: 330px;
+    height: auto;
     margin-top: 20px;
-    margin-left: 50%;
+    margin-left: 30%;
     margin-right: 50%;
-    border: green;
-    background-color: lightgrey;
-    border-radius: 2px;
+    border-color: green;
+    border-radius: 15px;
+    background-color: #f8f9fa;
 }
 
-Button {
-    margin-left: 50%;
-    margin-right: 50%;
-    color: green;
+#button {
+    background-color: green;
+    margin-left: 30px;
+    margin-right: 5px;
+}
+
+#text {
+    margin-left: 15px;
 }
