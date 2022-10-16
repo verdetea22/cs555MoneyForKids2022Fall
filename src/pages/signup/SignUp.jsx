@@ -131,7 +131,7 @@ function SignUp() {
             <a target="_blank">
               <Button
                 onClick={() => handleSubmit()}
-                onClick={confirmation}
+                ß
                 type="submit"
                 id="button"
               >
