@@ -12,11 +12,10 @@ const createUser = ({ email, password }) => {
 const login = ({ email, password }) => {
     return new Promise((resolve, reject ) => { 
         signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-            window.location.href = "/";
             resolve(true);
         }).catch((error) => {
-            console.log(error.message);
-            reject(false);
+            
+            reject(error);
         });
     });
 };

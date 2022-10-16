@@ -1,12 +1,17 @@
 import React from "react";
 import { Card, Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { login } from "../../services/firebase/auth";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = ({ email, password }) => {
-    
+    login(email, password).then((res) => {
+      window.location.href = "/";
+    }).catch((error) => {
+        console.log(error);
+    });
   };
 
   return (
