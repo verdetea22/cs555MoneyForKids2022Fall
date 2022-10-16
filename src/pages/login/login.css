@@ -1,0 +1,16 @@
+#box {
+    width: 200px;
+    height: 120px;
+    margin-top: 20px;
+    margin-left: 50%;
+    margin-right: 50%;
+    border: green;
+    background-color: lightgrey;
+    border-radius: 2px;
+}
+
+Button {
+    margin-left: 50%;
+    margin-right: 50%;
+    color: green;
+}
