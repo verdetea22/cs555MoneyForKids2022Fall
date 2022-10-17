@@ -1,6 +1,6 @@
 # cs555MoneyForKids2022Fall
 
-##In the project directory, run npm install to install the necessary packages. then you can run:
+## In the project directory, run npm install to install the necessary packages. then you can run:
 
 ### `npm start`
 
