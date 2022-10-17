@@ -16,16 +16,12 @@ function Home() {
             <p>Money4Kids is a way for parents to teach their children how to manage money in an interactive way where everyone is involved!</p>
             <button id="Home-Redirect" href="/signUp" class="pure-button pure-button-primary">Create an Account</button>
         </div>
-        <Card style = {{ color: "#000" , width: "18rem"}}>
-            <Card.Body>
-                <Card.Title>                        
-                    Balance
-                </Card.Title>
-                <Card.Text>
-                    $1800.00
-                </Card.Text>
-            </Card.Body>
-        </Card>
+        <div class="card">
+            <h5 class="card-header">Balance</h5>
+            <div class="card-body">
+                <p class="card-text">$1800.00</p>
+            </div>
+        </div>
     </div>  
 }
 
