@@ -4,10 +4,10 @@ import { Image } from "react-bootstrap";
 
 function Home() {
     return <div>
-            <h1>About Us</h1>
+            <h1 id="about-title">About Us</h1>
             <div>
-                <h2>A Better Way to Imagine Allowance</h2>
-                <p>Money4Kids was inspired by the idea to make managing money more accessabile to kids. Our goal is to make sure children understand
+                <h2 id="about-subtitle">A Better Way to Imagine Allowance</h2>
+                <p id="about-body">Money4Kids was inspired by the idea to make managing money more accessabile to kids. Our goal is to make sure children understand
                     how to manage their own bank account and funds when they get one. To do this, we simulate a real life bank account, but one that was managed at
                     home and with you, their parent or guardian. 
 
