@@ -8,19 +8,34 @@ function ModulesDashboard() {
       <br />
       <h2>Learning Modules</h2>
       <br />
-      <div class="row">
+      <div class="parent">
         {/* Column 1 */}
-        <div class="column">
-          <div id="box"></div>
+        <div class="child">
+          <div id="box">
+            <br />
+            <a>Sales Tax Module</a>
+            <br />
+          </div>
         </div>
 
         {/* Column 2 */}
-        <div class="column"> </div>
-        <div id="box"></div>
+        <div class="child">
+          <div id="box">
+            <br />
+            <a>Change Back Module</a>
+            <br />
+          </div>
+        </div>
+
         {/* Column 3 */}
 
-        <div class="column"> </div>
-        <div id="box"></div>
+        <div class="child">
+          <div id="box">
+            <br />
+            <a>Interest Module</a>
+            <br />
+          </div>
+        </div>
       </div>
     </div>
   );
