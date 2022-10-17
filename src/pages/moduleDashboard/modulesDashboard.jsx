@@ -37,6 +37,36 @@ function ModulesDashboard() {
           </div>
         </div>
       </div>
+
+      <div class="parent">
+        {/* Column 1, Box 2 */}
+        <div class="child">
+          <div id="box">
+            <br />
+            <a href="/MoneyAdditionMod">Money Addition Module</a>
+            <br />
+          </div>
+        </div>
+
+        {/* Column 2, Box 2 */}
+        <div class="child">
+          <div id="box">
+            <br />
+            <a href="/Modules">WIP Module</a>
+            <br />
+          </div>
+        </div>
+
+        {/* Column 3, Box 2 */}
+
+        <div class="child">
+          <div id="box">
+            <br />
+            <a href="/Modules"> WIP Module</a>
+            <br />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
