@@ -1,6 +1,6 @@
 import React from "react";
 import { Image } from "react-bootstrap";
-import "modules.css";
+import "./modules.css";
 
 function ModulesDashboard() {
   return (
