@@ -7,13 +7,13 @@ function ModulesDashboard() {
     <div>
       <br />
       <h2>Learning Modules</h2>
-      <br />
+
       <div class="parent">
         {/* Column 1 */}
         <div class="child">
           <div id="box">
             <br />
-            <a>Sales Tax Module</a>
+            <a href="/SalesTaxMod">Sales Tax Module</a>
             <br />
           </div>
         </div>
@@ -22,7 +22,7 @@ function ModulesDashboard() {
         <div class="child">
           <div id="box">
             <br />
-            <a>Change Back Module</a>
+            <a href="/ChangeBackMod">Change Back Module</a>
             <br />
           </div>
         </div>
@@ -32,7 +32,7 @@ function ModulesDashboard() {
         <div class="child">
           <div id="box">
             <br />
-            <a>Interest Module</a>
+            <a href="/InterestMod"> Interest Module</a>
             <br />
           </div>
         </div>

@@ -15,16 +15,15 @@
 }
 
 #box {
-    width: 400px;
+    width: 250px;
     height: 75px;
     margin-top: 40px;
     margin-bottom: 40px;
     text-align: center;
-    border-color: green;
+    background-color: lightgreen;
     border-radius: 15px;
-    background-color: #f8f9fa;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 20%;
+    margin-right: 20px;
     font-size: 12pt;
 }
 
