@@ -5,6 +5,7 @@ import About from "./pages/about/About";
 import SignUp from "./pages/signup/SignUp";
 import Header from "./components/Header/Header";
 import Login from "./pages/login/Login";
+import adultBalance from "./components/Balance/AdultBalance";
 
 function App() {
   return (
