@@ -14,7 +14,11 @@
     margin-top: 20px;
 }
 
-#box {
+#box_description {
+    padding: 5px;
+}
+
+#mod_box {
     width: 250px;
     height: 155px;
     margin-top: 40px;

@@ -11,29 +11,47 @@ function ModulesDashboard() {
       <div class="parent">
         {/* Column 1 */}
         <div class="child">
-          <div id="box">
+          <div id="mod_box">
             <br />
             <a href="/SalesTaxMod">Sales Tax Module</a>
             <br />
+            <br />
+            <div id="box_description">
+              <a> Learn how sales tax works! </a>
+            </div>
           </div>
         </div>
 
         {/* Column 2 */}
         <div class="child">
-          <div id="box">
+          <div id="mod_box">
             <br />
             <a href="/ChangeBackMod">Change Back Module</a>
             <br />
+
+            <div id="box_description">
+              <a>
+                {" "}
+                Learn how to calculate change given from different transactions!{" "}
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Column 3 */}
 
         <div class="child">
-          <div id="box">
+          <div id="mod_box">
             <br />
             <a href="/InterestMod"> Interest Module</a>
             <br />
+            <div id="box_description">
+              <a>
+                {" "}
+                Learn how interest works for differnet types of bank accounts
+                and transactions!{" "}
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -41,26 +59,38 @@ function ModulesDashboard() {
       <div class="parent">
         {/* Column 1, Box 2 */}
         <div class="child">
-          <div id="box">
+          <div id="mod_box">
             <br />
             <a href="/MoneyAdditionMod">Money Addition Module</a>
             <br />
+            <br />
+            <div id="box_description">
+              <a> Learn how to add money easily! </a>
+            </div>
           </div>
         </div>
 
         {/* Column 2, Box 2 */}
         <div class="child">
-          <div id="box">
+          <div id="mod_box">
             <br />
-            <a href="/Modules">WIP Module</a>
+            <a href="/BankFormsMod">Bank Forms Module</a>
             <br />
+
+            <div id="box_description">
+              <a>
+                {" "}
+                Learn the different kinds of forms, such as withdrawl, deposit
+                and checks!{" "}
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Column 3, Box 2 */}
 
         <div class="child">
-          <div id="box">
+          <div id="mod_box">
             <br />
             <a href="/Modules"> WIP Module</a>
             <br />
