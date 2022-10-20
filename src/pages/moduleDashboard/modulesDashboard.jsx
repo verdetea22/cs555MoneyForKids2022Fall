@@ -13,7 +13,9 @@ function ModulesDashboard() {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a href="/SalesTaxMod">Sales Tax Module</a>
+            <a id="mod_name" href="/SalesTaxMod">
+              Sales Tax Module
+            </a>
             <br />
             <br />
             <div id="box_description">
@@ -26,7 +28,9 @@ function ModulesDashboard() {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a href="/ChangeBackMod">Change Back Module</a>
+            <a id="mod_name" href="/ChangeBackMod">
+              Change Back Module
+            </a>
             <br />
 
             <div id="box_description">
@@ -43,7 +47,10 @@ function ModulesDashboard() {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a href="/InterestMod"> Interest Module</a>
+            <a id="mod_name" href="/InterestMod">
+              {" "}
+              Interest Module
+            </a>
             <br />
             <div id="box_description">
               <a>
@@ -61,7 +68,9 @@ function ModulesDashboard() {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a href="/MoneyAdditionMod">Money Addition Module</a>
+            <a id="mod_name" href="/MoneyAdditionMod">
+              Money Addition Module
+            </a>
             <br />
             <br />
             <div id="box_description">
@@ -74,7 +83,9 @@ function ModulesDashboard() {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a href="/BankFormsMod">Bank Forms Module</a>
+            <a id="mod_name" href="/BankFormsMod">
+              Bank Forms Module
+            </a>
             <br />
 
             <div id="box_description">
@@ -88,11 +99,13 @@ function ModulesDashboard() {
         </div>
 
         {/* Column 3, Box 2 */}
-
         <div class="child">
           <div id="mod_box">
             <br />
-            <a href="/Modules"> WIP Module</a>
+            <a id="mod_name" href="/Modules">
+              {" "}
+              WIP Module
+            </a>
             <br />
           </div>
         </div>
