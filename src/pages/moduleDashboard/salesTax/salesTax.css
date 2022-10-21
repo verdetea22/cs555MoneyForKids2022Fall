@@ -1,0 +1,25 @@
+#image {
+    width: 400px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#sales_tax_description {
+    text-align: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 350;
+}
+
+#sales_tax_description_box {
+    width: 600px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f8f9fa;
+    text-align: center;
+}
