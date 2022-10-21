@@ -55,8 +55,7 @@ function ModulesDashboard() {
             <div id="box_description">
               <a>
                 {" "}
-                Learn how interest works for differnet types of bank accounts
-                and transactions!{" "}
+                Learn how interest works for differnet types of bank accounts!{" "}
               </a>
             </div>
           </div>
