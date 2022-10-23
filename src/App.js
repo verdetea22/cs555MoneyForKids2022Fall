@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import Login from "./pages/login/Login";
 import ModulesDashboard from "./pages/moduleDashboard/modulesDashboard";
 import Module from "./pages/module/module";
+import SalesTaxMod from "./pages/moduleDashboard/salesTax/salesTax";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/Login" element={<Login />} />{" "}
         <Route path="/Modules" element={<ModulesDashboard />} />{" "}
         <Route path="/Modules/Module/*" element={<Module />} />{" "}
+        <Route path="/SalesTaxMod" element={<SalesTaxMod />} />{" "}
       </Routes>{" "}
     </BrowserRouter>
   );
