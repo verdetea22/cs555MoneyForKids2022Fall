@@ -82,7 +82,7 @@ function ModulesDashboard() {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a id="mod_name" href="/BankFormsMod">
+            <a id="mod_name" href="/FormsMod">
               Bank Forms Module
             </a>
             <br />
