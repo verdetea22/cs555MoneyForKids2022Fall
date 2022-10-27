@@ -41,6 +41,7 @@ function Dashboard(uer) {
         return(
             //load components
                 //for each child in user, return child balance
+                //pass child name as props from user
             <div>
                 <h1>Hello {user.name}</h1>
                         {user.children.map((child)=>(

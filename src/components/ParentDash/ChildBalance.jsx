@@ -4,8 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 function ChildBalance(props) {
-    //replace props with database call
-
+    //replace props with database call where props is child name
     return(
         <Card style={{ width: '18rem' }}>
         <Card.Body>
@@ -13,7 +12,7 @@ function ChildBalance(props) {
           <Card.Text>
             Balance: ${props.balance}
           </Card.Text>
-          <Button variant="primary">Details</Button>
+          <Button variant="primary" childName = {props.ChildName} href="./ChildDetails">Details</Button>
         </Card.Body>
       </Card>
         

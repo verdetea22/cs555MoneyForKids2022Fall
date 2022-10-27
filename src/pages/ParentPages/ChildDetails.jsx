@@ -2,8 +2,8 @@ import React from "react";
 import { useState, useContext } from "react";
 
 
-function ChildDetails() {
-
+function ChildDetails(props) {
+    //props returns child name, query db from that?
     return(
         <p>Child's Info</p>
     )
