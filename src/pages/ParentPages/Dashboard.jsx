@@ -3,12 +3,20 @@ import "./Dashboard.css";
 //import { auth } from "../firebase/firebase-config";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
+import Container from 'react-bootstrap/Container';
+import CardDeck from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
 import ChildBalance from "../../components/ParentDash/ChildBalance"
+import ChildrenActivity from "../../components/ParentDash/ChildrenActivity"
+import Requests from "../../components/ParentDash/Requests"
+import { propTypes } from "react-bootstrap/esm/Image";
 
 
 //if auth, show dash
 
-function Dashboard(uer) {
+function Dashboard() {
     //do we want a sperate check logged in function then call?
     //var user = auth.currentUser;
     // auth().onAuthStateChanged(function(user) {
@@ -39,16 +47,24 @@ function Dashboard(uer) {
     }
     else{
         return(
-            //load components
+            //load components, pass child name as props from user
                 //for each child in user, return child balance
-                //pass child name as props from user
-            <div>
-                <h1>Hello {user.name}</h1>
+                //activity for each child (list most recent deposit and withdrawal across all children)?
+                //show pending requests
+            <Container>
+                <h1>Welcome, {user.name}</h1>
+                <Container>
+                    <CardDeck style={{flexDirection: 'row'}}> 
                         {user.children.map((child)=>(
                             <ChildBalance  childName={child.childName} balance={child.balance}/>
-                        ))}
-            </div>
-            
+                        ))} 
+                    </CardDeck>
+                </Container>
+                <Container fluid="sm"> 
+                    <ChildrenActivity/>
+                    <Requests children={user.children}/>
+                </Container>
+            </Container>
         )
 
     }

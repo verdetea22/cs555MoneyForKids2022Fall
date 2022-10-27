@@ -5,7 +5,7 @@ import { useState, useContext } from "react";
 function ChildDetails(props) {
     //props returns child name, query db from that?
     return(
-        <p>Child's Info</p>
+        <p>{props.childName} Info</p>
     )
 
 }
