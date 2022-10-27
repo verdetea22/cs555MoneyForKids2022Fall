@@ -2,12 +2,11 @@ import React from "react";
 import { useState, useContext } from "react";
 
 
-function ChildProfile() {
+function ChildDetails() {
 
     return(
         <p>Child's Info</p>
-        
     )
 
 }
-export default ChildProfile;
+export default ChildDetails;
