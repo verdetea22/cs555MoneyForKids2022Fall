@@ -57,12 +57,10 @@ function Dashboard() {
                     <CardDeck style={{flexDirection: 'row'}}> 
                         {user.children.map((child)=>(
                             <ChildBalance  childName={child.childName} balance={child.balance}/>
-                        ))} 
+                        ))}
+                        <ChildrenActivity/>
+                        <Requests children={user.children}/> 
                     </CardDeck>
-                </Container>
-                <Container fluid="sm"> 
-                    <ChildrenActivity/>
-                    <Requests children={user.children}/>
                 </Container>
             </Container>
         )
