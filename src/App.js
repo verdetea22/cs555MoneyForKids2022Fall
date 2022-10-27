@@ -8,6 +8,8 @@ import Login from "./pages/login/Login";
 import ModulesDashboard from "./pages/moduleDashboard/modulesDashboard";
 import Module from "./pages/module/module";
 import SalesTaxMod from "./pages/moduleDashboard/salesTax/salesTax";
+import Dashboard from "./pages/ParentPages/Dashboard";
+import ChildDetails from "./pages/ParentPages/ChildDetails";
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
         <Route path="/Modules" element={<ModulesDashboard />} />{" "}
         <Route path="/Modules/Module/*" element={<Module />} />{" "}
         <Route path="/SalesTaxMod" element={<SalesTaxMod />} />{" "}
+        <Route path="/Dashboard" element={<Dashboard />} />{" "}
+        <Route path="/ChildDetails" element={<ChildDetails />} />{" "}
+        
       </Routes>{" "}
     </BrowserRouter>
   );
