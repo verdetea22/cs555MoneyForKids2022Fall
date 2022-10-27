@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import "./salesTax.css";
 import image from "../../../images/salestax.jpeg";
 
@@ -23,6 +24,7 @@ function SalesTaxMod() {
           <br />
           Click the button to learn more!
           <br />
+          <Button id="button">Start Module</Button>
         </a>
       </div>
     </div>
