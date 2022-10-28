@@ -35,3 +35,4 @@ Your app is ready to be deployed!
     3. "answerChoices" : ["1%", "3%", "7.5%", "4%"] (Array of possible answers for the user. All entries should be strings)
     4. "correctAnswer" : 2 (Index of the correct answer)
 3. After this, if you navigate to the page "localhost:3000/modules/module/{module name}" you should see your new module. For example, for my tax module I would navigate to "localhost:3000/modules/module/tax" to see the new module
+4. For a complete example, look at the src/assets/modules/module1 for an implemented example
