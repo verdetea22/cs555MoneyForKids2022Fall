@@ -8,6 +8,7 @@ import Login from "./pages/login/Login";
 import ModulesDashboard from "./pages/moduleDashboard/modulesDashboard";
 import Module from "./pages/module/module";
 import SalesTaxMod from "./pages/moduleDashboard/salesTax/salesTax";
+import NotFound from "./pages/moduleNotFound/moduleNotFound"
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Route path="/Signup" element={<SignUp />} />{" "}
         <Route path="/Login" element={<Login />} />{" "}
         <Route path="/Modules" element={<ModulesDashboard />} />{" "}
-        <Route path="/Modules/Module/*" element={<Module />} />{" "}
+        <Route path="/Modules/Module/:num" element={<Module />} />{" "}
+        <Route path="/Modules/not-found" element={<NotFound />} />{" "}
         <Route path="/SalesTaxMod" element={<SalesTaxMod />} />{" "}
       </Routes>{" "}
     </BrowserRouter>

@@ -2,11 +2,11 @@ import React, {useState, useEffect} from "react";
 import MCQuestionComponent from "../../components/MCQuestion/mc-question-component";
 import MCQuestion from "../../library/Question";
 import {Row, Col, Stack, Container} from "react-bootstrap";
-import moduleOne from "../../assets/modules/module1/module1.json";
+import { useParams } from "react-router-dom";
 
 const Module = () => {
-
     const [index, setIndex] = useState(0);
+    const {num} = useParams();
 
     const sendIsCorrect = (correct) => {
         if(correct){
@@ -14,9 +14,16 @@ const Module = () => {
         }
     }
 
-    const raw = JSON.parse(JSON.stringify(moduleOne));
-    let questions = raw.map(q => new MCQuestion(q.question, q.answerChoices, q.correctAnswer, q.imageSrc));
-    const questionComponents = questions.map(q => <MCQuestionComponent key={q.toString()} question={q} sendAnswer={sendIsCorrect} />);
+    let questionComponents = [];
+
+    try{
+        const moduleOne = require("../../assets/modules/module1/module" + num + ".json");
+        const raw = JSON.parse(JSON.stringify(moduleOne));
+        let questions = raw.map(q => new MCQuestion(q.question, q.answerChoices, q.correctAnswer, q.imageSrc));
+        questionComponents = questions.map(q => <MCQuestionComponent key={q.toString()} question={q} sendAnswer={sendIsCorrect} />);
+    }catch{
+        window.location.href = "/modules/not-found";
+    }
 
     return <Container>
         <Stack className='col-md-8 mx-auto' gap={3} direction='vertical'>
