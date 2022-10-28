@@ -9,6 +9,8 @@ import ModulesDashboard from "./pages/moduleDashboard/modulesDashboard";
 import Module from "./pages/module/module";
 import SalesTaxMod from "./pages/moduleDashboard/salesTax/salesTax";
 import NotFound from "./pages/moduleNotFound/moduleNotFound"
+import Dashboard from "./pages/ParentPages/Dashboard";
+import ChildDetails from "./pages/ParentPages/ChildDetails";
 
 function App() {
   return (
@@ -23,6 +25,9 @@ function App() {
         <Route path="/Modules/Module/:num" element={<Module />} />{" "}
         <Route path="/Modules/not-found" element={<NotFound />} />{" "}
         <Route path="/SalesTaxMod" element={<SalesTaxMod />} />{" "}
+        <Route path="/Dashboard" element={<Dashboard />} />{" "}
+        <Route path="/ChildDetails" element={<ChildDetails />} />{" "}
+        
       </Routes>{" "}
     </BrowserRouter>
   );
