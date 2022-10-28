@@ -26,3 +26,12 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
+
+### Create multiple choice module
+1. Create a new folder in the folder src/assets/modules under the name of the new module. For example, we'll use "tax" so the new folder will be called "tax"
+2. Create a questions.json file. This is where the questions will be added. This should be an array for each multiple choice question. The structure of each question should be:
+  1. "question" : "what is sales tax?" (This is the name of the question, currently isn't displayed)
+  2. "imageSrc" : "tax/salestax.jpg" (This is the file path of the question's image)
+  3. "answerChoices" : ["1%", "3%", "7.5%", "4%"] (Array of possible answers for the user. All entries should be strings)
+  4. "correctAnswer" : 2 (Index of the correct answer)
+3. After this, if you navigate to the page "localhost:3000/modules/module/{module name}" you should see your new module. For example, for my tax module I would navigate to "localhost:3000/modules/module/tax" to see the new module
