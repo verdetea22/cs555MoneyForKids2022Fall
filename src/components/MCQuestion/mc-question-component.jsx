@@ -2,25 +2,25 @@ import React from 'react'
 import { Row, Col, Button, Image, Stack } from "react-bootstrap";
 import './mc-question.css'
 
-const MCQuestionComponent = (props) => {
-    const question = props.question;
 
-    const checkAnswer = (question, answer) => {
-        return answer == question.correctAnswer;
+const MCQuestionComponent = (props) => {
+
+    let checkAnswer = (answer) => {
+        return answer == props.question.correctAnswer;
     }
 
-    return <Stack className='col-md-8 mx-auto' gap={3} direction='vertical'>
+    return <Col>
             <Row className="image-div">
-                <Image src={question.imageSrc}/>
+                <Image src={require("../../assets/modules/"+props.question.imageSrc)}/>
             </Row>
             <Row className="answers-div">
                 <Col>
                     <Row xs={1} md={2}>
-                        {question.answerChoices.map(option => <Button variant="light" onClick={() => props.sendAnswer(checkAnswer(question, option))} key={option}>{option}</Button>)}
+                        {props.question.answerChoices.map(option => <Button variant="light" onClick={() => props.sendAnswer(checkAnswer(option))} key={option}>{option}</Button>)}
                     </Row>
                 </Col>
             </Row>
-    </Stack>
+    </Col>
 }
 
 export default MCQuestionComponent;

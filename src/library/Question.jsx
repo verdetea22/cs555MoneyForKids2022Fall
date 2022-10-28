@@ -8,7 +8,7 @@ export default class MCQuestion {
         this.question = question;
         this.answerChoices = answerChoices;
         this.imageSrc = imageSrc;
-        this.correctAnswer = correctAnswer;
+        this.correctAnswer = answerChoices[correctAnswer];
     }
 
     isCorrect = (answer) => {
