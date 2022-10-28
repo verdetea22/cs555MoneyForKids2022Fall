@@ -12,7 +12,7 @@ export default class MCQuestion {
     }
 
     isCorrect = (answer) => {
-        if(answer == this.correctAnswer){
+        if(answer === this.correctAnswer){
             return true;
         }else{
             return false;

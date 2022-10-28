@@ -22,12 +22,11 @@ function App() {
         <Route path="/Signup" element={<SignUp />} />{" "}
         <Route path="/Login" element={<Login />} />{" "}
         <Route path="/Modules" element={<ModulesDashboard />} />{" "}
-        <Route path="/Modules/Module/:num" element={<Module />} />{" "}
+        <Route path="/Modules/Module/:name" element={<Module />} />{" "}
         <Route path="/Modules/not-found" element={<NotFound />} />{" "}
         <Route path="/SalesTaxMod" element={<SalesTaxMod />} />{" "}
         <Route path="/Dashboard" element={<Dashboard />} />{" "}
         <Route path="/ChildDetails" element={<ChildDetails />} />{" "}
-        
       </Routes>{" "}
     </BrowserRouter>
   );
