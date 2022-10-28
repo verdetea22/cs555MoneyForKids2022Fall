@@ -3,6 +3,7 @@ import { Button, Card, Form} from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
 import { createUser } from "./../../services/firebase/auth";
+import { setUser } from "./../../services/firebase/db";
 import "./SignUp.css";
 
 function SignUp() {
@@ -12,9 +13,10 @@ function SignUp() {
   const onSubmit = async ({ name, email, username, password }) => {
     const createUserResponse = await createUser({ email, password });
 
-    if (createUserResponse.error) {
+    if (createUserResponse.error || !createUserResponse.uid ) {
       alert("Error with sign up!");
     } else {
+      await setUser({ name, email, username, uid: createUserResponse.uid });
       window.location.href = "/Home";
     }
   };

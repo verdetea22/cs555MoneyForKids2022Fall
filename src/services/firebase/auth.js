@@ -6,7 +6,7 @@ const createUser = ({ email, password }) => {
         createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
             const { uid } = userCredential.user;
             console.log("User successfully created with a userID of ", uid);
-            resolve({ });
+            resolve({ uid });
         }).catch((error) => {
             reject({ error });
         });
