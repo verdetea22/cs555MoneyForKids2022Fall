@@ -40,8 +40,14 @@ function Dashboard() {
 
     useEffect(() => {
         const getCurrentUser = async () => {
-            const userData = await getUser();
-            setUser(userData);
+
+            try {
+                const userData = await getUser();
+                setUser(userData);
+            } catch (error) {
+                console.log(error);
+            }
+            
         };
 
         getCurrentUser();
