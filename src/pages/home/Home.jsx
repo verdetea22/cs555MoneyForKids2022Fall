@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { Image } from "react-bootstrap";
 import piggybank from "../../images/piggybank.jpeg"
+import { getUser } from "./../../services/firebase/db";
 
 function Home() {
 
+    const [user, setUser] = useState({});
+    
+    useEffect(() => {
+        const getCurrentUser = async () => {
+            try {
+                const u = await getUser();
+                setUser(u);
+            } catch (error) {
+                console.log(error);
+            }
+            
+        };
 
+        getCurrentUser();
+    }, []);
     
     
     return (<div>
