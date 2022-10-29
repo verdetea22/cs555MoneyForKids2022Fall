@@ -17,6 +17,7 @@ function Header() {
             <Nav.Link href="/About">About</Nav.Link>
             <Nav.Link href="/SignUp">Sign Up</Nav.Link>
             <Nav.Link href="/Modules">Learning Modules</Nav.Link>
+            <Nav.Link href="/Login">Login</Nav.Link>
             <Nav.Link href="#" onClick={() => { logout(); window.location.href = "/"; }}>Log Out</Nav.Link>
           </Nav>
         </Navbar.Collapse>
