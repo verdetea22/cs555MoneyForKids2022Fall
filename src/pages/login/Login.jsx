@@ -7,7 +7,7 @@ const Login = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = ({ email, password }) => {
-    login(email, password).then((res) => {
+    login({ email, password }).then((res) => {
       window.location.href = "/";
     }).catch((error) => {
         console.log(error);
