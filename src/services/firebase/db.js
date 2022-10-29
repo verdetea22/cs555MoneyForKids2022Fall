@@ -5,7 +5,7 @@ import { onAuthStateChanged } from "firebase/auth";
 const setUser = async ({ name, email, username, uid }) => {
     const userRef = doc(db, "users", uid);
 
-    await setDoc(userRef, { name, email, username });
+    await setDoc(userRef, { name, email, username, children: [] });
 }
 
 const getUser = async () => {

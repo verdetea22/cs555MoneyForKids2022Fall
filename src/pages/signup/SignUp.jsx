@@ -17,7 +17,7 @@ function SignUp() {
       alert("Error with sign up!");
     } else {
       await setUser({ name, email, username, uid: createUserResponse.uid });
-      window.location.href = "/Home";
+      window.location.href = "/";
     }
   };
   
