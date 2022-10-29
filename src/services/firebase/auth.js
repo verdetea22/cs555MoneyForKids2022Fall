@@ -1,5 +1,5 @@
 import { auth } from "./firebase-config";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth"
 
 const createUser = ({ email, password }) => {
     return new Promise((resolve, reject) => {
@@ -24,6 +24,17 @@ const login = ({ email, password }) => {
     });
 };
 
+const logout = () => {
+    return new Promise((resolve, reject) => {
+        signOut(auth).then(() => {
+            resolve(true);
+        }).catch((error) =>{
+            reject(error);
+        });
+    });
+    
+}
+
 const loginWithGoogle = () => {
     return new Promise((resolve, reject) => {
         const provider = new GoogleAuthProvider();
@@ -38,4 +49,4 @@ const loginWithGoogle = () => {
     });
 }
 
-export { createUser, login }
+export { createUser, login, logout }

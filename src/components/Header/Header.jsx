@@ -2,8 +2,10 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { logout } from "../../services/firebase/auth";
 
 function Header() {
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -15,6 +17,7 @@ function Header() {
             <Nav.Link href="/About">About</Nav.Link>
             <Nav.Link href="/SignUp">Sign Up</Nav.Link>
             <Nav.Link href="/Modules">Learning Modules</Nav.Link>
+            <Nav.Link href="#" onClick={() => { logout(); window.location.href = "/"; }}>Log Out</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
