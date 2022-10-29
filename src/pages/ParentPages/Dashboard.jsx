@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 //import { auth } from "../firebase/firebase-config";
 import { Navigate } from "react-router-dom";
-import { useState } from "react";
 import Container from 'react-bootstrap/Container';
 import CardDeck from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
@@ -12,6 +11,7 @@ import ChildBalance from "../../components/ParentDash/ChildBalance"
 import ChildrenActivity from "../../components/ParentDash/ChildrenActivity"
 import Requests from "../../components/ParentDash/Requests"
 import { propTypes } from "react-bootstrap/esm/Image";
+import { getUser, setUser } from "../../services/firebase/db";
 
 
 //if auth, show dash
@@ -29,17 +29,28 @@ function Dashboard() {
     //     }
     // });
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    //where user is from db
-    let user = {
+    const [user, setState] = useState({
         "name": "Example Parent",
         "children": [
             {"childName": "Example Child 1", "balance": 123},
             {"childName": "Example Child 2", "balance": 240}
         ]
         
-    }
+    });
+
+    useEffect(() => {
+        const getCurrentUser = async () => {
+            const userData = await getUser();
+            setUser(userData);
+        };
+
+        getCurrentUser();
+    });
+
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+   
+    
 
     if(!isLoggedIn){
         setIsLoggedIn(true);
