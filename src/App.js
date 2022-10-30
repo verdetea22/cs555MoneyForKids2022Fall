@@ -8,8 +8,9 @@ import Login from "./pages/login/Login";
 import ModulesDashboard from "./pages/moduleDashboard/modulesDashboard";
 import Module from "./pages/module/module";
 import SalesTaxMod from "./pages/moduleDashboard/salesTax/salesTax";
-
-import NotFound from "./pages/moduleNotFound/moduleNotFound"
+import FormsMod from "./pages/moduleDashboard/forms/formsMod";
+import ChangeBackMod from "./pages/moduleDashboard/changeBack/changeBack";
+import NotFound from "./pages/moduleNotFound/moduleNotFound";
 import Dashboard from "./pages/ParentPages/Dashboard";
 import ChildDetails from "./pages/ParentPages/ChildDetails";
 
