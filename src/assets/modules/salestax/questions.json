@@ -1,0 +1,64 @@
+[{
+        "question": " 1) Complete the sentence: Sales tax is …",
+        "imageSrc": "module1/maxresdefault.jpeg",
+        "answerChoices": [
+            "A) A fee charged based on the total cost of sale purchase",
+            "B) A tax for going shopping",
+            "C) Taxes a store pays to stay open and make sales"
+        ],
+        "correctAnswer": "A) A fee charged based on the total cost of sale purchase"
+    },
+    {
+        "question": " 2) Complete the sentence: A sales tax rate is...",
+        "imageSrc": "",
+        "answerChoices": [
+            "A) Rate of money spent over time",
+            "B) A percentage",
+            "C) A bank report"
+        ],
+        "correctAnswer": "B) A percentage"
+    },
+    {
+        "question": " 3) Complete the sentence: This percentage is set by …",
+        "imageSrc": "module1/maxresdefault.jpeg",
+        "answerChoices": [
+            "A) The store",
+            "B) The local government",
+            "C) The state government",
+            "D) The federal government "
+        ],
+        "correctAnswer": "C) The state government"
+    },
+    {
+        "question": "4) Complete the sentence: A mark up on a product is….",
+        "imageSrc": "",
+        "answerChoices": [
+            "A) The amount added to the cost of the product’s selling price",
+            "B) when a product was cheaper previously than it is now",
+            "C) A discount for buying in large quantities"
+        ],
+        "correctAnswer": "A) The amount added to the cost of the product’s selling price"
+    },
+    {
+        "question": "5) If a product’s selling price is $2.00 and the state’s sales tax rate is 5%, what would the sales tax be?",
+        "imageSrc": "module1/maxresdefault.jpeg",
+        "answerChoices": [
+            "A) 2.00 + 5.00 = 7.00",
+            "B) 2.00 + 0.05 = 2.05",
+            "C) 2.00 * (1.05) = 2.10",
+            "D) 2.00 * (0.05) = 0.10"
+        ],
+        "correctAnswer": "D) 2.00 * (0.05) = 0.10"
+    },
+    {
+        "question": "6) If a product’s selling price is $10.00 and the state’s sales tax rate is 7%, what would the total cost be?",
+        "imageSrc": "",
+        "answerChoices": [
+            "A) 10.00 + 7.00 = 17.00",
+            "B) 10.00 + 0.07 = 10.07",
+            "C) 10.00 * (1.07) = 10.70",
+            "D) 10.00 * (0.07) = 0.70"
+        ],
+        "correctAnswer": "C) 10.00 * (1.07) = 10.70"
+    }
+]
