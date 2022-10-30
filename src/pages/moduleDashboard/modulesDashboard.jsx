@@ -2,7 +2,8 @@ import React from "react";
 import { Image } from "react-bootstrap";
 import "./modules.css";
 
-function ModulesDashboard() {
+const ModulesDashboard = () => {
+
   return (
     <div>
       <br />
