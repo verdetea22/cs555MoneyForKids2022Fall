@@ -1,26 +1,26 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import "./salesTax.css";
+import "./changeBack.css";
 import image from "../../../images/salestax.jpeg";
 
-function SalesTaxMod() {
+function ChangeBackMod() {
   return (
     <div>
       <br />
-      <h2>Sales Tax Learning Module</h2>
+      <h2>Change Back Learning Module</h2>
       <br />
       <a>
         <img id="image" src={image} />
       </a>
       <br />
       <br />
-      <div id="sales_tax_description_box">
-        <a id="sales_tax_description">
+      <div id="description_box">
+        <a id="description">
           <br />
-          One way that governments raise money is through sales tax. <br />
-          <br />A sales tax is a fee that is added to the price of an item. When
-          you buy an item that is taxed, you pay the cost of the item plus the
-          sales tax.
+          Money sense is very important !<br />
+          <br />
+          Sharpen your skills and learn how to quickly
+          <br /> calculate change with some exercises
           <br />
           <br />
           Click the button to learn more!
@@ -32,4 +32,4 @@ function SalesTaxMod() {
   );
 }
 
-export default SalesTaxMod;
+export default ChangeBackMod;

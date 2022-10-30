@@ -6,7 +6,7 @@
     display: block;
 }
 
-#sales_tax_description {
+#description {
     text-align: center;
     margin-left: 15px;
     margin-right: 15px;
@@ -15,7 +15,7 @@
     font-weight: 350;
 }
 
-#sales_tax_description_box {
+#description_box {
     width: 600px;
     height: auto;
     margin-left: auto;
