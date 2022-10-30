@@ -8,8 +8,8 @@ import Login from "./pages/login/Login";
 import ModulesDashboard from "./pages/moduleDashboard/modulesDashboard";
 import Module from "./pages/module/module";
 import SalesTaxMod from "./pages/moduleDashboard/salesTax/salesTax";
-import ChangeBackMod from "./pages/moduleDashboard/changeBack/changeBack";
-import FormsMod from "./pages/moduleDashboard/forms/formsMod";
+
+import NotFound from "./pages/moduleNotFound/moduleNotFound"
 import Dashboard from "./pages/ParentPages/Dashboard";
 import ChildDetails from "./pages/ParentPages/ChildDetails";
 
@@ -23,7 +23,8 @@ function App() {
         <Route path="/Signup" element={<SignUp />} />{" "}
         <Route path="/Login" element={<Login />} />{" "}
         <Route path="/Modules" element={<ModulesDashboard />} />{" "}
-        <Route path="/Modules/Module/*" element={<Module />} />{" "}
+        <Route path="/Modules/Module/:name" element={<Module />} />{" "}
+        <Route path="/Modules/not-found" element={<NotFound />} />{" "}
         <Route path="/SalesTaxMod" element={<SalesTaxMod />} />{" "}
         <Route path="/ChangeBackMod" element={<ChangeBackMod />} />{" "}
         <Route path="/FormsMod" element={<FormsMod />} />{" "}

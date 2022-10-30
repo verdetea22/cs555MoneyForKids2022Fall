@@ -1,13 +1,14 @@
 import { auth } from "./firebase-config";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
-
-auth.tenantId = "<myTenantId1>"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth"
 
 const createUser = ({ email, password }) => {
     return new Promise((resolve, reject) => {
         createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
             const { uid } = userCredential.user;
             console.log("User successfully created with a userID of ", uid);
+            resolve({ uid });
+        }).catch((error) => {
+            reject({ error });
         });
     });
 }
@@ -15,13 +16,24 @@ const createUser = ({ email, password }) => {
 const login = ({ email, password }) => {
     return new Promise((resolve, reject ) => { 
         signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-            resolve(true);
+            resolve({});
         }).catch((error) => {
             
-            reject(error);
+            reject({ error });
         });
     });
 };
+
+const logout = () => {
+    return new Promise((resolve, reject) => {
+        signOut(auth).then(() => {
+            resolve(true);
+        }).catch((error) =>{
+            reject(error);
+        });
+    });
+    
+}
 
 const loginWithGoogle = () => {
     return new Promise((resolve, reject) => {
@@ -37,4 +49,4 @@ const loginWithGoogle = () => {
     });
 }
 
-export { createUser, login }
+export { createUser, login, logout }
