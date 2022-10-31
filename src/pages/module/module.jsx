@@ -59,7 +59,7 @@ const Module = () => {
   }
 
   return (
-    <Container>
+    <Container className="mh-50">
       <LostAlert key={Date().now} showLostAlert={hasLost} reset={reset} />
       <Stack className="col-md-8 mx-auto" gap={3} direction="vertical">
         <Row xs={1} md={2}>
@@ -68,13 +68,11 @@ const Module = () => {
             {Array(lives).fill(heartComponent)}
           </Stack>
         </Row>
-        <Row>
           {index < questionComponents.length ? (
             questionComponents[index]
           ) : (
             <Finished name={name} />
           )}
-        </Row>
       </Stack>
     </Container>
   );

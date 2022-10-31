@@ -8,7 +8,7 @@ const MCQuestionComponent = (props) => {
         return answer === props.question.correctAnswer;
     }
 
-    return  <Stack className='col-md-100 mx-auto' gap={3} direction='vertical'>
+    return  <Stack className='col-md-8 mx-auto' gap={3} direction='vertical'>
                 <Row>
                     <h1>{props.question.question}</h1>
                 </Row>
