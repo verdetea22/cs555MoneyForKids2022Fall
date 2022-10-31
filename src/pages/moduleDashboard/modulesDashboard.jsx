@@ -3,7 +3,6 @@ import { Image } from "react-bootstrap";
 import "./modules.css";
 
 const ModulesDashboard = () => {
-
   return (
     <div>
       <br />
@@ -14,7 +13,7 @@ const ModulesDashboard = () => {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a id="mod_name" href="/SalesTaxMod">
+            <a id="mod_name" href="/Modules/SalesTaxMod">
               Sales Tax Module
             </a>
             <br />
@@ -29,7 +28,7 @@ const ModulesDashboard = () => {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a id="mod_name" href="/ChangeBackMod">
+            <a id="mod_name" href="/Modules/ChangeBackMod">
               Change Back Module
             </a>
             <br />
@@ -48,7 +47,7 @@ const ModulesDashboard = () => {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a id="mod_name" href="/InterestMod">
+            <a id="mod_name" href="/Modules/InterestMod">
               {" "}
               Interest Module
             </a>
@@ -68,7 +67,7 @@ const ModulesDashboard = () => {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a id="mod_name" href="/MoneyAdditionMod">
+            <a id="mod_name" href="/Modules/MoneyAdditionMod">
               Money Addition Module
             </a>
             <br />
@@ -83,7 +82,7 @@ const ModulesDashboard = () => {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a id="mod_name" href="/FormsMod">
+            <a id="mod_name" href="/Modules/FormsMod">
               Bank Forms Module
             </a>
             <br />
@@ -112,6 +111,6 @@ const ModulesDashboard = () => {
       </div>
     </div>
   );
-}
+};
 
 export default ModulesDashboard;
