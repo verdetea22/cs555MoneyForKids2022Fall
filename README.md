@@ -28,7 +28,7 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 ### Create multiple choice module
-1. Create a new folder in the folder src/assets/modules under the name of the new module. For example, we'll use "tax" so the new folder will be called "tax"
+1. Create a new folder in the folder src/assets/modules under the name of the new module. For example, we'll use "tax" so the new folder will be called "tax". Folder name should be lowercase.
 2. Create a questions.json file. This is where the questions will be added. This should be an array for each multiple choice question. The structure of each question should be:
     1. "question" : "what is sales tax?" (This is the name of the question, currently isn't displayed)
     2. "imageSrc" : "tax/salestax.jpg" (This is the file path of the question's image)
