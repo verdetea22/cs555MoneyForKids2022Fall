@@ -23,9 +23,8 @@ function SalesTaxMod() {
           sales tax.
           <br />
           <br />
-          Click the button to learn more!
+          Scroll down to learn more!
           <br />
-          <Button id="button">Start Module</Button>
         </a>
       </div>
     </div>
