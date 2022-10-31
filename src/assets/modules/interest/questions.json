@@ -1,7 +1,7 @@
 [
     {
         "question": "1) What is Interest?",
-        "imageSrc" : "interest/interest.jpg",
+        "imageSrc" : "",
         "answerChoices": [
             "A) The fee for borrowing money that increases over time",
             "B) The starting amount of cash in a bank account",
@@ -11,7 +11,7 @@
     },
     {
         "question": "2) What is the Principle?",
-        "imageSrc" : "interest/interest.jpg",
+        "imageSrc" : "",
         "answerChoices": [
             "A) The fee for borrowing money that increases over time",
             "B) The starting amount of cash in a bank account",
@@ -21,7 +21,7 @@
     },
     {
         "question": "3) What types of Interest are their?",
-        "imageSrc" : "interest/interest.jpg",
+        "imageSrc" : "",
         "answerChoices": [
             "A) Complex, Forfeited, and Uniform",
             "B) Basic, Inherited, and Composite",
@@ -31,7 +31,7 @@
     },
     {
         "question": "4) How is Simple Calculated?",
-        "imageSrc" : "interest/interest.jpg",
+        "imageSrc" : "",
         "answerChoices": [
             "A) Interest is gained based only on the Principle",
             "B) Interest is gained every year",
@@ -41,7 +41,7 @@
     },
     {
         "question": "4) How is Complex Calculated?",
-        "imageSrc" : "interest/interest.jpg",
+        "imageSrc" : "",
         "answerChoices": [
             "A) Interest is gained based only on the Principle",
             "B) Interest is gained every year",
