@@ -26,9 +26,9 @@ function App() {
         <Route path="/Modules" element={<ModulesDashboard />} />{" "}
         <Route path="/Modules/Module/:name" element={<Module />} />{" "}
         <Route path="/Modules/not-found" element={<NotFound />} />{" "}
-        <Route path="/SalesTaxMod" element={<SalesTaxMod />} />{" "}
-        <Route path="/ChangeBackMod" element={<ChangeBackMod />} />{" "}
-        <Route path="/FormsMod" element={<FormsMod />} />{" "}
+        <Route path="/Modules/SalesTaxMod" element={<SalesTaxMod />} />{" "}
+        <Route path="/Modules/ChangeBackMod" element={<ChangeBackMod />} />{" "}
+        <Route path="/Modules/FormsMod" element={<FormsMod />} />{" "}
         <Route path="/Dashboard" element={<Dashboard />} />{" "}
         <Route path="/ChildDetails" element={<ChildDetails />} />{" "}
       </Routes>{" "}
