@@ -11,7 +11,7 @@ import ChildBalance from "../../components/ParentDash/ChildBalance"
 import ChildrenActivity from "../../components/ParentDash/ChildrenActivity"
 import Requests from "../../components/ParentDash/Requests"
 import { propTypes } from "react-bootstrap/esm/Image";
-import { getUser, setUser } from "../../services/firebase/db";
+import { getUser } from "../../services/firebase/db";
 
 
 //if auth, show dash
@@ -29,7 +29,7 @@ function Dashboard() {
     //     }
     // });
 
-    const [user, setState] = useState({
+    const [user, setUser] = useState({
         "name": "Example Parent",
         "children": [
             {"childName": "Example Child 1", "balance": 123},
