@@ -9,8 +9,9 @@ const MCQuestionComponent = (props) => {
     }
 
     return  <Stack className='col-md-8 mx-auto' gap={3} direction='vertical'>
-                <Row className="image-div">
-                    <Image src={require("../../../assets/modules/"+props.question.imageSrc)}/>
+                <Row className="image-div" md={"auto"}>
+                    <h1>{props.question.question}</h1>
+                    {props.question.imageSrc === "" ? null : <Image src={require("../../../assets/modules/"+props.question.imageSrc)}/>}
                 </Row>
                 <Row className="answers-div">
                     <Col>
