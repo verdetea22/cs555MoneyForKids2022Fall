@@ -55,7 +55,7 @@ const Module = () => {
       />
     ));
   } catch {
-    window.location.href = "/modules/not-found";
+    //window.location.href = "/modules/not-found";
   }
 
   return (
