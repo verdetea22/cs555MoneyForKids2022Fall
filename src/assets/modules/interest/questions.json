@@ -1,6 +1,6 @@
 [
     {
-        "question": "1) What is Interest?",
+        "question": "What is Interest?",
         "imageSrc" : "",
         "answerChoices": [
             "A) The fee for borrowing money that increases over time",
@@ -10,7 +10,7 @@
         "correctAnswer": 0
     },
     {
-        "question": "2) What is the Principle?",
+        "question": "What is the Principle?",
         "imageSrc" : "",
         "answerChoices": [
             "A) The fee for borrowing money that increases over time",
@@ -20,7 +20,7 @@
         "correctAnswer": 1
     },
     {
-        "question": "3) What types of Interest are their?",
+        "question": "What types of Interest are there?",
         "imageSrc" : "",
         "answerChoices": [
             "A) Complex, Forfeited, and Uniform",
@@ -30,7 +30,7 @@
         "correctAnswer": 2
     },
     {
-        "question": "4) How is Simple Calculated?",
+        "question": "How is Simple Calculated?",
         "imageSrc" : "",
         "answerChoices": [
             "A) Interest is gained based only on the Principle",
@@ -40,7 +40,7 @@
         "correctAnswer": 0
     },
     {
-        "question": "4) How is Complex Calculated?",
+        "question": "How is Complex Calculated?",
         "imageSrc" : "",
         "answerChoices": [
             "A) Interest is gained based only on the Principle",
