@@ -55,29 +55,25 @@ const Module = () => {
       />
     ));
   } catch {
-    //window.location.href = "/modules/not-found";
+    window.location.href = "/modules/not-found";
   }
 
   return (
-    <Container>
-      <LostAlert key={Date().now} showLostAlert={hasLost} reset={reset} />{" "}
+    <Container className="mh-50">
+      <LostAlert key={Date().now} showLostAlert={hasLost} reset={reset} />
       <Stack className="col-md-8 mx-auto" gap={3} direction="vertical">
         <Row xs={1} md={2}>
-          <h1 className="question-number"> {"Question: " + (index + 1)} </h1>{" "}
+          <h1 className="question-number"> {"Question: " + (index + 1)} </h1>
           <Stack direction="horizontal" gap={1} className="flex-row-reverse">
-            {" "}
-            {Array(lives).fill(heartComponent)}{" "}
-          </Stack>{" "}
-        </Row>{" "}
-        <Row>
-          {" "}
+            {Array(lives).fill(heartComponent)}
+          </Stack>
+        </Row>
           {index < questionComponents.length ? (
             questionComponents[index]
           ) : (
             <Finished name={name} />
-          )}{" "}
-        </Row>{" "}
-      </Stack>{" "}
+          )}
+      </Stack>
     </Container>
   );
 };
