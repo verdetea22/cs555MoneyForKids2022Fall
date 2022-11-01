@@ -1,5 +1,5 @@
 import React from "react";
-import {render, screen, getByText, fireEvent} from '@testing-library/react'
+import {render, screen, fireEvent} from '@testing-library/react'
 import MCQuestion from '../../../library/Question';
 import MCQuestionComponent from './mc-question-component';
 
@@ -8,6 +8,8 @@ it('shows the correct information', () => {
     const answerOptions = ["2", "3", "4", "5"];
     const correctAnswer = 2;
     const q = new MCQuestion(question, answerOptions, correctAnswer, "");
+
+    //create the MCQuestionComponent
     render(
         <MCQuestionComponent question={q} />
     );
@@ -41,6 +43,7 @@ it(('selects the correct answer choice'), async () => {
         <MCQuestionComponent question={q} sendAnswer={checkCorrect}/>
     );
 
+    //simulate pressing button with '4' on it
     fireEvent(
         screen.getByText("4"),
         new MouseEvent('click', {
