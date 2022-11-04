@@ -1,5 +1,12 @@
 import { auth } from "./firebase-config";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth"
+import { 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword, 
+    GoogleAuthProvider, 
+    signInWithPopup, 
+    signOut,
+    updatePassword,
+} from "firebase/auth"
 
 const createUser = ({ email, password }) => {
     return new Promise((resolve, reject) => {
@@ -49,4 +56,16 @@ const loginWithGoogle = () => {
     });
 }
 
-export { createUser, login, logout }
+const changePassword = async (newPassword) => {
+    const user = auth.currentUser;
+
+    if (user != null) {
+        try {
+            return await updatePassword(user, newPassword);
+        } catch (error) {
+            throw error;
+        }
+    }
+};
+
+export { createUser, login, logout, changePassword }
