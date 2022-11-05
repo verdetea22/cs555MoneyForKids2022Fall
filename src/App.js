@@ -13,6 +13,7 @@ import ChangeBackMod from "./pages/moduleDashboard/changeBack/changeBack";
 import NotFound from "./pages/moduleNotFound/moduleNotFound";
 import Dashboard from "./pages/ParentPages/Dashboard";
 import ChildDetails from "./pages/ParentPages/ChildDetails";
+import AccountSettings from "./pages/settings/AccountSettings";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/Modules/FormsMod" element={<FormsMod />} />{" "}
         <Route path="/Dashboard" element={<Dashboard />} />{" "}
         <Route path="/ChildDetails" element={<ChildDetails />} />{" "}
+        <Route path="/Settings" element={<AccountSettings />} />{" "}
       </Routes>{" "}
     </BrowserRouter>
   );
