@@ -59,12 +59,18 @@ const loginWithGoogle = () => {
 const changePassword = async (newPassword) => {
     const user = auth.currentUser;
 
+    if (typeof newPassword !== "string") {
+        throw new Error("Password is not a string");
+    }
+
     if (user != null) {
         try {
             return await updatePassword(user, newPassword);
         } catch (error) {
             throw error;
         }
+    } else {
+        throw new Error("User is not signed in")
     }
 };
 
