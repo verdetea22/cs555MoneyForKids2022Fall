@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MCQuestionComponent from "../../components/Modules/MCQuestion/mc-question-component";
 import MCQuestion from "../../library/Question";
 import LostAlert from "../../components/Modules/Common/LostAlert";
