@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDrop } from 'react-dnd'
 import AnswerOption from "../AnswerOption/AnswerOption";
-import "./AnswerHost.css";
+import "./AnswerOrigin.css";
 
 const style = {
     border: '1px dashed gray',
@@ -10,9 +10,9 @@ const style = {
     width: '125px'
 }
 
-const AnswerHost = () => {
-    const [currentAnswer, setCurrentAnswer] = useState("");
-    const [canShowAnswer, setCanShowAnswer] = useState(false);
+const AnswerOrigin = ({answerChoice}) => {
+    const [currentAnswer, setCurrentAnswer] = useState(answerChoice);
+    const [canShowAnswer, setCanShowAnswer] = useState(true);
 
     const setShow = (canShow) => {
       setCanShowAnswer(canShow);
@@ -21,9 +21,9 @@ const AnswerHost = () => {
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: "answerOption",
         drop: (item) => {
-          setCurrentAnswer(item.answer)
-          setCanShowAnswer(true);
-          console.log(currentAnswer);
+            setCurrentAnswer(item.answer);
+            setCanShowAnswer(true);
+            console.log(currentAnswer);
         },
         collect: (monitor) => ({
           isOver: monitor.isOver(),
@@ -32,8 +32,8 @@ const AnswerHost = () => {
       })
 
     return <div ref={drop} style={style}>
-        {(canShowAnswer) ? <AnswerOption asnwer={currentAnswer} showAnswer={setShow} /> : null}
-      </div>
+        {(canShowAnswer) ? <AnswerOption answer={currentAnswer} showAnswer={setShow} /> : null}
+        </div>
 }
 
-export default AnswerHost;
+export default AnswerOrigin;
