@@ -21,6 +21,8 @@ const AnswerOrigin = ({answerChoice}) => {
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: "answerOption",
         drop: (item) => {
+            console.log(item);
+            console.log(item.asnwer);
             setCurrentAnswer(item.answer);
             setCanShowAnswer(true);
             console.log(currentAnswer);
@@ -32,7 +34,7 @@ const AnswerOrigin = ({answerChoice}) => {
       })
 
     return <div ref={drop} style={style}>
-        {(canShowAnswer) ? <AnswerOption answer={currentAnswer} showAnswer={setShow} /> : null}
+        {(currentAnswer && canShowAnswer) ? <AnswerOption answer={currentAnswer} showAnswer={setShow} /> : null}
         </div>
 }
 

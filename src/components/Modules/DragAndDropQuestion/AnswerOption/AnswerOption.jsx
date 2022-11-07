@@ -17,8 +17,6 @@ const style = {
 
 
 const AnswerOption = ({answer, showAnswer}) => {
-
-
     const [{ opacity, isOver }, drag] = useDrag(
         () => ({
           type: "answerOption",
