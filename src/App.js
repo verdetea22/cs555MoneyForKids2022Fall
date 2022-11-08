@@ -14,6 +14,7 @@ import NotFound from "./pages/moduleNotFound/moduleNotFound";
 import Dashboard from "./pages/ParentPages/Dashboard";
 import ChildDetails from "./pages/ParentPages/ChildDetails";
 import AccountSettings from "./pages/settings/AccountSettings";
+import ChangePassword from "./pages/settings/ChangePassword";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/Dashboard" element={<Dashboard />} />{" "}
         <Route path="/ChildDetails" element={<ChildDetails />} />{" "}
         <Route path="/Settings" element={<AccountSettings />} />{" "}
+        <Route path="/ChangePassword" element={<ChangePassword />} />{" "}
       </Routes>{" "}
     </BrowserRouter>
   );

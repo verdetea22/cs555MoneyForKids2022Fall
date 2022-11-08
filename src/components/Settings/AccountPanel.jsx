@@ -11,7 +11,7 @@ function AccountPanel() {
             <Row>
                 <div>
                     <h1 className="border-dark border-bottom border-5 py-2">Change Password</h1>
-                    <Button onClick={directToChangePasswordPage}>Change username</Button>
+                    <Button onClick={directToChangePasswordPage}>Change password</Button>
                 </div>
             </Row>
         </Container>

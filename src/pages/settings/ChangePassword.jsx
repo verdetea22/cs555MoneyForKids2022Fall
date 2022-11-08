@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Form } from "react-bootstrap";
+import { Button, Card, Form } from "react-bootstrap";
 
 import { useForm } from "react-hook-form";
 import { changePassword } from "../../services/firebase/auth";
@@ -33,6 +33,9 @@ function ChangePassword() {
                     <Form.Group controlId="newPasswordAgainControl">
                         <Form.Label>New Password Again</Form.Label>
                         <Form.Control type="password" placeholder="Enter new password again..." {...register("newPassword")}></Form.Control>
+                    </Form.Group>
+                    <Form.Group>
+                        <Button type="submit">Submit</Button>
                     </Form.Group>
                 </Form>
             </Card.Body>

@@ -2,12 +2,14 @@ import React, { useState } from "react";
 
 import { Container, Nav, Row, Col } from "react-bootstrap";
 import AccountPanel from "../../components/Settings/AccountPanel";
+import Sidebar from "../../components/Settings/Sidebar";
 
 function AccountSettings() {
 
     const [panel, setPanel] = useState(<></>);
 
-    const handleSelect = (eventKey) => {
+    const handleSelect = (eventKey, event) => {
+        console.log(event.target);
         if (eventKey === "children") {
 
         } else if (eventKey === "account") {
@@ -18,16 +20,13 @@ function AccountSettings() {
     return (
         <Container>
             <Row>
-                <Col>
-                <Nav defaultActiveKey="" className="flex-column" onSelect={handleSelect}>
-                    <Nav.Link eventKey="account">Account</Nav.Link>
-                    <Nav.Link eventKey="children">Children</Nav.Link>
-                    <Nav.Link>Link 1</Nav.Link>
-                    <Nav.Link>Link 1</Nav.Link>
-                </Nav>
+                <Col xs={2}>
+                    <Sidebar handleSelect={handleSelect} />
                 </Col>
-                <Col>
+                <Col xs={8}>
                     {panel}
+                </Col>
+                <Col xs={2}>
                 </Col>
             </Row>
         </Container>
