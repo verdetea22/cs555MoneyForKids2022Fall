@@ -6,13 +6,12 @@ const style = {
     border: '1px dashed gray',
     backgroundColor: 'white',
     padding: '0.5rem 1rem',
-    marginRight: '1.5rem',
-    marginBottom: '1.5rem',
+    margin: 'auto',
     cursor: 'move',
     float: 'left',
     height: '70px',
     width: '120px',
-    fontSize: '5px'
+    fontSize: '20px'
 }
 
 
@@ -25,7 +24,6 @@ const AnswerOption = ({answer, showAnswer}) => {
             opacity: monitor.isDragging() ? 0.4 : 1,
           }),
           end: (item, monitor) => {
-            console.log(item);
             monitor.didDrop() ? showAnswer(false) : showAnswer(true);
           }
         })
