@@ -1,0 +1,45 @@
+[{
+        "question": "If you wanted to put money into your bank account, what form do you need to fill out ? ",
+        "imageSrc": "",
+        "answerChoices": [
+            "A) Deposit Form",
+            "B) Withdrawal Form",
+            "C) Loan Application",
+            "D) Credit Card Application"
+        ],
+        "correctAnswer": 0
+    },
+    {
+        "question": "If you wanted to take money out of your bank account, what form do you need to fill out ? ",
+        "imageSrc": "",
+        "answerChoices": [
+            "A) Deposit Form",
+            "B) Withdrawal Form",
+            "C) Loan Application",
+            "D) Credit Card Application"
+        ],
+        "correctAnswer": 1
+    },
+    {
+        "question": " What do you need to apply for a credit card?",
+        "imageSrc": "",
+        "answerChoices": [
+            "A) A good attitude ! ",
+            "B) Full name, Social Security number, Birth date, Address",
+            "C) Three well trained raccoons, and a plan",
+            "D) A mortgage and a letter from your employer"
+        ],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Study the sample deposit form above. What is needed to complete it?",
+        "imageSrc": "depositSlip.jpg",
+        "answerChoices": [
+            "A) Cash/Check amount, Total and Signature",
+            "B) Cash/Check amount, Total, Account Number and Signature",
+            "C) Name, Account Number, Bank Routing Number, Signature and Cash/Check Amount",
+            "D) Name, Account Number, Signature and Cash/Check Amount"
+        ],
+        "correctAnswer": 2
+    }
+]

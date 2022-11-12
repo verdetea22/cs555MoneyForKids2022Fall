@@ -19,8 +19,8 @@ function SalesTaxMod() {
           <br />
           One way that governments raise money is through sales tax. <br />
           <br />A sales tax is a fee that is added to the price of an item. When
-          you buy an item that is taxed, you pay the cost of the item plus the
-          sales tax.
+          you buy an item, you pay for the cost of the item as well as the sales
+          tax.
           <br />
           <br />
           Scroll down to learn more!
