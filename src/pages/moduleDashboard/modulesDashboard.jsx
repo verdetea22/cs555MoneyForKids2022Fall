@@ -1,5 +1,4 @@
 import React from "react";
-import { Image } from "react-bootstrap";
 import "./modules.css";
 
 const ModulesDashboard = () => {
@@ -13,7 +12,7 @@ const ModulesDashboard = () => {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a id="mod_name" href="/Modules/SalesTaxMod">
+            <a id="mod_name" href="/Modules/module/salestax">
               Sales Tax Module
             </a>
             <br />
@@ -28,7 +27,7 @@ const ModulesDashboard = () => {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a id="mod_name" href="/Modules/ChangeBackMod">
+            <a id="mod_name" href="/Modules/module/changeback">
               Change Back Module
             </a>
             <br />
@@ -47,7 +46,7 @@ const ModulesDashboard = () => {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a id="mod_name" href="/Modules/InterestMod">
+            <a id="mod_name" href="/Modules/module/interest">
               {" "}
               Interest Module
             </a>

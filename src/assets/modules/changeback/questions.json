@@ -1,0 +1,34 @@
+[
+    {
+        "question" : "Laura has $10 she buys a apple worth $5, how much cash does she have left?",
+        "imageSrc" : "",
+        "answerChoices" : [
+            "$7", "$5", "$11", "$10"
+        ],
+        "correctAnswer" : 1
+    },
+    {
+        "question" : "Paul buys an action figure worth $5.95 using a $10 bill how many $1's does he get back?",
+        "imageSrc" : "",
+        "answerChoices" : [
+            "4", "5", "3", "2"
+        ],
+        "correctAnswer" : 0
+    },
+    {
+        "question" : "Paul buys an action figure worth $5.95 using a $10 bill how many Nickels does he get back?",
+        "imageSrc" : "",
+        "answerChoices" : [
+            "1", "2", "0", "3"
+        ],
+        "correctAnswer" : 0
+    },
+    {
+        "question" : "Amanda is working the cash register and a customer gives her a $50 for an item work $17.33. How much cash back does the customer recieve?",
+        "imageSrc" : "",
+        "answerChoices" : [
+            "$35.66", "$20.57", "$32.67", "$32.76"
+        ],
+        "correctAnswer" : 2
+    }
+]
