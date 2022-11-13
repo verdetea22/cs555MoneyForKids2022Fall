@@ -66,7 +66,7 @@ const ModulesDashboard = () => {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a id="mod_name" href="/Modules/MoneyAdditionMod">
+            <a id="mod_name" href="/Modules/module/moneyAddition">
               Money Addition Module
             </a>
             <br />
@@ -81,7 +81,7 @@ const ModulesDashboard = () => {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a id="mod_name" href="/Modules/FormsMod">
+            <a id="mod_name" href="/Modules/module/forms">
               Bank Forms Module
             </a>
             <br />
@@ -100,7 +100,7 @@ const ModulesDashboard = () => {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a id="mod_name" href="/Modules">
+            <a id="mod_name" href="/Modules/module">
               {" "}
               WIP Module
             </a>
