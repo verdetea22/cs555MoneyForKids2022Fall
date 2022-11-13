@@ -11,7 +11,7 @@ function AccountSettings() {
     const handleSelect = (eventKey, event) => {
         console.log(event.target);
         if (eventKey === "children") {
-
+            
         } else if (eventKey === "account") {
             setPanel(<AccountPanel />)
         }

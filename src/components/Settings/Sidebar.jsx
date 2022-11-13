@@ -4,7 +4,6 @@ import { Nav } from "react-bootstrap";
 
 function Sidebar({ handleSelect }) {
     
-
     return (
         <Nav defaultActiveKey="" className="flex-column" onSelect={handleSelect}>
             <Nav.Link eventKey="account" className="border-dark border-start border-5">Account</Nav.Link>
