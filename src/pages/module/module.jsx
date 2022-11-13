@@ -5,6 +5,7 @@ import LostAlert from "../../components/Modules/Common/LostAlert";
 import { Row, Stack, Container, Image } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Finished from "../../components/Modules/Common/Finised";
+import "../../pages/module/module.css";
 
 const Module = () => {
   let heartComponent = null;
@@ -68,11 +69,11 @@ const Module = () => {
             {Array(lives).fill(heartComponent)}
           </Stack>
         </Row>
-          {index < questionComponents.length ? (
-            questionComponents[index]
-          ) : (
-            <Finished name={name} />
-          )}
+        {index < questionComponents.length ? (
+          questionComponents[index]
+        ) : (
+          <Finished name={name} />
+        )}
       </Stack>
     </Container>
   );

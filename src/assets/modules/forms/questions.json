@@ -32,8 +32,8 @@
         "correctAnswer": 1
     },
     {
-        "question": "Study the sample deposit form above. What is needed to complete it?",
-        "imageSrc": "depositSlip.jpg",
+        "question": "Study the sample deposit form below. What is needed to complete it properly?",
+        "imageSrc": "forms/depositSlip.jpg",
         "answerChoices": [
             "A) Cash/Check amount, Total and Signature",
             "B) Cash/Check amount, Total, Account Number and Signature",
