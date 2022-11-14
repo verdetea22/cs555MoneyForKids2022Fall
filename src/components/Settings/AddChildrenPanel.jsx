@@ -1,5 +1,6 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
+
 
 function AddChildrenPanel() {
     const directToChangePasswordPage = () => {
