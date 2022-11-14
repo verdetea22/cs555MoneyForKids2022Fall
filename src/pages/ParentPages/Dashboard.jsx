@@ -53,9 +53,6 @@ function Dashboard() {
 
     const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-   
-    
-
     if(!isLoggedIn){
         setIsLoggedIn(true);
         return(<Navigate to="/Login" />);
