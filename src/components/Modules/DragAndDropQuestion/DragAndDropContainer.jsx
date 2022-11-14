@@ -19,7 +19,6 @@ const DragAndDropContainer = (props) => {
             setCurrCorrect(currCorrect - 1);
             console.log("current correct: "+(currCorrect - 1));
         }
-        console.log(currCorrect);
     }
 
     const answerCards = props.answerChoices;
