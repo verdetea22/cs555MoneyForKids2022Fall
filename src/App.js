@@ -15,6 +15,7 @@ import Dashboard from "./pages/ParentPages/Dashboard";
 import ChildDetails from "./pages/ParentPages/ChildDetails";
 import AccountSettings from "./pages/settings/AccountSettings";
 import ChangePassword from "./pages/settings/ChangePassword";
+import AddChild from "./pages/settings/AddChild";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/ChildDetails" element={<ChildDetails />} />{" "}
         <Route path="/Settings" element={<AccountSettings />} />{" "}
         <Route path="/ChangePassword" element={<ChangePassword />} />{" "}
+        <Route path="/AddChild" element={<AddChild />} />{" "}
       </Routes>{" "}
     </BrowserRouter>
   );

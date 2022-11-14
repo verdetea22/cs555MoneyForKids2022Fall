@@ -1,5 +1,5 @@
 import { db, auth } from "./firebase-config";
-import { setDoc, doc, getDoc } from "firebase/firestore";
+import { setDoc, doc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 
 const setUser = async ({ name, email, username, uid }) => {
@@ -25,4 +25,24 @@ const getUser = async () => {
     });
 }
 
-export { setUser, getUser };
+const createChildAccount = async ({ childName }) => {
+    return new Promise((resolve, reject) => {
+        onAuthStateChanged(auth, async (user) => {
+        if (user && user.uid) {
+            try {
+                const userRef = doc(db, "users", user.uid);
+                await updateDoc(userRef, { 
+                    children: arrayUnion({ childName })
+                });
+                resolve();
+            } catch (error) {
+                reject(error);
+            } 
+        } else {
+            reject(new Error("User not found!"));
+        }
+        });
+    });
+}
+
+export { setUser, getUser, createChildAccount };

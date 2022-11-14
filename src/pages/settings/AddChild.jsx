@@ -1,13 +1,20 @@
 import React from "react";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { createChildAccount } from "../../services/firebase/db";
 
 function AddChild() {
 
     const { register, handleSubmit } = useForm();
 
-    const submit = ({ childName }) => {
-
+    const submit = async ({ childName }) => {
+        try {
+            await createChildAccount({ childName });
+            window.location.href = "/";
+        } catch (error) {
+            console.log(error);
+        }
+       
     }
 
     return (
