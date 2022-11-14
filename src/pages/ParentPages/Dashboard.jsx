@@ -8,6 +8,7 @@ import CardDeck from 'react-bootstrap/Card';
 import ChildBalance from "../../components/ParentDash/ChildBalance"
 import ChildrenActivity from "../../components/ParentDash/ChildrenActivity"
 import Requests from "../../components/ParentDash/Requests"
+import ChildGoals from "../../components/ParentDash/ChildGoals";
 
 import { getUser } from "../../services/firebase/db";
 
@@ -72,6 +73,7 @@ function Dashboard() {
                         ))}
                         <ChildrenActivity/>
                         <Requests children={user.children}/> 
+                        <ChildGoals/>
                     </CardDeck>
                 </Container>
             </Container>
