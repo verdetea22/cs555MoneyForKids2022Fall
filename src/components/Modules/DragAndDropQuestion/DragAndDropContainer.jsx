@@ -3,7 +3,7 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import AnswerHost from "./AnswerHost/AnswerHost";
 import AnswerOrigin from "./AnswerOrigin/AnswerOrigin";
-import { Col, Row, Stack } from "react-bootstrap";
+import { Col, Row, Stack, Button } from "react-bootstrap";
 
 const DragAndDropContainer = (props) => {
     const [currCorrect, setCurrCorrect] = useState(0);
@@ -22,11 +22,9 @@ const DragAndDropContainer = (props) => {
         console.log(currCorrect);
     }
 
-    const answerCards = ["2", "3", "4", "5"];
-    const origHostCards =  ["1+1:2", "1+2:3", "2+2:4", "2+3:5"];
-    const answerHostCards = origHostCards.map(value => ({ value, sort: Math.random() }))
-        .sort((a, b) => a.sort - b.sort)
-        .map(({ value }) => value);
+    const answerCards = props.answerChoices;
+    const answerHostCards =  props.answerTargets;
+
     const amtQuestions = answerCards.length;
 
     const answerOrigins = answerCards.map(a => <AnswerOrigin answerChoice={a}/>);
@@ -55,6 +53,7 @@ const DragAndDropContainer = (props) => {
     return <DndProvider backend={HTML5Backend}>
             <Stack className='col-md-8 mx-auto' gap={3} direction='vertical'>
                 {qARows ? qARows : <div></div>}
+                <Button className=" mt-1 ml-1 border border-dark" variant="light" onClick={() => props.checkCorrect(currCorrect, amtQuestions)} >Submit</Button>
             </Stack>
         </DndProvider>
 }
