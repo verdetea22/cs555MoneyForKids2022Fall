@@ -1,4 +1,5 @@
 [{
+        "type" : "MC",
         "question": "If you wanted to put money into your bank account, what form do you need to fill out ? ",
         "imageSrc": "",
         "answerChoices": [
@@ -10,6 +11,7 @@
         "correctAnswer": 0
     },
     {
+        "type" : "MC",
         "question": "If you wanted to take money out of your bank account, what form do you need to fill out ? ",
         "imageSrc": "",
         "answerChoices": [
@@ -21,6 +23,7 @@
         "correctAnswer": 1
     },
     {
+        "type" : "MC",
         "question": " What do you need to apply for a credit card?",
         "imageSrc": "",
         "answerChoices": [
@@ -32,6 +35,7 @@
         "correctAnswer": 1
     },
     {
+        "type" : "MC",
         "question": "Study the sample deposit form below. What is needed to complete it properly?",
         "imageSrc": "forms/depositSlip.jpg",
         "answerChoices": [

@@ -1,10 +1,12 @@
 [{
+        "type" : "MC",
         "question": "Gabriel has $4 in his pocket, $2 in his bag and is given a $10 allowance. How much money does have?",
         "imageSrc": "",
         "answerChoices": ["A) $14", "B) $16", "C) $12", "D) $15"],
         "correctAnswer": 1
     },
     {
+        "type" : "MC",
         "question": " William has $20. He wants to buy pizza for $7 and buy $15 in gas. Does have have enough money?",
         "imageSrc": "",
         "answerChoices": [
@@ -16,6 +18,7 @@
         "correctAnswer": 2
     },
     {
+        "type" : "MC",
         "question": " Apollo needs $2 to get into a basketball game. He has a dollar bill, 3 quarters, 2 nickels and a dime. How much money does he have? Can he go to the game?",
         "imageSrc": "",
         "answerChoices": [
@@ -27,18 +30,21 @@
         "correctAnswer": 2
     },
     {
+        "type" : "MC",
         "question": "Marcus wants to go to the arcade. Each game costs $0.25. If Marcus has $3 dollars, how many games can he play?",
         "imageSrc": "",
         "answerChoices": ["A) 5 games", "B) 6 games", "C) 12 games", "D) 13 games"],
         "correctAnswer": 2
     },
     {
+        "type" : "MC",
         "question": "Steve wants buffalo wings. Each buffalo wing costs $0.40 and comes in a pack of 12. How much money does Steve need to buy his buffalo wings?",
         "imageSrc": "",
         "answerChoices": ["A) $3.40", "B) $4.80", "C) $5.60", "D) $4.40"],
         "correctAnswer": 1
     },
     {
+        "type" : "MC",
         "question": "Kharne wants to buy three new car tires. Car tires cost $75 each, how much money does he need to replace his tires?",
         "imageSrc": "",
         "answerChoices": ["A) $75", "B) $150", "C) $225", "D) $300"],

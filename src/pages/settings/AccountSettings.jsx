@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { Container, Nav, Row, Col } from "react-bootstrap";
 import AccountPanel from "../../components/Settings/AccountPanel";
+import AddChildrenPanel from "../../components/Settings/AddChildrenPanel";
 import Sidebar from "../../components/Settings/Sidebar";
 
 function AccountSettings() {
@@ -11,7 +12,7 @@ function AccountSettings() {
     const handleSelect = (eventKey, event) => {
         console.log(event.target);
         if (eventKey === "children") {
-
+            setPanel(<AddChildrenPanel />)
         } else if (eventKey === "account") {
             setPanel(<AccountPanel />)
         }

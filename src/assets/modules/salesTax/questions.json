@@ -1,4 +1,5 @@
 [{
+        "type" : "MC",    
         "question": " Complete the sentence: Sales tax is …",
         "imageSrc": "",
         "answerChoices": [
@@ -9,6 +10,7 @@
         "correctAnswer": 0
     },
     {
+        "type" : "MC",
         "question": " Complete the sentence: A sales tax rate is...",
         "imageSrc": "",
         "answerChoices": [
@@ -19,6 +21,7 @@
         "correctAnswer": 1
     },
     {
+        "type" : "MC",
         "question": " Complete the sentence: This percentage is set by …",
         "imageSrc": "",
         "answerChoices": [
@@ -30,6 +33,7 @@
         "correctAnswer": 2
     },
     {
+        "type" : "MC",
         "question": "Complete the sentence: A mark up on a product is….",
         "imageSrc": "",
         "answerChoices": [
@@ -40,6 +44,7 @@
         "correctAnswer": 0
     },
     {
+        "type" : "MC",
         "question": "If a product’s selling price is $2.00 and the state’s sales tax rate is 5%, what would the sales tax be?",
         "imageSrc": "",
         "answerChoices": [
@@ -51,6 +56,7 @@
         "correctAnswer": 3
     },
     {
+        "type" : "MC",
         "question": "If a product’s selling price is $10.00 and the state’s sales tax rate is 7%, what would the total cost be?",
         "imageSrc": "",
         "answerChoices": [
