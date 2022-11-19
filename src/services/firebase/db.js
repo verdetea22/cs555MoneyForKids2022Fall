@@ -68,4 +68,34 @@ const createChildAccount = async ({ childName, username, password,  balance }) =
     });
 }
 
-export { createParentAccount, getParentData, createChildAccount };
+const requestChildAccountCreation = ({ name, username, password, balance }) => {
+    return new Promise((resolve, reject) => {
+        onAuthStateChanged(auth, async (user) => {
+            try {
+
+                if (user && user.uid) {
+                    const parentId = user.uid;
+
+                    const requestRef = doc(db, "requests", parentId);
+
+                    await setDoc(requestRef, {
+                        name,
+                        username,
+                        password,
+                        balance,
+                        parentId
+                    });
+
+                    resolve();
+
+                } else {
+                    throw new Error("User or user id is not defined!");
+                }
+            } catch(error) {
+                reject(error);
+            }
+        });
+    });
+}
+
+export { createParentAccount, getParentData, createChildAccount, requestChildAccountCreation };

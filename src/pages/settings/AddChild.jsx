@@ -1,15 +1,15 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { createChildAccount } from "../../services/firebase/db";
+import { createChildAccount, requestChildAccountCreation } from "../../services/firebase/db";
 
 function AddChild() {
 
     const { register, handleSubmit } = useForm();
 
-    const submit = async ({ childName, username, balance, password }) => {
+    const submit = async ({ name, username, balance, password }) => {
         try {
-            await createChildAccount({ childName, username, balance, password });
+            await requestChildAccountCreation({ name, username, balance, password });
             window.location.href = "/";
         } catch (error) {
             console.log(error);
@@ -21,7 +21,7 @@ function AddChild() {
         <Form onSubmit={handleSubmit(submit)}>
             <Form.Group>
                 <Form.Label>Child's Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter child's name" {...register("childName")}></Form.Control>
+                <Form.Control type="text" placeholder="Enter child's name" {...register("name")}></Form.Control>
             </Form.Group>
             <Form.Group>
                 <Form.Label>Username</Form.Label>
