@@ -1,5 +1,5 @@
 import { db, auth } from "./firebase-config";
-import { setDoc, doc, getDoc, updateDoc, arrayUnion, query, collection, where, getDocs, addDoc } from "firebase/firestore";
+import { setDoc, doc, getDoc, updateDoc, arrayUnion, query, collection, where, getDocs, addDoc, deleteDoc } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { createUser } from "./auth";
 
@@ -42,6 +42,7 @@ const createChildAccount = async ({ name, username, password,  balance, parentId
         const childRef = doc(db, "children", childId);
 
         await setDoc(childRef, { 
+            role: "child",
             name,
             username, 
             balance,
@@ -92,6 +93,15 @@ const requestChildAccountCreation = ({ name, username, password, balance }) => {
     });
 };
 
+const deleteRequest = async (id) => {
+    try { 
+        const deleteRef = doc(db, "requests", id);
+        await deleteDoc(deleteRef);
+    } catch (error) {
+        throw error;
+    }
+}
+
 const findRequestByCredentials = async ({ username, password }) => {
     try {
         const requestQuery = query(collection(db, "requests"), where("username", "==", username), where("password", "==", password));
@@ -101,7 +111,7 @@ const findRequestByCredentials = async ({ username, password }) => {
         let request = []
 
         querySnapshot.forEach(doc => {
-            request.push(doc.data());
+            request.push({ id: doc.id ,...doc.data() });
         });
 
         if (request.length > 1) {
@@ -115,4 +125,4 @@ const findRequestByCredentials = async ({ username, password }) => {
     }
 }
 
-export { createParentAccount, getParentData, createChildAccount, requestChildAccountCreation, findRequestByCredentials };
+export { createParentAccount, getParentData, createChildAccount, requestChildAccountCreation, deleteRequest, findRequestByCredentials };
