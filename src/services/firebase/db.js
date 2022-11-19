@@ -3,19 +3,30 @@ import { setDoc, doc, getDoc, updateDoc, arrayUnion, query, collection, where, g
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { createUser } from "./auth";
 
-import { uuidv4 } from "@firebase/util";
-
-const createParentAccount = async ({ name, email, username, uid }) => {
+/**
+ * Creates a parent account and stores parent information in a database
+ * @param {String} name The name of the parent
+ * @param {String} email The parent's email
+ * @param {String} password A password which must be at least six digits long
+ */
+const createParentAccount = async ({ name, email, password }) => {
     try {
+
+        const { uid } = await createUser({ email, password });
+
         const userRef = doc(db, "users", uid);
 
-        await setDoc(userRef, { name, email, username, children: [] });
+        await setDoc(userRef, { role: "parent", name, childIds: [], interest: 0.0 });
     } catch (error) {
         throw error;
     }
 }
 
-const getParentData = async () => {
+/**
+ * Get current user information
+ * @returns {Promise<Object>}
+ */
+const getCurrentUserData = async () => {
     return new Promise((resolve, reject) => {
         onAuthStateChanged(auth, async (user) => {
             if (user && user.uid) {
@@ -32,14 +43,26 @@ const getParentData = async () => {
     });
 }
 
-const createChildAccount = async ({ name, username, password,  balance, parentId }) => {
+/**
+ * Create child account and store child information
+ * @param {String} name Name of the child
+ * @param {String} username The username of the child
+ * @param {String} password The password of the child
+ * @param {Number} balance The initial balance of the child
+ * @param {String} parentId The uid of the parent account
+ */
+const createChildAccount = async (name, username, password, balance, parentId) => {
     try {
+        
+        if (typeof balance !== "number") {
+            throw new Error("Balance is not a number");
+        }
 
         await signOut(auth);
 
         const { uid: childId } = await createUser({ email: `${username}@email.com`, password });
 
-        const childRef = doc(db, "children", childId);
+        const childRef = doc(db, "users", childId);
 
         await setDoc(childRef, { 
             role: "child",
@@ -125,4 +148,4 @@ const findRequestByCredentials = async ({ username, password }) => {
     }
 }
 
-export { createParentAccount, getParentData, createChildAccount, requestChildAccountCreation, deleteRequest, findRequestByCredentials };
+export { createParentAccount, getCurrentUserData, createChildAccount, requestChildAccountCreation, deleteRequest, findRequestByCredentials };

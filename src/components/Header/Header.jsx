@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { logout } from "../../services/firebase/auth";
-import { getParentData, getUser } from "../../services/firebase/db";
+import { getCurrentUserData } from "../../services/firebase/db";
 
 function Header() {
 
@@ -14,7 +14,7 @@ function Header() {
   useEffect(() => {
     const getData = async () => {
       try { 
-        const { name } = await getParentData();
+        const { name } = await getCurrentUserData();
         setName(name);
       } catch(error) {
         console.log(error);
