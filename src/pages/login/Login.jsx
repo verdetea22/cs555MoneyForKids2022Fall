@@ -56,7 +56,7 @@ const Login = () => {
     <div className="mt-5">
       <Card className="w-50 m-auto">
         <Card.Header>
-          <Dropdown onSelect={handleLoginType}>
+          <Dropdown onSelect={handleLoginType} className="ms-5">
             <Dropdown.Toggle>Are you a ...?</Dropdown.Toggle>
 
             <Dropdown.Menu>

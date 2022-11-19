@@ -33,15 +33,15 @@ function SignUp() {
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3 mx-5 mt-3" controlId="name">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter name..." {...register("name")} />
+              <Form.Control type="text" placeholder="Enter name..." required {...register("name")} />
             </Form.Group>
             <Form.Group className="mb-3 mx-5 mt-3" controlId="email">
               <Form.Label>Caregiver's Email</Form.Label>
-              <Form.Control type="text" placeholder="Enter email..." {...register("email")} />
+              <Form.Control type="email" placeholder="Enter email..." required {...register("email")} />
             </Form.Group>
             <Form.Group className="mb-3 mx-5 mt-3" controlId="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Enter password..." {...register("password")} />
+              <Form.Label>Password (Must be at least six characters long)</Form.Label>
+              <Form.Control type="password" placeholder="Enter password..." minLength="6" required {...register("password")} />
             </Form.Group>
             <Form.Group className="mx-5">
               <Button type="submit">Submit</Button>
