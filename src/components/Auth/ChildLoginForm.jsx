@@ -16,7 +16,7 @@ function ChildLoginForm({ onSubmit }) {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Enter password..." {...register("password")} />
         </Form.Group>
-            <Form.Group class="mx-5">
+            <Form.Group className="mx-5">
             <Button type="submit">Login</Button>
         </Form.Group>
     </Form>

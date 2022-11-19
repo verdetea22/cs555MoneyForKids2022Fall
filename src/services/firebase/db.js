@@ -1,7 +1,9 @@
 import { db, auth } from "./firebase-config";
-import { setDoc, doc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { setDoc, doc, getDoc, updateDoc, arrayUnion, query, collection, where, getDocs, addDoc } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { createUser } from "./auth";
+
+import { uuidv4 } from "@firebase/util";
 
 const createParentAccount = async ({ name, email, username, uid }) => {
     try {
@@ -30,43 +32,35 @@ const getParentData = async () => {
     });
 }
 
-const createChildAccount = async ({ childName, username, password,  balance }) => {
-    return new Promise( async (resolve, reject) => {
-        let parentId = null;
+const createChildAccount = async ({ name, username, password,  balance, parentId }) => {
+    try {
 
-        const user = auth.currentUser;
-        if (user && user.uid) {
-            try {
-                parentId = user.uid;
-                await signOut(auth);
-                const { uid } = await createUser({ email: `${username}@email.com`, password });
+        await signOut(auth);
 
-                const childRef = doc(db, "children", uid);
-                await setDoc(childRef, { 
-                    name: childName,
-                    username, 
-                    balance,
-                    requests: [],
-                    goals: [],
-                    modules: [],
-                    tasks: []
-                });
+        const { uid: childId } = await createUser({ email: `${username}@email.com`, password });
 
-                const userRef = doc(db, "users", user.uid);
-                await updateDoc(userRef, { 
-                    children: arrayUnion(uid)
-                });
-                resolve();
-            } catch (error) {
-                console.log(error);
-                reject(error);
-            } 
-        } else {
-            reject(new Error("User not found!"));
-        }
-        
-    });
-}
+        const childRef = doc(db, "children", childId);
+
+        await setDoc(childRef, { 
+            name,
+            username, 
+            balance,
+            requests: [],
+            goals: [],
+            modules: [],
+            tasks: []
+        });
+
+        const parentRef = doc(db, "users", parentId);
+        await updateDoc(parentRef, { 
+            children: arrayUnion(childId)
+        });
+
+    } catch (error) {
+        throw error;
+    } 
+  
+};
 
 const requestChildAccountCreation = ({ name, username, password, balance }) => {
     return new Promise((resolve, reject) => {
@@ -76,9 +70,9 @@ const requestChildAccountCreation = ({ name, username, password, balance }) => {
                 if (user && user.uid) {
                     const parentId = user.uid;
 
-                    const requestRef = doc(db, "requests", parentId);
+                    const requestRef = collection(db, "requests");
 
-                    await setDoc(requestRef, {
+                    await addDoc(requestRef, {
                         name,
                         username,
                         password,
@@ -96,6 +90,29 @@ const requestChildAccountCreation = ({ name, username, password, balance }) => {
             }
         });
     });
+};
+
+const findRequestByCredentials = async ({ username, password }) => {
+    try {
+        const requestQuery = query(collection(db, "requests"), where("username", "==", username), where("password", "==", password));
+
+        const querySnapshot = await getDocs(requestQuery);
+
+        let request = []
+
+        querySnapshot.forEach(doc => {
+            request.push(doc.data());
+        });
+
+        if (request.length > 1) {
+            throw new Error("Duplicate requests!");
+        }
+
+        return request[0];
+
+    } catch (error) {
+        throw error;
+    }
 }
 
-export { createParentAccount, getParentData, createChildAccount, requestChildAccountCreation };
+export { createParentAccount, getParentData, createChildAccount, requestChildAccountCreation, findRequestByCredentials };

@@ -4,6 +4,7 @@ import ChildLoginForm from "../../components/Auth/ChildLoginForm";
 import ParentLoginForm from "../../components/Auth/ParentLoginForm";
 
 import { login } from "../../services/firebase/auth";
+import { createChildAccount, findRequestByCredentials } from "../../services/firebase/db";
 
 
 const Login = () => {
@@ -12,16 +13,24 @@ const Login = () => {
   
 
   const handleParentLogin = ({ email, password }) => {
-    login({ email, password }).then((res) => {
+    login({ email, password }).then(() => {
       window.location.href = "/";
     }).catch((error) => {
         console.log(error);
     });
   }
 
-  const handleChildLogin = ({ username, password }) => {
+  const handleChildLogin = async ({ username, password }) => {
     try {
-      
+      const result = await findRequestByCredentials({ username, password});
+
+      if (result === undefined) {
+        
+      } else {
+        await createChildAccount(result);
+        window.location.href = "/";
+      }
+     
     } catch (error) {
       console.log(error);
     }
