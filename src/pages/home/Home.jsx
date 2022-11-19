@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { Image } from "react-bootstrap";
 import piggybank from "../../images/piggybank.jpeg"
-import { getUser } from "./../../services/firebase/db";
+import { getParentData } from "./../../services/firebase/db";
 
 function Home() {
 
@@ -11,7 +11,7 @@ function Home() {
     useEffect(() => {
         const getCurrentUser = async () => {
             try {
-                const u = await getUser();
+                const u = await getParentData();
                 setUser(u);
             } catch (error) {
                 console.log(error);

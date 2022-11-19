@@ -9,7 +9,7 @@ import ChildBalance from "../../components/ParentDash/ChildBalance"
 import ChildrenActivity from "../../components/ParentDash/ChildrenActivity"
 import Requests from "../../components/ParentDash/Requests"
 
-import { getUser } from "../../services/firebase/db";
+import { getParentData } from "../../services/firebase/db";
 
 
 //if auth, show dash
@@ -40,7 +40,7 @@ function Dashboard() {
         const getCurrentUser = async () => {
 
             try {
-                const userData = await getUser();
+                const userData = await getParentData();
                 setUser(userData);
             } catch (error) {
                 console.log(error);

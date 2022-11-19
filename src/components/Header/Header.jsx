@@ -1,10 +1,27 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { logout } from "../../services/firebase/auth";
+import { getParentData, getUser } from "../../services/firebase/db";
 
 function Header() {
+
+  const [name, setName] = useState("Empty");
+  
+  useEffect(() => {
+    const getData = async () => {
+      try { 
+        const { name } = await getParentData();
+        setName(name);
+      } catch(error) {
+        console.log(error);
+      }
+    }
+    getData();
+  }, []);
 
   return (
     <Navbar bg="light" expand="lg">
@@ -21,7 +38,9 @@ function Header() {
             <Nav.Link href="/Login">Login</Nav.Link>
             <Nav.Link href="/Settings">Account Settings</Nav.Link>
             <Nav.Link href="#" onClick={() => { logout(); window.location.href = "/"; }}>Log Out</Nav.Link>
+            
           </Nav>
+          <p>{`Hello, ${name}`}</p>
         </Navbar.Collapse>
       </Container>
     </Navbar>
