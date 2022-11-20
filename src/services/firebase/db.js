@@ -77,7 +77,7 @@ const createChildAccount = async (name, username, password, balance, parentId) =
 
         const parentRef = doc(db, "users", parentId);
         await updateDoc(parentRef, { 
-            children: arrayUnion(childId)
+            childIds: arrayUnion(childId)
         });
 
     } catch (error) {

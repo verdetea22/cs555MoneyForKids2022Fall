@@ -15,17 +15,6 @@ import { getCurrentUserData } from "../../services/firebase/db";
 //if auth, show dash
 
 function Dashboard() {
-    //do we want a sperate check logged in function then call?
-    //var user = auth.currentUser;
-    // auth().onAuthStateChanged(function(user) {
-    //     if (user) {
-    //       // User is signed in.
-    //       setIsLoggedIn(true);
-    //     } else {
-    //       // No user is signed in.
-    //       setIsLoggedIn(false);
-    //     }
-    // });
 
     const [user, setUser] = useState({
         "name": "Example Parent",
@@ -40,8 +29,8 @@ function Dashboard() {
         const getCurrentUser = async () => {
 
             try {
-                const userData = await getCurrentUserData();
-                setUser(userData);
+                const { name, childIds } = await getCurrentUserData();
+                console.log(name, childIds);
             } catch (error) {
                 console.log(error);
             }
@@ -49,7 +38,7 @@ function Dashboard() {
         };
 
         getCurrentUser();
-    });
+    }, []);
 
     const [isLoggedIn, setIsLoggedIn] = useState(true);
 
