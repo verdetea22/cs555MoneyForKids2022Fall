@@ -9,7 +9,7 @@ import ChildBalance from "../../components/ParentDash/ChildBalance"
 import ChildrenActivity from "../../components/ParentDash/ChildrenActivity"
 import Requests from "../../components/ParentDash/Requests"
 
-import { getCurrentUserData } from "../../services/firebase/db";
+import { getChildAccounts, getCurrentUserData } from "../../services/firebase/db";
 
 
 //if auth, show dash
@@ -25,12 +25,19 @@ function Dashboard() {
         
     });
 
+    const [name, setName] = useState("");
+    const [children, setChildren] = useState([]);
+
     useEffect(() => {
         const getCurrentUser = async () => {
 
             try {
                 const { name, childIds } = await getCurrentUserData();
-                console.log(name, childIds);
+                const childrenData = await getChildAccounts(childIds);
+
+                console.log(childrenData);
+                setName(name);
+                setChildren(childrenData);
             } catch (error) {
                 console.log(error);
             }
@@ -59,8 +66,8 @@ function Dashboard() {
                 <h1>Welcome, {user.name}</h1>
                 <Container>
                     <CardDeck style={{flexDirection: 'row'}}> 
-                        {user.children.map((child)=>(
-                            <ChildBalance  childName={child.childName} balance={child.balance}/>
+                        {children.map((child)=>(
+                            <ChildBalance  childName={child.name} balance={child.balance}/>
                         ))}
                         <ChildrenActivity/>
                         <Requests children={user.children}/> 

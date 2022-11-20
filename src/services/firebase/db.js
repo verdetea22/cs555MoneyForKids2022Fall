@@ -1,5 +1,5 @@
 import { db, auth } from "./firebase-config";
-import { setDoc, doc, getDoc, updateDoc, arrayUnion, query, collection, where, getDocs, addDoc, deleteDoc } from "firebase/firestore";
+import { setDoc, doc, getDoc, updateDoc, arrayUnion, query, collection, where, getDocs, addDoc, deleteDoc, documentId } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { createUser } from "./auth";
 
@@ -146,6 +146,25 @@ const findRequestByCredentials = async ({ username, password }) => {
     } catch (error) {
         throw error;
     }
+};
+
+const getChildAccounts = async (childIds) => {
+    try {
+        const usersQuery = query(collection(db, "users"), where(documentId(), "in", childIds));
+
+        const querySnapshot = await getDocs(usersQuery);
+
+        let children = []
+
+        querySnapshot.forEach(doc => {
+            children.push({ id: doc.id ,...doc.data() });
+        });
+
+        return children
+        
+    } catch (error) {
+        throw error;
+    }
 }
 
-export { createParentAccount, getCurrentUserData, createChildAccount, requestChildAccountCreation, deleteRequest, findRequestByCredentials };
+export { createParentAccount, getCurrentUserData, createChildAccount, requestChildAccountCreation, deleteRequest, findRequestByCredentials, getChildAccounts };
