@@ -9,23 +9,12 @@ import ChildBalance from "../../components/ParentDash/ChildBalance"
 import ChildrenActivity from "../../components/ParentDash/ChildrenActivity"
 import Requests from "../../components/ParentDash/Requests"
 
-import { getUser } from "../../services/firebase/db";
+import { getChildAccounts, getCurrentUserData } from "../../services/firebase/db";
 
 
 //if auth, show dash
 
 function Dashboard() {
-    //do we want a sperate check logged in function then call?
-    //var user = auth.currentUser;
-    // auth().onAuthStateChanged(function(user) {
-    //     if (user) {
-    //       // User is signed in.
-    //       setIsLoggedIn(true);
-    //     } else {
-    //       // No user is signed in.
-    //       setIsLoggedIn(false);
-    //     }
-    // });
 
     const [user, setUser] = useState({
         "name": "Example Parent",
@@ -36,12 +25,19 @@ function Dashboard() {
         
     });
 
+    const [name, setName] = useState("");
+    const [children, setChildren] = useState([]);
+
     useEffect(() => {
         const getCurrentUser = async () => {
 
             try {
-                const userData = await getUser();
-                setUser(userData);
+                const { name, childIds } = await getCurrentUserData();
+                const childrenData = await getChildAccounts(childIds);
+
+                console.log(childrenData);
+                setName(name);
+                setChildren(childrenData);
             } catch (error) {
                 console.log(error);
             }
@@ -49,7 +45,7 @@ function Dashboard() {
         };
 
         getCurrentUser();
-    });
+    }, []);
 
     const [isLoggedIn, setIsLoggedIn] = useState(true);
 
@@ -70,8 +66,8 @@ function Dashboard() {
                 <h1>Welcome, {user.name}</h1>
                 <Container>
                     <CardDeck style={{flexDirection: 'row'}}> 
-                        {user.children.map((child)=>(
-                            <ChildBalance  childName={child.childName} balance={child.balance}/>
+                        {children.map((child)=>(
+                            <ChildBalance  childName={child.name} balance={child.balance}/>
                         ))}
                         <ChildrenActivity/>
                         <Requests children={user.children}/> 

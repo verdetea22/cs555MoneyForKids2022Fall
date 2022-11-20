@@ -6,6 +6,11 @@ import {
     signInWithPopup, 
     signOut,
     updatePassword,
+    updateEmail,
+    reauthenticateWithCredential,
+    EmailAuthProvider,
+    reauthenticateWithPopup,
+    onAuthStateChanged
 } from "firebase/auth"
 
 const createUser = ({ email, password }) => {
@@ -63,7 +68,7 @@ const changePassword = async (newPassword) => {
         throw new Error("Password is not a string");
     }
 
-    if (user != null) {
+    if (user !== null) {
         try {
             return await updatePassword(user, newPassword);
         } catch (error) {
@@ -73,5 +78,40 @@ const changePassword = async (newPassword) => {
         throw new Error("User is not signed in")
     }
 };
+const changeEmail = async (newEmail) => {
+    const user = auth.currentUser;
 
-export { createUser, login, logout, changePassword }
+    if (typeof newEmail !== "string") {
+        throw new Error("Password is not a string");
+    }
+
+    if (user !== null) {
+
+        try {
+            await updateEmail(user, newEmail);
+        } catch (error) {
+            throw error;
+        }
+    } else {
+        throw new Error("User is not signed in")
+    }
+};
+
+const reauthenticate = (password) => {
+    return new Promise((resolve, reject) => {
+        onAuthStateChanged(auth, async (user) => {
+            try {
+                const credential = EmailAuthProvider.credential(user.email, password);
+
+                await reauthenticateWithCredential(user, credential);
+                resolve();
+            } catch (error) {
+                reject(error);
+            }
+        });
+    });
+};
+
+
+
+export { createUser, login, logout, changePassword, changeEmail, reauthenticate }
