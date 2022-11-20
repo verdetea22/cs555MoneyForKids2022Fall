@@ -167,4 +167,20 @@ const getChildAccounts = async (childIds) => {
     }
 }
 
-export { createParentAccount, getCurrentUserData, createChildAccount, requestChildAccountCreation, deleteRequest, findRequestByCredentials, getChildAccounts };
+const getEmail = async () => {
+    return new Promise((resolve, reject) => {
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                reject(new Error("User not logged in!"));
+            }
+
+            if (!user.email) {
+                reject(new Error("User has no email!"));
+            }
+
+            resolve(user.email);
+        });
+    });
+}
+
+export { createParentAccount, getCurrentUserData, createChildAccount, requestChildAccountCreation, deleteRequest, findRequestByCredentials, getChildAccounts, getEmail };
