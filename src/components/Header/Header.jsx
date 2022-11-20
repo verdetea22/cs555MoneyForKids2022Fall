@@ -40,7 +40,7 @@ function Header() {
             { role === "parent" ? <Nav.Link href="/Dashboard">Dashboard</Nav.Link> : <></>}
             <Nav.Link href="/About">About</Nav.Link>
             <Nav.Link href="/SignUp">Sign Up</Nav.Link>
-            <Nav.Link href="/Modules">Learning Modules</Nav.Link>
+            { role === "child" ? <Nav.Link href="/Modules">Learning Modules</Nav.Link> : <></>}
             <Nav.Link href="/Login">Login</Nav.Link>
             {isLoggedIn ? <Nav.Link href="/Settings">Account Settings</Nav.Link> : <></>}
             <Nav.Link href="#" onClick={() => { logout(); window.location.href = "/"; }}>Log Out</Nav.Link>
