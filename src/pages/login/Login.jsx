@@ -30,8 +30,9 @@ const Login = () => {
       } else {
 
         console.log(result);
-        await createChildAccount(result);
-        await deleteRequest(result.id);
+        const { name, password, balance, parentId, username, id } = result;
+        await createChildAccount(name, username, password, balance, parentId);
+        await deleteRequest(id);
         window.location.href = "/";
       }
      

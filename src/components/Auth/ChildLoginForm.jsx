@@ -10,11 +10,11 @@ function ChildLoginForm({ onSubmit }) {
     <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3 mx-5 mt-5" controlId="usernameControl">
             <Form.Label>Username</Form.Label>
-            <Form.Control type="text" placeholder="Enter username..." {...register("username")} />
+            <Form.Control type="text" placeholder="Enter username..." required {...register("username")} />
         </Form.Group>
         <Form.Group className="mb-3 mx-5 mt-3" controlId="passwordControl">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Enter password..." {...register("password")} />
+            <Form.Control type="password" placeholder="Enter password..." required minLength="6" {...register("password")} />
         </Form.Group>
             <Form.Group className="mx-5">
             <Button type="submit">Login</Button>

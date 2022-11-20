@@ -1,6 +1,5 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -10,14 +9,18 @@ import { getCurrentUserData } from "../../services/firebase/db";
 function Header() {
 
   const [name, setName] = useState("Empty");
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   useEffect(() => {
     const getData = async () => {
       try { 
         const { name } = await getCurrentUserData();
+        setIsLoggedIn(true);
         setName(name);
       } catch(error) {
         console.log(error);
+        setIsLoggedIn(false);
       }
     }
     getData();
@@ -36,7 +39,7 @@ function Header() {
             <Nav.Link href="/SignUp">Sign Up</Nav.Link>
             <Nav.Link href="/Modules">Learning Modules</Nav.Link>
             <Nav.Link href="/Login">Login</Nav.Link>
-            <Nav.Link href="/Settings">Account Settings</Nav.Link>
+            {isLoggedIn ? <Nav.Link href="/Settings">Account Settings</Nav.Link> : <></>}
             <Nav.Link href="#" onClick={() => { logout(); window.location.href = "/"; }}>Log Out</Nav.Link>
             
           </Nav>
