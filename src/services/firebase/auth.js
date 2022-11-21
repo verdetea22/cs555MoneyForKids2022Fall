@@ -2,14 +2,11 @@ import { auth } from "./firebase-config";
 import { 
     createUserWithEmailAndPassword, 
     signInWithEmailAndPassword, 
-    GoogleAuthProvider, 
-    signInWithPopup, 
     signOut,
     updatePassword,
     updateEmail,
     reauthenticateWithCredential,
     EmailAuthProvider,
-    reauthenticateWithPopup,
     onAuthStateChanged
 } from "firebase/auth"
 
@@ -25,40 +22,21 @@ const createUser = ({ email, password }) => {
     });
 }
 
-const login = ({ email, password }) => {
-    return new Promise((resolve, reject ) => { 
-        signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-            resolve({});
-        }).catch((error) => {
-            
-            reject({ error });
-        });
-    });
+const login = async ({ email, password }) => {
+    try {
+        return await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+        throw error;
+    }
 };
 
-const logout = () => {
-    return new Promise((resolve, reject) => {
-        signOut(auth).then(() => {
-            resolve(true);
-        }).catch((error) =>{
-            reject(error);
-        });
-    });
+const logout = async () => {
+    try {
+        return await signOut(auth);
+    } catch (error) {
+        throw error;
+    }
     
-}
-
-const loginWithGoogle = () => {
-    return new Promise((resolve, reject) => {
-        const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider).then((result) => {
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            // const token = credential.accessToken;
-            resolve(true);
-        }).catch((error) => {
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            reject(error);
-        });
-    });
 }
 
 const changePassword = async (newPassword) => {
