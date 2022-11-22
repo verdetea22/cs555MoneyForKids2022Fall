@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+
 import "./Home.css";
 import { getCurrentUserData } from "./../../services/firebase/db";
+import { Link } from "react-router-dom";
 
 function Home() {
 
@@ -26,7 +28,7 @@ function Home() {
 
             <h2 id="Home-subtitle" className="splash-subhead">Get Started With a Virtual Piggy Bank Today</h2>
             <p className="body">Money4Kids is a way for parents to teach their children how to manage money in an interactive way where everyone is involved!</p>
-            <a id="Home-Redirect" href="/SignUp" className="pure-button pure-button-primary">Create an Account</a>     
+            <Link id="Home-Redirect" to="/signup" className="pure-button pure-button-primary">Create an Account</Link>     
         </div>
     </div>);
 }

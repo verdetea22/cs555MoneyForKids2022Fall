@@ -12,9 +12,7 @@ import {
 
 const firebaseSignUp = async (email, password) => {
     try {
-        const { user } = await createUserWithEmailAndPassword(auth, email, password);
-        return user;
-
+        return await createUserWithEmailAndPassword(auth, email, password);
     } catch (error) {
         throw error;
     }
@@ -28,8 +26,7 @@ const firebaseSignUp = async (email, password) => {
  */
 const firebaseSignIn = async (email, password) => {
     try {
-        const { user } = await signInWithEmailAndPassword(auth, email, password);
-        return user;
+        return await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
         throw error;
     }

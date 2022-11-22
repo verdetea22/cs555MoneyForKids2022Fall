@@ -10,6 +10,7 @@ const useProvideAuth = () => {
         try {
             const { user } = firebaseSignIn(email, password);
             setUser(user);
+            return user;
         } catch (error) {
             throw error;
         }
@@ -27,6 +28,7 @@ const useProvideAuth = () => {
     const signUp = async (email, password) => {
         try {
             const { user } = await firebaseSignUp(email, password);
+            setUser(user);
             return user;
         } catch (error) {
             throw error;
