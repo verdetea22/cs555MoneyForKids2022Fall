@@ -18,31 +18,34 @@ import ChangePassword from "./pages/settings/ChangePassword";
 import AddChild from "./pages/settings/AddChild";
 import ChangeEmail from "./pages/settings/ChangeEmail";
 import Reauthenticate from "./pages/settings/Reauthenticate";
+import { AuthContext } from "./contexts/AuthContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />{" "}
-        <Route path="/About" element={<About />} />{" "}
-        <Route path="/Signup" element={<SignUp />} />{" "}
-        <Route path="/Login" element={<Login />} />{" "}
-        <Route path="/Modules" element={<ModulesDashboard />} />{" "}
-        <Route path="/Modules/Module/:name" element={<Module />} />{" "}
-        <Route path="/Modules/not-found" element={<NotFound />} />{" "}
-        <Route path="/Modules/SalesTaxMod" element={<SalesTaxMod />} />{" "}
-        <Route path="/Modules/ChangeBackMod" element={<ChangeBackMod />} />{" "}
-        <Route path="/Modules/FormsMod" element={<FormsMod />} />{" "}
-        <Route path="/Dashboard" element={<Dashboard />} />{" "}
-        <Route path="/ChildDetails" element={<ChildDetails />} />{" "}
-        <Route path="/Settings" element={<AccountSettings />} />{" "}
-        <Route path="/ChangePassword" element={<ChangePassword />} />{" "}
-        <Route path="/ChangeEmail" element={<ChangeEmail />} />{" "}
-        <Route path="/AddChild" element={<AddChild />} />{" "}
-        <Route path="/Reauthenticate/:redirectLink" element={<Reauthenticate />} />{" "}
-      </Routes>{" "}
-    </BrowserRouter>
+    <AuthContext>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />{" "}
+          <Route path="/About" element={<About />} />{" "}
+          <Route path="/Signup" element={<SignUp />} />{" "}
+          <Route path="/login" element={<Login />} />{" "}
+          <Route path="/Modules" element={<ModulesDashboard />} />{" "}
+          <Route path="/Modules/Module/:name" element={<Module />} />{" "}
+          <Route path="/Modules/not-found" element={<NotFound />} />{" "}
+          <Route path="/Modules/SalesTaxMod" element={<SalesTaxMod />} />{" "}
+          <Route path="/Modules/ChangeBackMod" element={<ChangeBackMod />} />{" "}
+          <Route path="/Modules/FormsMod" element={<FormsMod />} />{" "}
+          <Route path="/Dashboard" element={<Dashboard />} />{" "}
+          <Route path="/ChildDetails" element={<ChildDetails />} />{" "}
+          <Route path="/Settings" element={<AccountSettings />} />{" "}
+          <Route path="/ChangePassword" element={<ChangePassword />} />{" "}
+          <Route path="/ChangeEmail" element={<ChangeEmail />} />{" "}
+          <Route path="/AddChild" element={<AddChild />} />{" "}
+          <Route path="/Reauthenticate/:redirectLink" element={<Reauthenticate />} />{" "}
+        </Routes>{" "}
+      </BrowserRouter>
+    </AuthContext>
   );
 }
 

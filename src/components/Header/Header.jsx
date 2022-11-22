@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { useAuth } from "../../contexts/AuthContext";
 import { logout } from "../../services/firebase/auth";
 import { getCurrentUserData } from "../../services/firebase/db";
 
@@ -13,6 +14,8 @@ function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [role, setRole] = useState("");
+
+  const { logout } = useAuth();
   
   useEffect(() => {
     const getData = async () => {

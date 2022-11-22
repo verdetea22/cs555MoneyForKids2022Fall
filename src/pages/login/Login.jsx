@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card, Dropdown } from "react-bootstrap";
 import ChildLoginForm from "../../components/Auth/ChildLoginForm";
 import ParentLoginForm from "../../components/Auth/ParentLoginForm";
+import { useAuth } from "../../contexts/AuthContext";
 
 import { login } from "../../services/firebase/auth";
 import { createChildAccount, deleteRequest, findRequestByCredentials } from "../../services/firebase/db";
@@ -10,14 +11,14 @@ import { createChildAccount, deleteRequest, findRequestByCredentials } from "../
 const Login = () => {
 
   const [loginType, setLoginType] = useState("parent");
-  
+  const { login } = useAuth();
 
-  const handleParentLogin = ({ email, password }) => {
-    login({ email, password }).then(() => {
-      window.location.href = "/";
-    }).catch((error) => {
-        console.log(error);
-    });
+  const handleParentLogin = async ({ email, password }) => {
+    try { 
+      await login(email, password);
+    } catch (error) {
+      console.log();
+    }
   }
 
   const handleChildLogin = async ({ username, password }) => {

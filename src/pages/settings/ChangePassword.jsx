@@ -2,11 +2,14 @@ import React from "react";
 import { Button, Card, Form } from "react-bootstrap";
 
 import { useForm } from "react-hook-form";
+import { useAuth } from "../../contexts/AuthContext";
 import { changePassword } from "../../services/firebase/auth";
 
 function ChangePassword() {
 
     const { handleSubmit, register } = useForm();
+
+    const { changePassword } = useAuth();
 
     const submit = async ({ password, newPassword }) => {
         if (password === newPassword) {

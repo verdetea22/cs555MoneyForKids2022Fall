@@ -10,36 +10,41 @@ import {
     onAuthStateChanged
 } from "firebase/auth"
 
-const createUser = ({ email, password }) => {
-    return new Promise((resolve, reject) => {
-        createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-            const { uid } = userCredential.user;
-            console.log("User successfully created with a userID of ", uid);
-            resolve({ uid });
-        }).catch((error) => {
-            reject({ error });
-        });
-    });
+const firebaseSignUp = async (email, password) => {
+    try {
+        const { user } = await createUserWithEmailAndPassword(auth, email, password);
+        return user;
+
+    } catch (error) {
+        throw error;
+    }
 }
 
-const login = async ({ email, password }) => {
+/**
+ * Using Firebase authentication login into account
+ * @param {String} email The users email address
+ * @param {String} password Must be at least six characters
+ * @returns Firebase user object
+ */
+const firebaseSignIn = async (email, password) => {
     try {
-        return await signInWithEmailAndPassword(auth, email, password);
+        const { user } = await signInWithEmailAndPassword(auth, email, password);
+        return user;
     } catch (error) {
         throw error;
     }
 };
 
-const logout = async () => {
+const firebaseSignOut = async () => {
     try {
-        return await signOut(auth);
+        await signOut(auth);
     } catch (error) {
         throw error;
     }
     
 }
 
-const changePassword = async (newPassword) => {
+const firebaseChangePassword = async (newPassword) => {
     const user = auth.currentUser;
 
     if (typeof newPassword !== "string") {
@@ -48,7 +53,7 @@ const changePassword = async (newPassword) => {
 
     if (user !== null) {
         try {
-            return await updatePassword(user, newPassword);
+            await updatePassword(user, newPassword);
         } catch (error) {
             throw error;
         }
@@ -56,7 +61,7 @@ const changePassword = async (newPassword) => {
         throw new Error("User is not signed in")
     }
 };
-const changeEmail = async (newEmail) => {
+const firebaseChangeEmail = async (newEmail) => {
     const user = auth.currentUser;
 
     if (typeof newEmail !== "string") {
@@ -90,6 +95,8 @@ const reauthenticate = (password) => {
     });
 };
 
+const onUserChanged = (callback) => {
+    return onAuthStateChanged(auth, callback);
+} 
 
-
-export { createUser, login, logout, changePassword, changeEmail, reauthenticate }
+export { firebaseSignUp, firebaseSignIn, firebaseSignOut, firebaseChangeEmail, firebaseChangePassword, reauthenticate, onUserChanged }
