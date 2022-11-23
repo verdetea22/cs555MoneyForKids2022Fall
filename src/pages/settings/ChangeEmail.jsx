@@ -3,14 +3,18 @@ import React, { useEffect, useState } from "react";
 import { Card, Form, Button } from "react-bootstrap";
 
 import { useForm } from "react-hook-form";
-import { changeEmail } from "../../services/firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import { getEmail } from "../../services/firebase/db";
 
 function ChangeEmail() {
 
     const { handleSubmit, register } = useForm();
+    const { changeEmail } = useAuth();
 
     const [email, setEmail] = useState("");
+
+    const naviagte = useNavigate();
     
     useEffect(() => {
         const getUserData = async () => {
@@ -25,7 +29,7 @@ function ChangeEmail() {
         try {
             if (oldEmail === email) {
                 await changeEmail(newEmail);
-                window.location.href = "/";
+                naviagte("/");
             } else {
     
             }

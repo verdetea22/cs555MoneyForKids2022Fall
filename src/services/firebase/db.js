@@ -1,18 +1,15 @@
 import { db, auth } from "./firebase-config";
 import { setDoc, doc, getDoc, updateDoc, arrayUnion, query, collection, where, getDocs, addDoc, deleteDoc, documentId } from "firebase/firestore";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { createUser } from "./auth";
+import { onAuthStateChanged } from "firebase/auth";
+import { firebaseSignUp, firebaseSignOut } from "./auth";
 
 /**
  * Creates a parent account and stores parent information in a database
  * @param {String} name The name of the parent
- * @param {String} email The parent's email
- * @param {String} password A password which must be at least six digits long
+ * @param {String} uid The parent's user ID on authentication
  */
-const createParentAccount = async ({ name, email, password }) => {
+const createParentAccount = async (name, uid) => {
     try {
-
-        const { uid } = await createUser({ email, password });
 
         const userRef = doc(db, "users", uid);
 
@@ -58,11 +55,11 @@ const createChildAccount = async (name, username, password, balance, parentId) =
             throw new Error("Balance is not a number");
         }
 
-        await signOut(auth);
+        await firebaseSignOut();
 
-        const { uid: childId } = await createUser({ email: `${username}@email.com`, password });
+        const { user } = await firebaseSignUp(`${username}@email.com`, password);
 
-        const childRef = doc(db, "users", childId);
+        const childRef = doc(db, "users", user.uid);
 
         await setDoc(childRef, { 
             role: "child",
@@ -77,7 +74,7 @@ const createChildAccount = async (name, username, password, balance, parentId) =
 
         const parentRef = doc(db, "users", parentId);
         await updateDoc(parentRef, { 
-            childIds: arrayUnion(childId)
+            childIds: arrayUnion(user.uid)
         });
 
     } catch (error) {

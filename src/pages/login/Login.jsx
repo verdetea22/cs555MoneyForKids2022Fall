@@ -2,38 +2,50 @@ import React, { useState } from "react";
 import { Card, Dropdown } from "react-bootstrap";
 import ChildLoginForm from "../../components/Auth/ChildLoginForm";
 import ParentLoginForm from "../../components/Auth/ParentLoginForm";
-
-import { login } from "../../services/firebase/auth";
+import { useAuth } from "../../contexts/AuthContext";
 import { createChildAccount, deleteRequest, findRequestByCredentials } from "../../services/firebase/db";
 
-
+import { useLocation, useNavigate } from "react-router-dom";
 const Login = () => {
 
   const [loginType, setLoginType] = useState("parent");
-  
+  const { login } = useAuth();
 
-  const handleParentLogin = ({ email, password }) => {
-    login({ email, password }).then(() => {
-      window.location.href = "/";
-    }).catch((error) => {
-        console.log(error);
-    });
+  let location = useLocation();
+
+  let from = "";
+
+  if (location.state && location.state.from && location.state.from.pathname) {
+    from = location.state.from.pathname;
+  } else {
+    from = "/";
+  }
+
+  const navigate = useNavigate();
+
+  const handleParentLogin = async ({ email, password }) => {
+    try { 
+      await login(email, password);
+      navigate(from, { replace: true });
+    } catch (error) {
+      console.log();
+    }
   }
 
   const handleChildLogin = async ({ username, password }) => {
     try {
+      
       const result = await findRequestByCredentials({ username, password});
-
       if (result === undefined) {
-        await login({ email: `${username}@email.com`, password });
-        window.location.href = "/";
+        
+        await login(`${username}@email.com`, password);
+        navigate(from, { replace: true });
       } else {
 
-        console.log(result);
         const { name, password, balance, parentId, username, id } = result;
         await createChildAccount(name, username, password, balance, parentId);
         await deleteRequest(id);
-        window.location.href = "/";
+        navigate(from, { replace: true });
       }
      
     } catch (error) {

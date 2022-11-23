@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Card, Form} from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../../contexts/AuthContext";
 
 import { createParentAccount } from "./../../services/firebase/db";
 import "./SignUp.css";
@@ -9,10 +10,14 @@ function SignUp() {
 
   const { handleSubmit, register } = useForm(); 
 
+  const { signUp } = useAuth();
+
   const onSubmit = async ({ name, email, password }) => {
     
     try {
-      await createParentAccount({ name, email, password });
+      const { uid } = await signUp(email, password);
+      
+      await createParentAccount(name, uid);
       window.location.href = "/";
     } catch(error) {
       console.log(error);

@@ -2,17 +2,22 @@ import React from "react";
 import { Button, Card, Form } from "react-bootstrap";
 
 import { useForm } from "react-hook-form";
-import { changePassword } from "../../services/firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 function ChangePassword() {
 
     const { handleSubmit, register } = useForm();
 
+    const { changePassword } = useAuth();
+
+    const navigate = useNavigate();
+
     const submit = async ({ password, newPassword }) => {
         if (password === newPassword) {
             try {
                 await changePassword(password);
-                window.location.href = "/";
+                useNavigate("/");
             } catch (error) {
                 console.log(error);
             }

@@ -16,15 +16,6 @@ import { getChildAccounts, getCurrentUserData } from "../../services/firebase/db
 
 function Dashboard() {
 
-    const [user, setUser] = useState({
-        "name": "Example Parent",
-        "children": [
-            {"childName": "Example Child 1", "balance": 123},
-            {"childName": "Example Child 2", "balance": 240}
-        ]
-        
-    });
-
     const [name, setName] = useState("");
     const [children, setChildren] = useState([]);
 
@@ -47,37 +38,20 @@ function Dashboard() {
         getCurrentUser();
     }, []);
 
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
-
-   
-    
-
-    if(!isLoggedIn){
-        setIsLoggedIn(true);
-        return(<Navigate to="/Login" />);
-    }
-    else{
-        return(
-            //load components, pass child name as props from user
-                //for each child in user, return child balance
-                //activity for each child (list most recent deposit and withdrawal across all children)?
-                //show pending requests
+    return(
+        <Container>
+            <h1>Welcome, {name}</h1>
             <Container>
-                <h1>Welcome, {user.name}</h1>
-                <Container>
-                    <CardDeck style={{flexDirection: 'row'}}> 
-                        {children.map((child)=>(
-                            <ChildBalance  childName={child.name} balance={child.balance}/>
-                        ))}
-                        <ChildrenActivity/>
-                        <Requests children={user.children}/> 
-                    </CardDeck>
-                </Container>
+                <CardDeck style={{flexDirection: 'row'}}> 
+                    {children.map((child)=>(
+                        <ChildBalance key={child.name} childName={child.name} balance={child.balance}/>
+                    ))}
+                    <ChildrenActivity/>
+                    <Requests children={children}/> 
+                </CardDeck>
             </Container>
-        )
-
-    }
-    
+        </Container>
+    )   
 }
 
 export default Dashboard;
