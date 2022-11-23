@@ -1,26 +1,9 @@
-import React, { useEffect, useState } from "react";
-
-import "./Home.css";
-import { getCurrentUserData } from "./../../services/firebase/db";
+import React from "react";
 import { Link } from "react-router-dom";
 
+import "./Home.css";
+
 function Home() {
-
-    const [user, setUser] = useState({});
-    
-    useEffect(() => {
-        const getCurrentUser = async () => {
-            try {
-                const u = await getCurrentUserData();
-                setUser(u);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
-        getCurrentUser();
-    }, []);
-    
     
     return (<div>
         <div className="splash">

@@ -55,11 +55,11 @@ const createChildAccount = async (name, username, password, balance, parentId) =
             throw new Error("Balance is not a number");
         }
 
-        await firebaseSignOut(auth);
+        await firebaseSignOut();
 
-        const { uid: childId } = await firebaseSignUp({ email: `${username}@email.com`, password });
+        const { user } = await firebaseSignUp(`${username}@email.com`, password);
 
-        const childRef = doc(db, "users", childId);
+        const childRef = doc(db, "users", user.uid);
 
         await setDoc(childRef, { 
             role: "child",
@@ -74,7 +74,7 @@ const createChildAccount = async (name, username, password, balance, parentId) =
 
         const parentRef = doc(db, "users", parentId);
         await updateDoc(parentRef, { 
-            childIds: arrayUnion(childId)
+            childIds: arrayUnion(user.uid)
         });
 
     } catch (error) {

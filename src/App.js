@@ -28,7 +28,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/About" element={<About />} />
+          <Route path="/about" element={<About />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Modules" element={<ModulesDashboard />} />
@@ -37,7 +37,7 @@ function App() {
           <Route path="/Modules/SalesTaxMod" element={<SalesTaxMod />} />
           <Route path="/Modules/ChangeBackMod" element={<ChangeBackMod />} />
           <Route path="/Modules/FormsMod" element={<FormsMod />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/ChildDetails" element={<ChildDetails />} />
           <Route path="/settings" element={<RequireAuth><AccountSettings /></RequireAuth>} />
           <Route path="/ChangePassword" element={<ChangePassword />} />

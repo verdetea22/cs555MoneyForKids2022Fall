@@ -6,6 +6,12 @@ const useProvideAuth = () => {
 
     const [user, setUser] = useState(null); 
 
+    /**
+     * Login into the website
+     * @param {String} email 
+     * @param {String} password 
+     * @returns 
+     */
     const login = async (email, password) => {
         try {
             const { user } = firebaseSignIn(email, password);
