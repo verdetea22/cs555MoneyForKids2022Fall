@@ -31,19 +31,19 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/Modules" element={<ModulesDashboard />} />
-          <Route path="/Modules/Module/:name" element={<Module />} />
-          <Route path="/Modules/not-found" element={<NotFound />} />
-          <Route path="/Modules/SalesTaxMod" element={<SalesTaxMod />} />
-          <Route path="/Modules/ChangeBackMod" element={<ChangeBackMod />} />
-          <Route path="/Modules/FormsMod" element={<FormsMod />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/ChildDetails" element={<ChildDetails />} />
+          <Route path="/modules" element={<ModulesDashboard />} />
+          <Route path="/modules/module/:name" element={<Module />} />
+          <Route path="/modules/not-found" element={<NotFound />} />
+          <Route path="/modules/salesTaxMod" element={<SalesTaxMod />} />
+          <Route path="/modules/changeBackMod" element={<ChangeBackMod />} />
+          <Route path="/modules/formsMod" element={<FormsMod />} />
+          <Route path="/dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} />
+          <Route path="/childDetails" element={<ChildDetails />} />
           <Route path="/settings" element={<RequireAuth><AccountSettings /></RequireAuth>} />
-          <Route path="/ChangePassword" element={<ChangePassword />} />
-          <Route path="/ChangeEmail" element={<ChangeEmail />} />
-          <Route path="/AddChild" element={<AddChild />} />
-          <Route path="/Reauthenticate/:redirectLink" element={<Reauthenticate />} />
+          <Route path="/changePassword" element={<ChangePassword />} />
+          <Route path="/changeEmail" element={<ChangeEmail />} />
+          <Route path="/addChild" element={<AddChild />} />
+          <Route path="/reauthenticate/:redirectLink" element={<Reauthenticate />} />
         </Routes>
       </BrowserRouter>
     </AuthContext>

@@ -5,17 +5,28 @@ import ParentLoginForm from "../../components/Auth/ParentLoginForm";
 import { useAuth } from "../../contexts/AuthContext";
 import { createChildAccount, deleteRequest, findRequestByCredentials } from "../../services/firebase/db";
 
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 const Login = () => {
 
   const [loginType, setLoginType] = useState("parent");
   const { login } = useAuth();
+
+  let location = useLocation();
+
+  let from = "";
+
+  if (location.state && location.state.from && location.state.from.pathname) {
+    from = location.state.from.pathname;
+  } else {
+    from = "/";
+  }
+
   const navigate = useNavigate();
 
   const handleParentLogin = async ({ email, password }) => {
     try { 
       await login(email, password);
-      navigate("/");
+      navigate(from, { replace: true });
     } catch (error) {
       console.log();
     }
@@ -28,13 +39,13 @@ const Login = () => {
       if (result === undefined) {
         
         await login(`${username}@email.com`, password);
-        navigate("/");
+        navigate(from, { replace: true });
       } else {
 
         const { name, password, balance, parentId, username, id } = result;
         await createChildAccount(name, username, password, balance, parentId);
         await deleteRequest(id);
-        navigate("/");
+        navigate(from, { replace: true });
       }
      
     } catch (error) {

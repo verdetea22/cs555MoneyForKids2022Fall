@@ -2,13 +2,15 @@ import React from "react";
 
 import { Card, Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { reauthenticate } from "../../services/firebase/auth";
 function Reauthenticate() {
 
     const { handleSubmit, register } = useForm();
 
     const { redirectLink } = useParams();
+
+    const navigate = useNavigate();
  
 
     const submit = async ({ password }) => {
@@ -17,7 +19,7 @@ function Reauthenticate() {
         try {
             await reauthenticate(password);
             
-            window.location.href = `/${redirectLink}`;
+            navigate(`/${redirectLink}`);
             
         } catch (error) {
             console.log(error);

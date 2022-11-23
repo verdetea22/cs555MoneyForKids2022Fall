@@ -1,16 +1,19 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { createChildAccount, requestChildAccountCreation } from "../../services/firebase/db";
 
 function AddChild() {
 
     const { register, handleSubmit } = useForm();
 
+    const navigate = useNavigate();
+
     const submit = async ({ name, username, balance, password }) => {
         try {
             await requestChildAccountCreation({ name, username, balance: parseFloat(balance), password });
-            window.location.href = "/";
+            navigate("/");
         } catch (error) {
             console.log(error);
         }

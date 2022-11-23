@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 
 import { getCurrentUserData } from "../../services/firebase/db";
@@ -17,6 +17,8 @@ function Header() {
   const { user } = useAuth();
 
   const { logout } = useAuth();
+
+  const navigate = useNavigate();
   
   useEffect(() => {
     const getData = async () => {
@@ -45,7 +47,7 @@ function Header() {
             { role === "child" ? <Nav.Link as={Link} to="/modules">Learning Modules</Nav.Link> : <></>}
             <Nav.Link as={Link} to="/login">Login</Nav.Link>
             {user ? <Nav.Link as={Link} to="/settings">Account Settings</Nav.Link> : <></>}
-            <Nav.Link href="#" onClick={() => { logout(); window.location.href = "/"; }}>Log Out</Nav.Link>
+            <Nav.Link href="#" onClick={() => { logout(); navigate("/");  }}>Log Out</Nav.Link>
             
           </Nav>
           <p>{`Hello, ${name}`}</p>
