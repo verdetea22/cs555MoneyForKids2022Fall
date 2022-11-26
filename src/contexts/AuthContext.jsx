@@ -13,13 +13,14 @@ const useProvideAuth = () => {
      * @returns 
      */
     const login = async (email, password) => {
-        try {
-            const { user } = firebaseSignIn(email, password);
-            setUser(user);
-            return user;
-        } catch (error) {
-            throw error;
-        }
+        return new Promise((resolve, reject) => {
+            firebaseSignIn(email, password).then(({ user }) => {
+                setUser(user);
+                resolve(user);
+            }).catch((error) => {
+                reject(error);
+            });
+        });       
     };
 
     const logout = async () => {

@@ -6,10 +6,14 @@ import { useAuth } from "../../contexts/AuthContext";
 import { createChildAccount, deleteRequest, findRequestByCredentials } from "../../services/firebase/db";
 
 import { useLocation, useNavigate } from "react-router-dom";
+import ErrorLabel from "../../components/Error/ErrorLabel";
 const Login = () => {
 
   const [loginType, setLoginType] = useState("parent");
   const { login } = useAuth();
+
+  const [show, setShow] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   let location = useLocation();
 
@@ -28,7 +32,9 @@ const Login = () => {
       await login(email, password);
       navigate(from, { replace: true });
     } catch (error) {
-      console.log();
+      console.log(error.code);
+      setShow(true);
+      setErrorMessage(error.message);
     }
   }
 
@@ -80,8 +86,11 @@ const Login = () => {
           
         </Card.Header>
         <Card.Body>
+        
           <h3 className="ms-5">Login in as a {loginType}</h3>
+          <ErrorLabel className="ms-5" show={show} message={errorMessage} onClick={() => setShow(false)} />
           {form}
+          
         </Card.Body>
       </Card>
     </div>
