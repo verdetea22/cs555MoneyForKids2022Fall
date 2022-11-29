@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { NavDropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -43,14 +44,21 @@ function Header() {
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             { role === "parent" ? <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link> : <></>}
             <Nav.Link as={Link} to="/about">About</Nav.Link>
-            <Nav.Link  as={Link} to="/signup">Sign Up</Nav.Link>
             { role === "child" ? <Nav.Link as={Link} to="/modules">Learning Modules</Nav.Link> : <></>}
-            <Nav.Link as={Link} to="/login">Login</Nav.Link>
-            {user ? <Nav.Link as={Link} to="/settings">Account Settings</Nav.Link> : <></>}
-            <Nav.Link href="#" onClick={() => { logout(); navigate("/");  }}>Log Out</Nav.Link>
-            
           </Nav>
-          <p>{`Hello, ${name}`}</p>
+          <NavDropdown title={name !== "Empty" ? `Hello, ${name}!` : "Welcome!"} id="basic-nav-dropdown">
+            { user ? 
+              <>
+                <NavDropdown.Item href="" >Account Settings</NavDropdown.Item>
+                <NavDropdown.Item href="#" onClick={() => { logout(); navigate("/");  }}>Log Out</NavDropdown.Item>
+              </>
+              :
+              <>
+                <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+                <NavDropdown.Item href="signup">Sign Up</NavDropdown.Item>
+              </>
+            }
+            </NavDropdown>
         </Navbar.Collapse>
       </Container>
     </Navbar>
