@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { createChildAccount, requestChildAccountCreation } from "../../services/firebase/db";
+import { requestChildAccountCreation } from "../../services/firebase/db";
 
 function AddChild() {
 

@@ -17,6 +17,10 @@ const firebaseSignUp = async (email, password) => {
         throw error;
     }
 }
+/**
+ * IMPORTANT:
+ * auth api uses Closure Promises so avoid using async/await or face uncaught promise errors
+ */
 
 /**
  * Using Firebase authentication login into account
@@ -25,11 +29,13 @@ const firebaseSignUp = async (email, password) => {
  * @returns Firebase user object
  */
 const firebaseSignIn = async (email, password) => {
-    try {
-        return await signInWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-        throw error;
-    }
+    return new Promise((resolve, reject) => {
+        signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+            resolve(userCredential);
+        }).catch((error) => {
+            reject(error);
+        });
+    });
 };
 
 const firebaseSignOut = async () => {
