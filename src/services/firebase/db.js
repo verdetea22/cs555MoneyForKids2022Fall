@@ -41,6 +41,19 @@ const getCurrentUserData = async () => {
 }
 
 /**
+ * Update a data field for a document
+ * @param {String} id The user id for the document to be updated
+ * @param {*} field The field to be updated
+ * @param {*} newData The new data to override the old data
+ */
+const updateUserData = async (id, field, newData) => {
+    const userDoc = doc(db, "users", id);
+    await updateDoc(userDoc, {
+       [field] : newData
+    });
+}
+
+/**
  * Create child account and store child information
  * @param {String} name Name of the child
  * @param {String} username The username of the child
@@ -180,4 +193,4 @@ const getEmail = async () => {
     });
 }
 
-export { createParentAccount, getCurrentUserData, createChildAccount, requestChildAccountCreation, deleteRequest, findRequestByCredentials, getChildAccounts, getEmail };
+export { createParentAccount, getCurrentUserData, createChildAccount, requestChildAccountCreation, deleteRequest, findRequestByCredentials, getChildAccounts, getEmail, updateUserData };
