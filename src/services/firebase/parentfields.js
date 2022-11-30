@@ -1,6 +1,6 @@
 const parentsfields = {
     CHILDIDS : "childIds",
-    INSTEREST : "interest",
+    INTEREST : "interest",
     NAME : "name",
     ROLE : "parent"
 }

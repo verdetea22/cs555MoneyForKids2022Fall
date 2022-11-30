@@ -53,6 +53,13 @@ const updateUserData = async (id, field, newData) => {
     });
 }
 
+const updateUserArray = async (id, field, newData) => {
+    const userDoc = doc(db, "users", id);
+    await updateDoc(userDoc, {
+       [field] : arrayUnion(newData)
+    });
+}
+
 /**
  * Create child account and store child information
  * @param {String} name Name of the child
@@ -193,4 +200,4 @@ const getEmail = async () => {
     });
 }
 
-export { createParentAccount, getCurrentUserData, createChildAccount, requestChildAccountCreation, deleteRequest, findRequestByCredentials, getChildAccounts, getEmail, updateUserData };
+export { createParentAccount, getCurrentUserData, createChildAccount, requestChildAccountCreation, deleteRequest, findRequestByCredentials, getChildAccounts, getEmail, updateUserData, updateUserArray };

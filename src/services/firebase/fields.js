@@ -1,6 +1,6 @@
 const fields = {
      CHILDIDS : "childIds",
-     INSTEREST : "interest",
+     INTEREST : "interest",
      NAME : "name",
      ROLE : "parent",
      BALANCE : "balance",

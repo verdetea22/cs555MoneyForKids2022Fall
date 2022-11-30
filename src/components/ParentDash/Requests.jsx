@@ -7,6 +7,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 function Requests(props) {
     //replace props with database call where props is child name
     //child holds child object from db
+    console.log(props);
 
     return(
         <Card style={{ width: '18rem'}}>
@@ -18,10 +19,12 @@ function Requests(props) {
                 {props.children.map((child)=>(
                     <ListGroup.Item>
                         <div>
-                            {child.childName}
+                            {child.name}
                         </div>
                         <div>
-                            Request Body
+                            {child.requests.map((request)=>(
+                                <p>requrst</p>
+                            ))}
                         </div>
                         <div className="text-center">
                             <Button variant="success" size="sm">Approve</Button>
