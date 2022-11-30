@@ -11,7 +11,7 @@ import { getCurrentUserData } from "../../services/firebase/db";
 
 function Header() {
 
-  const [name, setName] = useState("Empty");
+  const [name, setName] = useState("Stranger");
 
   const [role, setRole] = useState("");
 
@@ -45,12 +45,13 @@ function Header() {
             { role === "parent" ? <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link> : <></>}
             <Nav.Link as={Link} to="/about">About</Nav.Link>
             { role === "child" ? <Nav.Link as={Link} to="/modules">Learning Modules</Nav.Link> : <></>}
+            { role === "child" ? <Nav.Link as={Link} to="/childDash">Dashboard</Nav.Link> : <></>}
           </Nav>
           <NavDropdown title={name !== "Empty" ? `Hello, ${name}!` : "Welcome!"} id="basic-nav-dropdown">
             { user ? 
               <>
-                <NavDropdown.Item href="" >Account Settings</NavDropdown.Item>
-                <NavDropdown.Item href="#" onClick={() => { logout(); navigate("/");  }}>Log Out</NavDropdown.Item>
+                <NavDropdown.Item href="/settings" >Account Settings</NavDropdown.Item>
+                <NavDropdown.Item href="" onClick={() => { logout(); navigate("/");  }}>Log Out</NavDropdown.Item>
               </>
               :
               <>

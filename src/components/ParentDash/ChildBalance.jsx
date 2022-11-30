@@ -3,16 +3,16 @@ import { useState, useContext } from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { getChildAccounts } from "../../services/firebase/db";
 
 function ChildBalance(props) {
     //replace props with database call where props is child name
     //child holds child object from db
-    let child = {
-      "prevBalance": 150,
-      "difference": 0,
-      "in": 0,
-      "out": 0
-    }
+
+    let children = getChildAccounts();
+
+    let child = children.filter(children => children.name == props.name);
+
 
     if(props.balance < child.prevBalance){
       let decrease = props.balance - child.prevBalance;

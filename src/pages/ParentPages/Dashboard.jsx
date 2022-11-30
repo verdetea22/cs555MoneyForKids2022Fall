@@ -34,11 +34,24 @@ function Dashboard() {
             }
             
         };
-
         getCurrentUser();
     }, []);
 
-    return(
+    if(children.length == 0){
+        return(
+            <Container>
+                <h1>Welcome, {name}</h1>
+                <Container>
+                    <CardDeck style={{flexDirection: 'row'}}> 
+                        <p>To get started, go to account settings and add a child account.</p>
+                    </CardDeck>
+                </Container>
+            </Container>
+
+        )
+    }
+    else{
+       return(
         <Container>
             <h1>Welcome, {name}</h1>
             <Container>
@@ -51,7 +64,9 @@ function Dashboard() {
                 </CardDeck>
             </Container>
         </Container>
-    )   
+    ) 
+    }
+       
 }
 
 export default Dashboard;
