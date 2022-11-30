@@ -12,6 +12,7 @@ import FormsMod from "./pages/moduleDashboard/forms/formsMod";
 import ChangeBackMod from "./pages/moduleDashboard/changeBack/changeBack";
 import NotFound from "./pages/moduleNotFound/moduleNotFound";
 import Dashboard from "./pages/ParentPages/Dashboard";
+import ChildDash from "./pages/ChildPages/ChildDash";
 import ChildDetails from "./pages/ParentPages/ChildDetails";
 import AccountSettings from "./pages/settings/AccountSettings";
 import ChangePassword from "./pages/settings/ChangePassword";
@@ -38,6 +39,7 @@ function App() {
           <Route path="/modules/changeBackMod" element={<ChangeBackMod />} />
           <Route path="/modules/formsMod" element={<FormsMod />} />
           <Route path="/dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} />
+          <Route path="/childDash" element={<RequireAuth><ChildDash /></RequireAuth>} />
           <Route path="/childDetails" element={<ChildDetails />} />
           <Route path="/settings" element={<RequireAuth><AccountSettings /></RequireAuth>} />
           <Route path="/changePassword" element={<ChangePassword />} />
