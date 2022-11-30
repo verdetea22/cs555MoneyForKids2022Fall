@@ -2,16 +2,29 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import {getChildAccounts} from "../../services/firebase/db";
 
 function CurrentRequests(props) {
 
-    let requests = [];
-    console.log(props.child.requests);
-    if(props.child.requests != undefined){
-       requests = (props.child.requests); 
-    }
-    
+  const [requests, setRequests] = useState([]);
 
+  useEffect(() => {
+    const getCurrentUser = async () => {
+
+        try {
+            const user = await getChildAccounts(props.id);
+            console.log(user)
+
+            setRequests(user.requests);
+            
+        } catch (error) {
+            console.log(error);
+        }
+        
+    };
+    getCurrentUser();
+}, []);
+  
     if(requests.length == 0){
         return(
             <Card style={{ width: '18rem'}}>
@@ -38,7 +51,8 @@ function CurrentRequests(props) {
           <ListGroup variant="flush">
           {requests.map((request)=>(
                     <ListGroup.Item>
-                        
+                        <p>{request.requestBody}</p>
+                        <p>${request.price}</p>
                     </ListGroup.Item>
                 ))}
           </ListGroup>

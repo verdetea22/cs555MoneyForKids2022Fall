@@ -9,7 +9,6 @@ function Balance(props) {
     //replace props with database call where props is child name
     //child holds child object from db
 
-
     return(
         <Card style={{ width: '18rem'}}>
         <Card.Header>

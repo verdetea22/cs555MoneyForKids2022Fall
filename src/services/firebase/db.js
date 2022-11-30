@@ -1,5 +1,5 @@
 import { db, auth } from "./firebase-config";
-import { setDoc, doc, getDoc, updateDoc, arrayUnion, query, collection, where, getDocs, addDoc, deleteDoc, documentId } from "firebase/firestore";
+import { setDoc, doc, getDoc, updateDoc, arrayUnion, query, collection, where, getDocs, addDoc, deleteDoc, documentId, arrayRemove} from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseSignUp, firebaseSignOut } from "./auth";
 
@@ -53,12 +53,20 @@ const updateUserData = async (id, field, newData) => {
     });
 }
 
-const updateUserArray = async (id, field, newData) => {
+const addToUserArray = async (id, field, newData) => {
     const userDoc = doc(db, "users", id);
     await updateDoc(userDoc, {
        [field] : arrayUnion(newData)
     });
 }
+
+const removeFromUserArray = async (id, field, newData) => {
+    const userDoc = doc(db, "users", id);
+    await updateDoc(userDoc, {
+       [field] : arrayRemove(newData)
+    });
+}
+
 
 /**
  * Create child account and store child information
@@ -200,4 +208,4 @@ const getEmail = async () => {
     });
 }
 
-export { createParentAccount, getCurrentUserData, createChildAccount, requestChildAccountCreation, deleteRequest, findRequestByCredentials, getChildAccounts, getEmail, updateUserData, updateUserArray };
+export { createParentAccount, getCurrentUserData, createChildAccount, requestChildAccountCreation, deleteRequest, findRequestByCredentials, getChildAccounts, getEmail, updateUserData, addToUserArray, removeFromUserArray };
