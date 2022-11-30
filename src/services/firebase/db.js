@@ -1,5 +1,5 @@
 import { db, auth } from "./firebase-config";
-import { setDoc, doc, getDoc, updateDoc, arrayUnion, query, collection, where, getDocs, addDoc, deleteDoc, documentId, arrayDelete } from "firebase/firestore";
+import { setDoc, doc, getDoc, updateDoc, arrayUnion, query, collection, where, getDocs, addDoc, deleteDoc, documentId, arrayRemove} from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseSignUp, firebaseSignOut } from "./auth";
 
@@ -62,21 +62,10 @@ const addToUserArray = async (id, field, newData) => {
 const removeFromUserArray = async (id, field, newData) => {
     const userDoc = doc(db, "users", id);
     await updateDoc(userDoc, {
-       [field] : arrayDelete(newData)
+       [field] : arrayRemove(newData)
     });
 }
 
-/**
- * Track completed module on child account
- * @param {*} id The id of the child
- * @param {*} module The finished module
- */
-const addCompletedModule = async (id, module) => {
-    const userDoc = doc(db, "users", id);
-    await updateDoc(userDoc, {
-        modules : arrayUnion(module)
-    });
-}
 
 /**
  * Create child account and store child information

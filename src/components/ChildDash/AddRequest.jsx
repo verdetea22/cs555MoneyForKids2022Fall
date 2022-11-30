@@ -4,10 +4,10 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { updateUserArray } from "../../services/firebase/db";
+import { addToUserArray } from "../../services/firebase/db";
 import fields from "../../services/firebase/fields"
 
-function AddRequests(props) {
+function AddRequest(props) {
 
     const [validated, setValidated] = useState(false);
     const [values, setValues] = useState({});
@@ -16,7 +16,6 @@ function AddRequests(props) {
         const name = e.target.name;
         const value = e.target.value;
         setValues({ ...values, [name]: value });
-        console.log(name, value);
     };
 
     const handleSubmit = (event) => {
@@ -30,15 +29,15 @@ function AddRequests(props) {
         event.preventDefault();
         event.persist();
 
-        const added = updateUserArray(props.id, fields.REQUESTS, values)
-        
+        const added = addToUserArray(props.id, fields.REQUESTS, values)
+        console.log(added);
 
     };
 
     return(
         <Card style={{ width: '18rem'}}>
         <Card.Header>
-          <Card.Title>New Withdrawl Request </Card.Title>
+          <Card.Title>New Withdrawal Request </Card.Title>
         </Card.Header>   
         <Card.Body>  
           <ListGroup variant="flush">
@@ -65,4 +64,4 @@ function AddRequests(props) {
     )
 
 }
-export default AddRequests;
+export default AddRequest;

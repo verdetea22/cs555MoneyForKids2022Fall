@@ -38,7 +38,8 @@ function CurrentTasks(props) {
           <ListGroup variant="flush">
           {tasks.map((task)=>(
                     <ListGroup.Item>
-                        
+                        {task.requestBody}
+                        {task.price}
                     </ListGroup.Item>
                 ))}
           </ListGroup>

@@ -7,7 +7,8 @@ const fields = {
      GOALS : "goals",
      MODULES : "modules",
      REQUESTS : "requests",
-     USERNAME : "username"
+     USERNAME : "username",
+     TASKS : "tasks"
 }
 
 export default fields;

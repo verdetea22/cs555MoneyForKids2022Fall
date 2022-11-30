@@ -14,12 +14,16 @@ import CurrentGoals from "../../components/ChildDash/CurrentGoals"
 import AddGoal from "../../components/ChildDash/AddGoal"
 
 import { getCurrentUserData } from "../../services/firebase/db";
+import { useAuth } from "../../contexts/AuthContext";
 
 //if auth, show dash
 
 function ChildDash() {
 
     const [child, setChild] = useState("");
+    const { user } = useAuth();
+
+    let id = user.uid;
 
     useEffect(() => {
         const getCurrentUser = async () => {
@@ -49,13 +53,13 @@ function ChildDash() {
                         <Balance balance={child.balance} ></Balance>
                         <CurrentRequests child={child}></CurrentRequests>
                         <CurrentTasks child={child}></CurrentTasks>
-                        <CurrentGoals child={child}></CurrentGoals>
+                        <CurrentGoals id={id} child={child}></CurrentGoals>
                     </CardDeck>
                 </Col>
                 <Col>
                     <CardDeck style={{flexDirection: 'row'}}> 
-                        <AddRequest></AddRequest>
-                        <AddGoal></AddGoal>
+                        <AddRequest id={id}></AddRequest>
+                        <AddGoal id={id}></AddGoal>
                     </CardDeck>
                 </Col>
             </Row>
