@@ -39,6 +39,11 @@ const Module = () => {
           setErrorMessage("Only child account can access modules");
           setErrorTitle("No Access");
           setErrorCompletion(() => dismissError)
+        }if(modules.find(e => e === name)) {
+          setShowError(true);
+          setErrorMessage("You have already completed this module");
+          setErrorTitle("Already Complete");
+          setErrorCompletion(() => dismissCompleteError);
         }
       } catch(error) {
         console.log(error);
@@ -70,12 +75,17 @@ const Module = () => {
     setShowError(() => false);
   }
 
+  const dismissCompleteError = () => {
+    window.location.href = "/modules";
+    setShowError(() => false);
+  }
+
   const sendIsCorrect = (correct) => {
     if (correct) {
-      setIndex(index + 1);
-      if(index === questionComponents.length && questionComponents.length !== 0){
+      if((index + 1) === questionComponents.length && questionComponents.length !== 0){
         sendComplete();
       }
+      setIndex(index + 1);
     } else {
       setLives(lives - 1);
       if (lives === 1) {
@@ -99,6 +109,7 @@ const Module = () => {
 
   const sendComplete = () => {
     if(user){
+      console.log("sending complete");
       addCompletedModule(user.uid, name);
     }else{
       console.error("Cannot save module completion, no user exists");
