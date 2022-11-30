@@ -7,7 +7,7 @@ import Sidebar from "../../components/Settings/Sidebar";
 
 function AccountSettings() {
 
-    const [panel, setPanel] = useState(<></>);
+    const [panel, setPanel] = useState(<AccountPanel />);
 
     const handleSelect = (eventKey, event) => {
         console.log(event.target);

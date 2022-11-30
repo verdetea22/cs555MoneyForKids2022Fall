@@ -2,17 +2,22 @@ import React from "react";
 import { Button, Card, Form } from "react-bootstrap";
 
 import { useForm } from "react-hook-form";
-import { changePassword } from "../../services/firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 function ChangePassword() {
 
     const { handleSubmit, register } = useForm();
 
+    const { changePassword } = useAuth();
+
+    const navigate = useNavigate();
+
     const submit = async ({ password, newPassword }) => {
         if (password === newPassword) {
             try {
                 await changePassword(password);
-                
+                useNavigate("/");
             } catch (error) {
                 console.log(error);
             }
@@ -20,12 +25,12 @@ function ChangePassword() {
     };
 
     return (
-        <Card>
+        <Card className="w-50 mx-auto">
             <Card.Header>
                 <h1>Change Password</h1>
             </Card.Header>
             <Card.Body>
-                <Form onSubmit={handleSubmit(submit)}>
+                <Form className="mx-auto" onSubmit={handleSubmit(submit)}>
                     <Form.Group controlId="newPasswordControl">
                         <Form.Label>New Password</Form.Label>
                         <Form.Control type="password" placeholder="Enter new password..." {...register("password")}></Form.Control>
