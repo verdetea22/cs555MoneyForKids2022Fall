@@ -12,9 +12,8 @@ function CurrentRequests(props) {
     const getCurrentUser = async () => {
 
         try {
-            const user = await getChildAccounts(props.id);
+            const user = await getChildAccounts([props.id]);
             console.log(user)
-
             setRequests(user.requests);
             
         } catch (error) {
