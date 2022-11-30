@@ -49,8 +49,8 @@ function Header() {
           <NavDropdown title={name !== "Empty" ? `Hello, ${name}!` : "Welcome!"} id="basic-nav-dropdown">
             { user ? 
               <>
-                <NavDropdown.Item href="" >Account Settings</NavDropdown.Item>
-                <NavDropdown.Item href="#" onClick={() => { logout(); navigate("/");  }}>Log Out</NavDropdown.Item>
+                <NavDropdown.Item href="settings">Account Settings</NavDropdown.Item>
+                <NavDropdown.Item href="#" onClick={() => { logout(); window.location.reload(); }}>Log Out</NavDropdown.Item>
               </>
               :
               <>

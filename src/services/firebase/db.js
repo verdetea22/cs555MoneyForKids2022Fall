@@ -54,6 +54,18 @@ const updateUserData = async (id, field, newData) => {
 }
 
 /**
+ * Track completed module on child account
+ * @param {*} id The id of the child
+ * @param {*} module The finished module
+ */
+const addCompletedModule = async (id, module) => {
+    const userDoc = doc(db, "users", id);
+    await updateDoc(userDoc, {
+        modules : arrayUnion(module)
+    });
+}
+
+/**
  * Create child account and store child information
  * @param {String} name Name of the child
  * @param {String} username The username of the child
@@ -193,4 +205,4 @@ const getEmail = async () => {
     });
 }
 
-export { createParentAccount, getCurrentUserData, createChildAccount, requestChildAccountCreation, deleteRequest, findRequestByCredentials, getChildAccounts, getEmail, updateUserData };
+export { createParentAccount, getCurrentUserData, createChildAccount, requestChildAccountCreation, deleteRequest, findRequestByCredentials, getChildAccounts, getEmail, updateUserData, addCompletedModule };
