@@ -51,9 +51,9 @@ function ChildDash() {
                 <Col>
                     <CardDeck style={{flexDirection: 'row'}}> 
                         <Balance balance={child.balance} ></Balance>
-                        <CurrentRequests child={child}></CurrentRequests>
+                        <CurrentRequests id={id}></CurrentRequests>
                         <CurrentTasks child={child}></CurrentTasks>
-                        <CurrentGoals id={id} child={child}></CurrentGoals>
+                        <CurrentGoals id={id}></CurrentGoals>
                     </CardDeck>
                 </Col>
                 <Col>
