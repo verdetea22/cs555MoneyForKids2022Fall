@@ -53,6 +53,18 @@ const updateUserData = async (id, field, newData) => {
     });
 }
 
+/**
+ * Track completed module on child account
+ * @param {*} id The id of the child
+ * @param {*} module The finished module
+ */
+ const addCompletedModule = async (id, module) => {
+    const userDoc = doc(db, "users", id);
+    await updateDoc(userDoc, {
+        modules : arrayUnion(module)
+    });
+}
+
 const addToUserArray = async (id, field, newData) => {
     const userDoc = doc(db, "users", id);
     await updateDoc(userDoc, {
