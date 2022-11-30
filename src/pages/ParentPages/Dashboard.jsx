@@ -18,6 +18,7 @@ function Dashboard() {
 
     const [name, setName] = useState("");
     const [children, setChildren] = useState([]);
+    
 
     useEffect(() => {
         const getCurrentUser = async () => {
@@ -25,8 +26,6 @@ function Dashboard() {
             try {
                 const { name, childIds } = await getCurrentUserData();
                 const childrenData = await getChildAccounts(childIds);
-
-                console.log(childrenData);
                 setName(name);
                 setChildren(childrenData);
             } catch (error) {
@@ -37,7 +36,8 @@ function Dashboard() {
         getCurrentUser();
     }, []);
 
-    if(children.length == 0){
+    console.log(children);
+    if(children.length === 0){
         return(
             <Container>
                 <h1>Welcome, {name}</h1>
@@ -57,10 +57,9 @@ function Dashboard() {
             <Container>
                 <CardDeck style={{flexDirection: 'row'}}> 
                     {children.map((child)=>(
-                        <ChildBalance key={child.name} childName={child.name} balance={child.balance}/>
+                        <ChildBalance child={child}/>
                     ))}
-                    <ChildrenActivity/>
-                    <Requests children={children}/> 
+                    <Requests children={children}/>
                 </CardDeck>
             </Container>
         </Container>
@@ -69,4 +68,5 @@ function Dashboard() {
        
 }
 
+//<ChildrenActivity/>
 export default Dashboard;
