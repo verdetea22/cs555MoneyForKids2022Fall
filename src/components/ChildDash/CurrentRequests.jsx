@@ -14,7 +14,7 @@ function CurrentRequests(props) {
         try {
             const user = await getChildAccounts([props.id]);
             console.log(user)
-            setRequests(user.requests);
+            setRequests(user[0].requests);
             
         } catch (error) {
             console.log(error);
@@ -24,40 +24,31 @@ function CurrentRequests(props) {
     getCurrentUser();
 }, []);
   
-    if(requests.length == 0){
-        return(
-            <Card style={{ width: '18rem'}}>
-            <Card.Header>
-            <Card.Title>Pending Requests</Card.Title>
-            </Card.Header>   
-            <Card.Body>  
-            <ListGroup variant="flush">
+    console.log(requests)
+    return(
+    <Card style={{ width: '18rem'}}>
+    <Card.Header>
+      <Card.Title>Pending Requests</Card.Title>
+    </Card.Header>   
+    <Card.Body>  
+      <ListGroup variant="flush">
+      {
+      (requests && requests.length > 0) ? 
+        requests.map((request)=>(
                 <ListGroup.Item>
-                    <p>No requests! Go add some!</p>       
+                    <p>{request.requestBody}</p>
+                    <p>${request.price}</p>
                 </ListGroup.Item>
-            </ListGroup>
-            </Card.Body>
-        </Card> 
-        )
-    }
-    else{
-       return(
-        <Card style={{ width: '18rem'}}>
-        <Card.Header>
-          <Card.Title>Pending Requests</Card.Title>
-        </Card.Header>   
-        <Card.Body>  
-          <ListGroup variant="flush">
-          {requests.map((request)=>(
-                    <ListGroup.Item>
-                        <p>{request.requestBody}</p>
-                        <p>${request.price}</p>
-                    </ListGroup.Item>
-                ))}
-          </ListGroup>
-        </Card.Body>
-      </Card> 
-    ) 
-    }
+            ))
+            :
+            <ListGroup.Item>
+                <p>No requests! Go add some!</p>       
+            </ListGroup.Item>
+      }
+      </ListGroup>
+    </Card.Body>
+  </Card> 
+) 
+    
 }
 export default CurrentRequests;
