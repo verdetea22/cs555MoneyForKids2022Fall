@@ -2,50 +2,51 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import {getChildAccounts} from "../../services/firebase/db";
 
 function CurrentTasks(props) {
+    const [tasks, setTasks] = useState([]);
 
-    let tasks = [];
-    console.log(props.child.tasks);
-    if(props.child.tasks != undefined){
-       tasks = (props.child.tasks); 
-    }
+    useEffect(() => {
+      const getCurrentUser = async () => {
+  
+          try {
+              const user = await getChildAccounts([props.id]);
+              console.log(user)
+              setTasks(user[0].tasks);
+              
+          } catch (error) {
+              console.log(error);
+          }
+          
+      };
+      getCurrentUser();
+  }, []);
     
-
-    if(tasks.length == 0){
-        return(
-            <Card style={{ width: '18rem'}}>
-            <Card.Header>
-            <Card.Title>Tasks</Card.Title>
-            </Card.Header>   
-            <Card.Body>  
-            <ListGroup variant="flush">
-                <ListGroup.Item>
-                    <p>No tasks!</p>       
-                </ListGroup.Item>
-            </ListGroup>
-            </Card.Body>
-        </Card> 
-        )
-    }
-    else{
-       return(
-        <Card style={{ width: '18rem'}}>
-        <Card.Header>
-          <Card.Title>Tasks</Card.Title>
-        </Card.Header>   
-        <Card.Body>  
-          <ListGroup variant="flush">
-          {tasks.map((task)=>(
-                    <ListGroup.Item>
-                        {task.requestBody}
-                        {task.price}
-                    </ListGroup.Item>
-                ))}
-          </ListGroup>
-        </Card.Body>
-      </Card> 
-    ) 
-    }
+      console.log(tasks)
+      return(
+      <Card style={{ width: '18rem'}}>
+      <Card.Header>
+        <Card.Title>Pending Tasks</Card.Title>
+      </Card.Header>   
+      <Card.Body>  
+        <ListGroup variant="flush">
+        {
+        (tasks && tasks.length > 0) ? 
+          tasks.map((request)=>(
+                  <ListGroup.Item>
+                      <p>{tasks.taskBody}</p>
+                      <p>${tasks.price}</p>
+                  </ListGroup.Item>
+              ))
+              :
+              <ListGroup.Item>
+                  <p>No tasks! Go add some!</p>       
+              </ListGroup.Item>
+        }
+        </ListGroup>
+      </Card.Body>
+    </Card> 
+  ) 
 }
 export default CurrentTasks;

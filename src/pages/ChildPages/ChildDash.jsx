@@ -41,7 +41,6 @@ function ChildDash() {
         getCurrentUser();
     }, []);
 
-    console.log(child);
 
     return(
         <Container>
@@ -50,9 +49,9 @@ function ChildDash() {
             <Row xs={1} md={1} className="g-4">
                 <Col>
                     <CardDeck style={{flexDirection: 'row'}}> 
-                        <Balance balance={child.balance} ></Balance>
+                        <Balance id={id} ></Balance>
                         <CurrentRequests id={id}></CurrentRequests>
-                        <CurrentTasks child={child}></CurrentTasks>
+                        <CurrentTasks id={id}></CurrentTasks>
                         <CurrentGoals id={id}></CurrentGoals>
                     </CardDeck>
                 </Col>

@@ -3,11 +3,27 @@ import { useEffect, useState } from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
+import {getChildAccounts} from "../../services/firebase/db";
 
 
 function Balance(props) {
-    //replace props with database call where props is child name
-    //child holds child object from db
+  const [balance, setBalance] = useState("");
+
+  useEffect(() => {
+    const getCurrentUser = async () => {
+
+        try {
+            const user = await getChildAccounts([props.id]);
+
+            setBalance(user[0].balance);
+            
+        } catch (error) {
+            console.log(error);
+        }
+        
+    };
+    getCurrentUser();
+}, []);
 
     return(
         <Card style={{ width: '18rem'}}>
@@ -16,7 +32,7 @@ function Balance(props) {
         </Card.Header>   
         <Card.Body>  
           <ListGroup variant="flush">
-            <ListGroup.Item>${props.balance}</ListGroup.Item>
+            <ListGroup.Item>${balance}</ListGroup.Item>
           </ListGroup>
         </Card.Body>
       </Card> 

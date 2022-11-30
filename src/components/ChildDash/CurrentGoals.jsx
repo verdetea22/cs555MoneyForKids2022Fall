@@ -15,10 +15,9 @@ function CurrentGoals(props) {
       const getCurrentUser = async () => {
 
           try {
-              const user = await getChildAccounts(props.id);
-              console.log(user)
+              const user = await getChildAccounts([props.id]);
 
-              setGoals(user.goals);
+              setGoals(user[0].goals);
               
           } catch (error) {
               console.log(error);
@@ -27,12 +26,6 @@ function CurrentGoals(props) {
       };
       getCurrentUser();
   }, []);
-
-    // let goals = [];
-    // console.log(props.child.goals);
-    // if(props.child.goals != undefined){
-    //    goals = (props.child.goals); 
-    // }
     
     //when goal complete, delete goal from goal list and create a withdraw request
     const handleSubmit = (event) => {
@@ -81,7 +74,9 @@ function CurrentGoals(props) {
         </Card.Header>   
         <Card.Body>  
           <ListGroup variant="flush">
-          {goals.map((goal)=>(
+          {
+          (goals && goals.length > 0) ?
+            goals.map((goal)=>(
                     <ListGroup.Item>
                         <p>{goal.GoalBody}</p>
                         <p>${goal.price}</p>
@@ -91,7 +86,11 @@ function CurrentGoals(props) {
                           <Button variant="primary" type="submit">Redeem</Button>
                         </Form>
                     </ListGroup.Item>
-                ))}
+            )):
+                    <ListGroup.Item>
+                    <p>No goals! Go add some!</p>       
+                    </ListGroup.Item>
+                }
           </ListGroup>
         </Card.Body>
       </Card> 
