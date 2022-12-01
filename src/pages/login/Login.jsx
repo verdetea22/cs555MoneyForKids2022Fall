@@ -1,39 +1,96 @@
-import React from "react";
-import { Card, Form, Button } from "react-bootstrap";
-import { useForm } from "react-hook-form";
-import { login } from "../../services/firebase/auth";
+import React, { useState } from "react";
+import { Card, Dropdown } from "react-bootstrap";
+import ChildLoginForm from "../../components/Auth/ChildLoginForm";
+import ParentLoginForm from "../../components/Auth/ParentLoginForm";
+import { useAuth } from "../../contexts/AuthContext";
+import { createChildAccount, deleteRequest, findRequestByCredentials } from "../../services/firebase/db";
 
+import { useLocation, useNavigate } from "react-router-dom";
+import ErrorLabel from "../../components/Error/ErrorLabel";
 const Login = () => {
-  const { register, handleSubmit } = useForm();
 
-  const onSubmit = ({ email, password }) => {
-    login({ email, password }).then((res) => {
-      window.location.href = "/";
-    }).catch((error) => {
-        console.log(error);
-    });
+  const [loginType, setLoginType] = useState("parent");
+  const { login } = useAuth();
+
+  const [show, setShow] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  let location = useLocation();
+
+  let from = "";
+
+  if (location.state && location.state.from && location.state.from.pathname) {
+    from = location.state.from.pathname;
+  } else {
+    from = "/";
+  }
+
+  const navigate = useNavigate();
+
+  const handleParentLogin = async ({ email, password }) => {
+    try { 
+      await login(email, password);
+      navigate(from, { replace: true });
+    } catch (error) {
+      console.log(error.code);
+      setShow(true);
+      setErrorMessage(error.message);
+    }
+  }
+
+  const handleChildLogin = async ({ username, password }) => {
+    try {
+      
+      const result = await findRequestByCredentials({ username, password});
+      if (result === undefined) {
+        
+        await login(`${username}@email.com`, password);
+        navigate(from, { replace: true });
+      } else {
+
+        const { name, password, balance, parentId, username, id } = result;
+        await createChildAccount(name, username, password, balance, parentId);
+        await deleteRequest(id);
+        navigate(from, { replace: true });
+      }
+     
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const [form, setForm] = useState(<ParentLoginForm onSubmit={handleParentLogin} />);
+
+  const handleLoginType = (eventKey) => {
+    if (eventKey === "parent") {
+      setForm(<ParentLoginForm onSubmit={handleParentLogin} />);
+    } else if (eventKey === "child") {
+      setForm(<ChildLoginForm onSubmit={handleChildLogin} />);
+    }
+
+    setLoginType(eventKey);
   };
 
   return (
     <div className="mt-5">
       <Card className="w-50 m-auto">
         <Card.Header>
+          <Dropdown drop="end" onSelect={handleLoginType} className="ms-5">
+            <Dropdown.Toggle>Are you a ...?</Dropdown.Toggle>
 
+            <Dropdown.Menu>
+              <Dropdown.Item eventKey="parent">Parent</Dropdown.Item>
+              <Dropdown.Item eventKey="child">Child</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          
         </Card.Header>
         <Card.Body>
-          <Form onSubmit={handleSubmit(onSubmit)}>
-            <Form.Group className="mb-3 mx-5 mt-5" controlId="emailControl">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="text" placeholder="Enter email..." {...register("email")} />
-            </Form.Group>
-            <Form.Group className="mb-3 mx-5 mt-3" controlId="passwordControl">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Enter password..." {...register("password")} />
-            </Form.Group>
-            <Form.Group class="mx-5">
-              <Button type="submit">Login</Button>
-            </Form.Group>
-          </Form>
+        
+          <h3 className="ms-5">Login in as a {loginType}</h3>
+          <ErrorLabel className="ms-5" show={show} message={errorMessage} onClick={() => setShow(false)} />
+          {form}
+          
         </Card.Body>
       </Card>
     </div>
