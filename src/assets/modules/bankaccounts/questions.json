@@ -1,0 +1,38 @@
+[
+    {
+        "type" : "MC",
+        "question" : "What is the main benefit of a savings account?",
+        "imageSrc" : "",
+        "answerChoices" : [
+            "The bank pays interest", "Government pays you for having money", "High interest rates"
+        ],
+        "correctAnswer" : 0
+    },
+    {
+        "type" : "MC",
+        "question" : "Who typically opens current accounts?",
+        "imageSrc" : "",
+        "answerChoices" : [
+            "regular people", "businesses", "children"
+        ],
+        "correctAnswer" : 1
+    },
+    {
+        "type" : "MC",
+        "question" : "What is special about a recurring deposit account?",
+        "imageSrc" : "",
+        "answerChoices" : [
+            "The bank deoposits a fixed amount every month", "Interest rate recurres every month", "The account holder deposits a fixed amount every month"
+        ],
+        "correctAnswer" : 2
+    },
+    {
+        "type" : "MC",
+        "question" : "What is the purpose of a checking account?",
+        "imageSrc" : "",
+        "answerChoices" : [
+            "Hold money that you plan to spend", "Check the highest interest rate available", "Check your money often to make sure there's no fraud"
+        ],
+        "correctAnswer" : 0
+    }
+]
