@@ -11,6 +11,7 @@ import ChildBalance from "../../components/ParentDash/ChildBalance"
 import Requests from "../../components/ParentDash/Requests"
 import Tasks from "../../components/ParentDash/Tasks"
 import AddTasks from "../../components/ParentDash/AddTasks"
+import Deposit from "../../components/ParentDash/Deposit"
 
 import { getChildAccounts, getCurrentUserData } from "../../services/firebase/db";
 
@@ -69,6 +70,11 @@ function Dashboard() {
                             <Requests children={children}></Requests>
                             <Tasks children={children}></Tasks>
                             <AddTasks children={children}></AddTasks>
+                        </CardDeck>
+                    </Col>
+                    <Col>
+                        <CardDeck style={{flexDirection: 'row'}}> 
+                            <Deposit children={children}></Deposit>
                         </CardDeck>
                     </Col>
                 </Row>

@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { addToUserArray, getChildAccounts } from "../../services/firebase/db";
+import { updateUserData, getChildAccounts } from "../../services/firebase/db";
 import fields from "../../services/firebase/fields"
 
 function AddTasks(props) {
@@ -37,9 +37,7 @@ function AddTasks(props) {
 
     const onSelectChange = (e, updatedAt) => {
         const id = e.target.value;
-        let child = children.filter(child => child.id == id)
-        const name = child[0].name
-        setValues({ ...values, ["childName"]: name });
+        setValues({ ...values, ["childId"]: id });
     };
 
     const handleSubmit = (event) => {
@@ -54,9 +52,15 @@ function AddTasks(props) {
         event.persist();
 
         let id = (event.target[0].value)
-    
-        console.log(values);
-        const added = addToUserArray(id, fields.TASKS, values)
+        let child = children.filter(child => child.id == id)
+        let balance = child[0].balance;
+
+        let newBalance = parseInt(balance) + parseInt(values.price);
+
+        //console.log(newBalance);
+        //console.log(values);
+
+        const added = updateUserData(id, fields.BALANCE, newBalance)
         console.log(added);
 
     };
@@ -64,7 +68,7 @@ function AddTasks(props) {
     return(
         <Card style={{ width: '18rem'}}>
         <Card.Header>
-          <Card.Title>New Task</Card.Title>
+          <Card.Title>Deposit Funds</Card.Title>
         </Card.Header>   
         <Card.Body>  
           <ListGroup variant="flush">
@@ -79,18 +83,13 @@ function AddTasks(props) {
                                 ))}
                             </Form.Select>
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="taskBody">
-                            <Form.Label>Task</Form.Label>
-                            <Form.Control required type="text" placeholder="Enter task description." name="taskBody" onChange={onFormChange}/>
-                            <Form.Control.Feedback type="invalid">Please enter a task description.</Form.Control.Feedback>
-                        </Form.Group>
                         <Form.Group className="mb-3" controlId="amount">
                             <Form.Label>Amount</Form.Label>
                             <Form.Control required type="number" placeholder="$0.00" name="price" onChange={onFormChange}/>
                             <Form.Control.Feedback type="invalid">Please enter a valid amount.</Form.Control.Feedback>
                         </Form.Group>
                         <Button variant="primary" type="submit">
-                            Submit
+                            Deposit
                         </Button>
                     </Form>
                 </ListGroup.Item>
