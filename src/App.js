@@ -41,7 +41,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/childDash" element={<ChildDash />} />
           <Route path="/childDetails" element={<ChildDetails />} />
-          <Route path="/settings" element={<RequireAuth><AccountSettings /></RequireAuth>} />
+          <Route path="/settings" element={<AccountSettings />} />
           <Route path="/changePassword" element={<ChangePassword />} />
           <Route path="/changeEmail" element={<ChangeEmail />} />
           <Route path="/addChild" element={<AddChild />} />
