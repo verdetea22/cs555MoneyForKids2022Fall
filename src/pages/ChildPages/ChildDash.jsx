@@ -15,6 +15,7 @@ import AddGoal from "../../components/ChildDash/AddGoal"
 
 import { getCurrentUserData } from "../../services/firebase/db";
 import { useAuth } from "../../contexts/AuthContext";
+import { Stack } from "react-bootstrap";
 
 //if auth, show dash
 
@@ -22,8 +23,6 @@ function ChildDash() {
 
     const [child, setChild] = useState("");
     const { user } = useAuth();
-
-    let id = user.uid;
 
     useEffect(() => {
         const getCurrentUser = async () => {
@@ -43,32 +42,34 @@ function ChildDash() {
         getCurrentUser();
     }, []);
 
-
     return(
         <Container>
-            <h1>Welcome, {child.name}</h1>
-            <Container>
-            <Row xs={1} md={1} className="g-4">
-                <Col>
-                    <CardDeck style={{flexDirection: 'row'}}> 
-                        <Balance id={id} ></Balance>
-                        <CurrentRequests id={id}></CurrentRequests>
-                        <CurrentTasks id={id}></CurrentTasks>
-                        <CurrentGoals id={id}></CurrentGoals>
-                    </CardDeck>
-                </Col>
-                <Col>
-                    <CardDeck style={{flexDirection: 'row'}}> 
-                        <AddRequest id={id}></AddRequest>
-                        <AddGoal id={id}></AddGoal>
-                    </CardDeck>
-                </Col>
-            </Row>
-            </Container>
+            <Stack>
+                <h1>Welcome, {child.name}</h1>
+                {
+                    user ?
+                    <Row>
+                        <Col>
+                            <CardDeck style={{flexDirection: 'row'}}> 
+                                <Balance id={user.uid} ></Balance>
+                                <CurrentRequests id={user.uid}></CurrentRequests>
+                                <CurrentTasks id={user.uid}></CurrentTasks>
+                                <CurrentGoals id={user.uid}></CurrentGoals>
+                            </CardDeck>
+                        </Col>
+                        <Col>
+                            <CardDeck style={{flexDirection: 'row'}}> 
+                                <AddRequest id={user.uid}></AddRequest>
+                                <AddGoal id={user.uid}></AddGoal>
+                            </CardDeck>
+                        </Col>
+                    </Row>
+                    :
+                    <></>
+                }
+            </Stack>
         </Container>
-    ) 
-    
-       
+    )     
 }
 //
 export default ChildDash;

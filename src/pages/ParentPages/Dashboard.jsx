@@ -14,6 +14,7 @@ import AddTasks from "../../components/ParentDash/AddTasks"
 import Deposit from "../../components/ParentDash/Deposit"
 
 import { getChildAccounts, getCurrentUserData } from "../../services/firebase/db";
+import { Stack } from "react-bootstrap";
 
 
 //if auth, show dash
@@ -24,8 +25,6 @@ function Dashboard() {
     const [children, setChildren] = useState([]);
 
     const { user } = useAuth();
-
-    let id = user.uid;
 
     useEffect(() => {
         const getCurrentUser = async () => {
@@ -47,19 +46,9 @@ function Dashboard() {
 
     console.log(children);
     {
-    return( (!children || (children.length === 0)) ? 
-        <Container>
-                <h1>Welcome, {name}</h1>
-                <Container>
-                    <CardDeck style={{flexDirection: 'row'}}> 
-                        <p>To get started, go to account settings and add a child account.</p>
-                    </CardDeck>
-                </Container>
-            </Container>
-            :
-            <Container>
-            <h1>Welcome, {name}</h1>
-            <Container>
+    return <Container>
+        <Stack>
+        <h1>Welcome, {name}</h1>
             {
             (user && children.length > 0) ?
                 <Row xs={1} md={1} className="g-4">
@@ -82,8 +71,8 @@ function Dashboard() {
                         <p>To get started, go to account settings and add a child account.</p>
                 </CardDeck>
             }
-            </Container>
-        </Container>)
+        </Stack>
+    </Container>
     }
 }
 
