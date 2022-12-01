@@ -100,9 +100,9 @@ const ModulesDashboard = () => {
         <div class="child">
           <div id="mod_box">
             <br />
-            <a id="mod_name" href="/Modules/module">
+            <a id="mod_name" href="/Modules/module/bankaccounts">
               {" "}
-              WIP Module
+              Bank Account Module
             </a>
             <br />
           </div>

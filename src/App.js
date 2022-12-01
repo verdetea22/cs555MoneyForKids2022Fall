@@ -38,8 +38,8 @@ function App() {
           <Route path="/modules/salesTaxMod" element={<SalesTaxMod />} />
           <Route path="/modules/changeBackMod" element={<ChangeBackMod />} />
           <Route path="/modules/formsMod" element={<FormsMod />} />
-          <Route path="/dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} />
-          <Route path="/childDash" element={<RequireAuth><ChildDash /></RequireAuth>} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/childDash" element={<ChildDash />} />
           <Route path="/childDetails" element={<ChildDetails />} />
           <Route path="/settings" element={<RequireAuth><AccountSettings /></RequireAuth>} />
           <Route path="/changePassword" element={<ChangePassword />} />

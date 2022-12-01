@@ -48,7 +48,7 @@ function CurrentRequests(props) {
       </ListGroup>
     </Card.Body>
   </Card> 
-) 
-    
+)    
 }
+
 export default CurrentRequests;
