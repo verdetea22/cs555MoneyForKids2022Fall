@@ -50,23 +50,7 @@ function CurrentGoals(props) {
 
     };
 
-    if(goals.length == 0){
-        return(
-            <Card style={{ width: '18rem'}}>
-            <Card.Header>
-            <Card.Title>Goals</Card.Title>
-            </Card.Header>   
-            <Card.Body>  
-            <ListGroup variant="flush">
-                <ListGroup.Item>
-                    <p>No goals! Go add some!</p>       
-                </ListGroup.Item>
-            </ListGroup>
-            </Card.Body>
-        </Card> 
-        )
-    }
-    else{
+
        return(
         <Card style={{ width: '18rem'}}>
         <Card.Header>
@@ -81,8 +65,8 @@ function CurrentGoals(props) {
                         <p>{goal.GoalBody}</p>
                         <p>${goal.price}</p>
                         <Form onSubmit={handleSubmit}>
-                          <Form.Control hidden readonly value={goal.GoalBody} name="requestBody"/>
-                          <Form.Control hidden readonly value={goal.price} name="price"/>
+                          <Form.Control hidden readOnly value={goal.GoalBody} name="requestBody"/>
+                          <Form.Control hidden readOnly value={goal.price} name="price"/>
                           <Button variant="primary" type="submit">Redeem</Button>
                         </Form>
                     </ListGroup.Item>
@@ -95,6 +79,6 @@ function CurrentGoals(props) {
         </Card.Body>
       </Card> 
     ) 
-    }
+    
 }
 export default CurrentGoals;
