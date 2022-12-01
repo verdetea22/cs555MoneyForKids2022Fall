@@ -32,9 +32,18 @@ const Login = () => {
       await login(email, password);
       navigate(from, { replace: true });
     } catch (error) {
+
+      if (error.code === "auth/user-not-found") {
+        setErrorMessage("User is not a sign up!");
+      } else if (error.code === "auth/wrong-password") {
+        setErrorMessage("The password is incorrect!");
+      } else {
+        setErrorMessage("Something went wrong with login!");
+      }
+
       console.log(error.code);
       setShow(true);
-      setErrorMessage(error.message);
+      
     }
   }
 
@@ -55,7 +64,21 @@ const Login = () => {
       }
      
     } catch (error) {
-      console.log(error);
+
+      if (error.code === "auth/invalid-email") {
+        setErrorMessage("Invalid username!");
+      } else if (error.code === "auth/user-not-found") {
+        setErrorMessage("User is not a sign up!");
+      } else if (error.code === "auth/wrong-password") {
+        setErrorMessage("The password is incorrect!");
+      } else {
+        setErrorMessage("Something went wrong with login!");
+      }
+
+      setShow(true);
+
+      console.log(error.code);
+
     }
   };
 
@@ -88,7 +111,7 @@ const Login = () => {
         <Card.Body>
         
           <h3 className="ms-5">Login in as a {loginType}</h3>
-          <ErrorLabel className="ms-5" show={show} message={errorMessage} onClick={() => setShow(false)} />
+          <ErrorLabel className="mx-5" show={show} message={errorMessage} onClick={() => setShow(false)} />
           {form}
           
         </Card.Body>

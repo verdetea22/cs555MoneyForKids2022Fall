@@ -13,8 +13,9 @@ function ParentLoginForm({ onSubmit }) {
             <Form.Control type="email" placeholder="Enter email..." required {...register("email")} />
         </Form.Group>
         <Form.Group className="mb-3 mx-5 mt-3" controlId="passwordControl">
-            <Form.Label>Password (Must be at least six characters long)</Form.Label>
+            <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Enter password..." required minLength="6" {...register("password")} />
+            <Form.Text muted>The password must be at least six characters long</Form.Text>
         </Form.Group>
             <Form.Group className="mx-5">
             <Button type="submit">Login</Button>
