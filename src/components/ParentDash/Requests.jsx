@@ -4,15 +4,18 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Form from 'react-bootstrap/Form';
-import { addToUserArray, removeFromUserArray } from "../../services/firebase/db";
+import { addToUserArray, removeFromUserArray, updateUserData } from "../../services/firebase/db";
 import fields from "../../services/firebase/fields"
+import ErrorPopUp from "../Error/ErrorPopUp";
 
 import { getChildAccounts, getCurrentUserData } from "../../services/firebase/db";
+import { updateCurrentUser } from "firebase/auth";
 
 function Requests(props) {
     //props is array list of children ids
     //children is the array of child objects
     const [children, setChildren] = useState([]);
+    const [showError, setShowError] = useState(false);
 
     useEffect(() => {
       const getCurrentUser = async () => {
@@ -30,41 +33,35 @@ function Requests(props) {
         getCurrentUser();
     }, []);
 
-    const handleAccept = (event) => {
+    const rejectEvent = (id, price, body) => {
       
-        event.preventDefault();
-        event.persist();
-
-        let valuesToDelete = {
-        [event.target[0].name]: event.target[0].value,
-        [event.target[1].name]: event.target[1].value,
+        const remove = {
+            requestBody: body,
+            price: price
         }
-        let id = event.target[2].value;
-        const removed = removeFromUserArray(id, fields.REQUESTS, valuesToDelete);
-        //add call to function to remove amount here
-        console.log(removed);
-
+        removeFromUserArray(id, fields.REQUESTS, remove);
     };
 
-    const handleReject = (event) => {
-      
-        event.preventDefault();
-        event.persist();
-
-        let valuesToDelete = {
-        [event.target[0].name]: event.target[0].value,
-        [event.target[1].name]: event.target[1].value,
+    const withdraw = (balance, price, id, body) => {
+        if(price > balance){
+            setShowError(true);
+        }else{
+            const remove = {
+                requestBody: body,
+                price: price
+            }
+            removeFromUserArray(id, fields.REQUESTS, remove);
+            updateUserData(id, fields.BALANCE, (balance - price));
         }
-        let id = event.target[2].value;
-        const removed = removeFromUserArray(id, fields.REQUESTS, valuesToDelete);
-        //add call to function to remove amount here
-        console.log(removed);
+    }
 
-    };
-
+    const dismissError = () => {
+        setShowError(false);
+    }
 
     return(
             <Card style={{ width: '18rem'}}>
+            <ErrorPopUp showAlert={showError} title={"Not enough money"} body={"Child does not have enough money to complete request"} onClick={dismissError} />
             <Card.Header>
               <Card.Title>Pending Requests</Card.Title>
             </Card.Header>   
@@ -75,22 +72,12 @@ function Requests(props) {
                 children.map((child)=>(
                     (child.requests && child.requests.length > 0) ? 
                         child.requests.map((request)=>(
-                            <ListGroup.Item>
+                            <ListGroup.Item key={child.name}>
                                 <p>Name: {child.name}</p>
                                 <p>Description: {request.requestBody}</p>
                                 <p>Amount: ${request.price}</p>
-                                <Form onSubmit={handleAccept}>
-                                <Form.Control hidden readOnly value={request.requestBody} name="requestBody"/>
-                                <Form.Control hidden readOnly value={request.price} name="price"/>
-                                <Form.Control hidden readOnly value={child.id} name="id"/>
-                                <Button variant="success" type="submit">Approve</Button>
-                                </Form>
-                                <Form onSubmit={handleReject}>
-                                <Form.Control hidden readOnly value={request.requestBody} name="requestBody"/>
-                                <Form.Control hidden readOnly value={request.price} name="price"/>
-                                <Form.Control hidden readOnly value={child.id} name="id"/>
-                                <Button variant="danger" type="submit">Reject</Button>
-                                </Form>
+                                <Button variant="success" type="submit" onClick={() => withdraw(child.balance, request.price, child.id, request.requestBody)}>Approve</Button>
+                                <Button variant="danger" type="submit" onClick={() => rejectEvent(child.id, request.price, request.requestBody)}>Reject</Button>
                             </ListGroup.Item>
                         ))
                         :

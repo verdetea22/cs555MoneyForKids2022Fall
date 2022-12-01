@@ -30,13 +30,15 @@ function ChildDash() {
 
             try {
                 const user = await getCurrentUserData();
+                if(user.role === "parent"){
+                    window.location.href="/dashboard";
+                }
                 console.log(user)
                 setChild(user);
                 
             } catch (error) {
                 console.log(error);
-            }
-            
+            }    
         };
         getCurrentUser();
     }, []);

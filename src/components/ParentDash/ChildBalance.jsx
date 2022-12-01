@@ -38,7 +38,7 @@ function ChildBalance(props) {
         {
         (children && children.length > 0) ? 
           children.map((child)=>(
-                  <ListGroup.Item>
+                  <ListGroup.Item key={child.toString()}>
                       <p>{child.name}'s Account</p>
                       <p>Current Balance: ${child.balance}</p>
                   </ListGroup.Item>

@@ -31,7 +31,10 @@ function Dashboard() {
         const getCurrentUser = async () => {
 
             try {
-                const { name, childIds } = await getCurrentUserData();
+                const { name, childIds, role } = await getCurrentUserData();
+                if(role === "child"){
+                    window.location.href = "/childDash"
+                }
                 setName(name);
                 setChildren(childIds);
             } catch (error) {
@@ -43,9 +46,9 @@ function Dashboard() {
     }, []);
 
     console.log(children);
-    if(children.length === 0){
-        return(
-            <Container>
+    {
+    return( (!children || (children.length === 0)) ? 
+        <Container>
                 <h1>Welcome, {name}</h1>
                 <Container>
                     <CardDeck style={{flexDirection: 'row'}}> 
@@ -53,12 +56,8 @@ function Dashboard() {
                     </CardDeck>
                 </Container>
             </Container>
-
-        )
-    }
-    else{
-       return(
-        <Container>
+            :
+            <Container>
             <h1>Welcome, {name}</h1>
             <Container>
             {
@@ -84,10 +83,8 @@ function Dashboard() {
                 </CardDeck>
             }
             </Container>
-        </Container>
-    ) 
+        </Container>)
     }
-       
 }
 
 export default Dashboard;
