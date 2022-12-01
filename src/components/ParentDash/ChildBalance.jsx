@@ -9,30 +9,49 @@ import { getChildAccounts } from "../../services/firebase/db";
 function ChildBalance(props) {
     //replace props with database call where props is child name
     //child holds child object from db
+    const [children, setChildren] = useState([]);
 
-    const child = props.child;
+    useEffect(() => {
+      const getCurrentUser = async () => {
+          try {
+              const childrenData = await getChildAccounts(props.children);
+              console.log(childrenData)
+              setChildren(childrenData);
+              
+          } catch (error) {
+              console.log(error);
+          }
+          
+      };
+      getCurrentUser();
+  }, []);
 
-    return(
-        <Card style={{ width: '18rem'}}>
-        <Card.Header>
-          <Card.Title>{child.name}</Card.Title>
-          <Card.Subtitle>Account Snapshot</Card.Subtitle>
-        </Card.Header>   
-        <Card.Body>  
-          <ListGroup variant="flush">
-            <ListGroup.Item>Current Balance: ${child.balance}</ListGroup.Item>
-          </ListGroup>
-        </Card.Body>
-        <Card.Body className="text-center">
-          {/* How to pass props here?*/}
-          <Button variant="primary" childName = {props.childName} href="./ChildDetails">Details</Button>
-        </Card.Body>
-      </Card> 
-    )
+      console.log(children)
+
+      return(
+      <Card style={{ width: '18rem'}}>
+      <Card.Header>
+        <Card.Title>Account Balances</Card.Title>
+      </Card.Header>   
+      <Card.Body>  
+        <ListGroup variant="flush">
+        {
+        (children && children.length > 0) ? 
+          children.map((child)=>(
+                  <ListGroup.Item>
+                      <p>{child.name}'s Account</p>
+                      <p>Current Balance: ${child.balance}</p>
+                  </ListGroup.Item>
+              ))
+              :
+              <ListGroup.Item>
+                
+              </ListGroup.Item>
+        }
+        </ListGroup>
+      </Card.Body>
+    </Card> 
+  ) 
 
 }
-/*<ListGroup.Item>{(child.difference > 0)? '+':''}{child.difference}% difference compared to last month</ListGroup.Item>
-            <ListGroup.Item>Deposits this month: ${child.in}</ListGroup.Item>
-            <ListGroup.Item>Withdrawals this month: ${child.out}</ListGroup.Item>
-*/
 export default ChildBalance;
