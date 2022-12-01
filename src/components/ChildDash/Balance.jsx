@@ -33,6 +33,12 @@ function Balance(props) {
         <Card.Body>  
           <ListGroup variant="flush">
             <ListGroup.Item>${balance}</ListGroup.Item>
+            {
+              parseInt(balance) < 10 ? 
+                <ListGroup.Item>Warning! Your account balance is less than $10!</ListGroup.Item>
+              :
+                <ListGroup.Item></ListGroup.Item>
+            }
           </ListGroup>
         </Card.Body>
       </Card> 
