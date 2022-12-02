@@ -108,6 +108,8 @@ a.pure-button-primary {
     font-weight: 300;
     border-radius: 5px;
     line-height: 1em;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 
@@ -120,5 +122,5 @@ a.pure-button-primary {
 }
 
 .body {
-    text-transform: lowercase;
+    margin: 10px;
 }
