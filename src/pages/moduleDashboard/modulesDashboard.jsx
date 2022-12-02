@@ -8,9 +8,9 @@ const ModulesDashboard = () => {
     <Container>
     <Stack className='col-md-10 mx-auto' gap={3} direction='vertical'>
         <h2 className='text-center'>Learning Modules</h2>
-        <Row xs={1} md={2} className='g-4 justify-content-center'>
-          <ModulePreview title={"Salex Tax Module"} description={"Learn how sales tax wirks!"} link={"salestax"} />
-          <ModulePreview title={"Change Back Mdule"} description={"Learn how to calculate change given from different transactions!"} link={"changeback"} />
+        <Row xs={2} md={4} lg={6} className='justify-content-center'>
+          <ModulePreview title={"Salex Tax Module"} description={"Learn how sales tax works!"} link={"salestax"} />
+          <ModulePreview title={"Change Back Module"} description={"Learn how to calculate change given from different transactions!"} link={"changeback"} />
           <ModulePreview title={"Interest Module"} description={"Learn how interest works for different types of bank accounts!"} link={"interest"} />
           <ModulePreview title={"Money Addition Module"} description={"Learn how to add moeny easily!"} link={"moneyAddition"} />
           <ModulePreview title={"Bank Forms Module"} description={"Learn the different kinds of forms, such as withdrawl, deposit, and checks!"} link={"forms"} />
