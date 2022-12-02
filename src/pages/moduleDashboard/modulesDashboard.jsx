@@ -6,7 +6,7 @@ import ModulePreview from "../../components/Modules/Common/ModulePreview";
 const ModulesDashboard = () => {
   return (
     <Container>
-    <Stack className='col-md-10 mx-auto' gap={3} direction='vertical'>
+    <Stack className='col-md-9 mx-auto' gap={3} direction='vertical'>
         <h2 className='text-center'>Learning Modules</h2>
         <Row xs={2} md={4} lg={6} className='justify-content-center'>
           <ModulePreview title={"Salex Tax Module"} description={"Learn how sales tax works!"} link={"salestax"} />
