@@ -27,6 +27,7 @@ const useProvideAuth = () => {
         try {
             await firebaseSignOut();
             setUser(false);
+            window.location.href = "/";
         } catch (error) {
             throw error;
         }
