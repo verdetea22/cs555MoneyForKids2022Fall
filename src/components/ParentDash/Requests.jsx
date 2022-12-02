@@ -33,16 +33,21 @@ function Requests(props) {
         getCurrentUser();
     }, []);
 
-    const rejectEvent = (id, price, body) => {
-      
+    const rejectEvent = (id, request) => {
+        const price = request.price;
+        const body = request.requestBody;
+
         const remove = {
             requestBody: body,
             price: price
         }
         removeFromUserArray(id, fields.REQUESTS, remove);
+        removeRequest(request);
     };
 
-    const withdraw = (balance, price, id, body) => {
+    const withdraw = (balance, id, request) => {
+        const price = request.price;
+        const body = request.requestBody;
         if(price > balance){
             setShowError(true);
         }else{
@@ -52,11 +57,24 @@ function Requests(props) {
             }
             updateUserData(id, fields.BALANCE, (balance - price));
             removeFromUserArray(id, fields.REQUESTS, remove)
+            removeRequest(request);
         }
     }
 
     const dismissError = () => {
         setShowError(false);
+    }
+
+    const removeRequest = (request) => {
+        let newChildren = [];
+        for(let child of children){
+            let newChild = child;
+            if(newChild.requests.find(e => e == request)){
+                newChild.requests = newChild.requests.filter(item => item != request);
+            }
+            newChildren.push(newChild);
+        }
+        setChildren(newChildren);
     }
 
     return(
@@ -76,8 +94,8 @@ function Requests(props) {
                                 <p>Name: {child.name}</p>
                                 <p>Description: {request.requestBody}</p>
                                 <p>Amount: ${request.price}</p>
-                                <Button variant="success" type="submit" onClick={() => withdraw(child.balance, request.price, child.id, request.requestBody)}>Approve</Button>
-                                <Button variant="danger" type="submit" onClick={() => rejectEvent(child.id, request.price, request.requestBody)}>Reject</Button>
+                                <Button variant="success" type="submit" onClick={() => withdraw(child.balance, child.id, request)}>Approve</Button>
+                                <Button variant="danger" type="submit" onClick={() => rejectEvent(child.id, request)}>Reject</Button>
                             </ListGroup.Item>
                         ))
                         :

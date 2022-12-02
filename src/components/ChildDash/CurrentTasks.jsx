@@ -30,29 +30,26 @@ function CurrentTasks(props) {
       getCurrentUser();
   }, []);
 
-  const handleSubmit = (event) => {
-      
-    event.preventDefault();
-    event.persist();
-
-    let deposit = event.target[1].value;
-    
-    let newBalance = parseInt(balance) + parseInt(deposit);
+  const completeTask = (task) => {
+    let valuesToAdd = {
+      ["requestBody"]: (task.requestBody ? task.requestBody : ""),
+      ["price"]: task.price,
+    }
 
     let valuesToDelete = {
       "childName": name,
-      [event.target[0].name]: event.target[0].value,
-      [event.target[1].name]: event.target[1].value,
+      "requestBody": (task.requestBody ? task.requestBody : ""),
+      "price": task.price,
     }
 
-    const added = updateUserData(props.id, fields.BALANCE, newBalance);
-    console.log(added);
-    const removed = removeFromUserArray(props.id, fields.TASKS, valuesToDelete);
-    console.log(removed);
-
-  };
+    addToUserArray(props.id, fields.REQUESTS, valuesToAdd);
+    removeFromUserArray(props.id, fields.TASKS, valuesToDelete).then((error) => {
+      if(!error){
+        setTasks(tasks.filter(t => t != task));
+      }
+    });
+  }
     
-      console.log(tasks)
       return(
       <Card style={{ width: '18rem'}}>
       <Card.Header>
@@ -66,11 +63,7 @@ function CurrentTasks(props) {
                   <ListGroup.Item>
                       <p>{task.taskBody}</p>
                       <p>${task.price}</p>
-                      <Form onSubmit={handleSubmit}>
-                          <Form.Control hidden readOnly value={task.taskBody} name="taskBody"/>
-                          <Form.Control hidden readOnly value={task.price} name="price"/>
-                          <Button variant="primary" type="submit">Done</Button>
-                        </Form>
+                      <Button variant="primary" type="submit" onClick={() => completeTask(task)}>Done</Button>
                   </ListGroup.Item>
               ))
               :
