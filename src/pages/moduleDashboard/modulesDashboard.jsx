@@ -1,114 +1,23 @@
 import React from "react";
 import "./modules.css";
+import { Row, Stack, Container } from "react-bootstrap";
+import ModulePreview from "../../components/Modules/Common/ModulePreview";
 
 const ModulesDashboard = () => {
   return (
-    <div>
-      <br />
-      <h2>Learning Modules</h2>
-
-      <div class="parent">
-        {/* Column 1 */}
-        <div class="child">
-          <div id="mod_box">
-            <br />
-            <a id="mod_name" href="/Modules/module/salestax">
-              Sales Tax Module
-            </a>
-            <br />
-            <br />
-            <div id="box_description">
-              <a> Learn how sales tax works! </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Column 2 */}
-        <div class="child">
-          <div id="mod_box">
-            <br />
-            <a id="mod_name" href="/Modules/module/changeback">
-              Change Back Module
-            </a>
-            <br />
-
-            <div id="box_description">
-              <a>
-                {" "}
-                Learn how to calculate change given from different transactions!{" "}
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Column 3 */}
-
-        <div class="child">
-          <div id="mod_box">
-            <br />
-            <a id="mod_name" href="/Modules/module/interest">
-              {" "}
-              Interest Module
-            </a>
-            <br />
-            <div id="box_description">
-              <a>
-                {" "}
-                Learn how interest works for different types of bank accounts!{" "}
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="parent">
-        {/* Column 1, Box 2 */}
-        <div class="child">
-          <div id="mod_box">
-            <br />
-            <a id="mod_name" href="/Modules/module/moneyAddition">
-              Money Addition Module
-            </a>
-            <br />
-            <br />
-            <div id="box_description">
-              <a> Learn how to add money easily! </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Column 2, Box 2 */}
-        <div class="child">
-          <div id="mod_box">
-            <br />
-            <a id="mod_name" href="/Modules/module/forms">
-              Bank Forms Module
-            </a>
-            <br />
-
-            <div id="box_description">
-              <a>
-                {" "}
-                Learn the different kinds of forms, such as withdrawl, deposit
-                and checks!{" "}
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Column 3, Box 2 */}
-        <div class="child">
-          <div id="mod_box">
-            <br />
-            <a id="mod_name" href="/Modules/module/bankaccounts">
-              {" "}
-              Bank Account Module
-            </a>
-            <br />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Container>
+    <Stack className='col-md-9 mx-auto' gap={3} direction='vertical'>
+        <h2 className='text-center'>Learning Modules</h2>
+        <Row xs={2} md={4} lg={6} className='justify-content-center'>
+          <ModulePreview title={"Salex Tax Module"} description={"Learn how sales tax works!"} link={"salestax"} />
+          <ModulePreview title={"Change Back Module"} description={"Learn how to calculate change given from different transactions!"} link={"changeback"} />
+          <ModulePreview title={"Interest Module"} description={"Learn how interest works for different types of bank accounts!"} link={"interest"} />
+          <ModulePreview title={"Money Addition Module"} description={"Learn how to add moeny easily!"} link={"moneyAddition"} />
+          <ModulePreview title={"Bank Forms Module"} description={"Learn the different kinds of forms, such as withdrawl, deposit, and checks!"} link={"forms"} />
+          <ModulePreview title={"Bank Account Module"} description={"Learn the different types of bank accounts and their benefits and drawbacks!"} link={"bankaccounts"} />
+        </Row>
+      </Stack>
+    </Container>
   );
 };
 

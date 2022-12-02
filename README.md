@@ -33,7 +33,7 @@ Your app is ready to be deployed!
 ### Create a module
 1. Create a new folder in the folder src/assets/modules under the name of the new module. For example, we'll use "tax" so the new folder will be called "tax". Folder name should be lowercase.
 2. Create a questions.json file. This is where the questions will be added. This should be an array for each multiple choice question. The structure of each question should be:
-    1. "type" : "MC" (The type of question to display. The options are MC - multiple choice question or DND - drag and drop question)
+    1. "type" : "MC" (The type of question to display. MC - multiple choice question)
     2. "question" : "what is sales tax?" (This is the name of the question, currently isn't displayed)
     3. "imageSrc" : "tax/salestax.jpg" (This is the file path of the question's image)
     5. "answerChoices" : ["1%", "3%", "7.5%", "4%"] (Array of possible answers for the user. All entries should be strings)
