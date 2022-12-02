@@ -85,7 +85,7 @@ function AddTasks(props) {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="amount">
                             <Form.Label>Amount</Form.Label>
-                            <Form.Control required type="number" placeholder="$0.00" name="price" onChange={onFormChange}/>
+                            <Form.Control required type="number" placeholder="$0.00" name="price" min="0" onChange={onFormChange}/>
                             <Form.Control.Feedback type="invalid">Please enter a valid amount.</Form.Control.Feedback>
                         </Form.Group>
                         <Button variant="primary" type="submit">
