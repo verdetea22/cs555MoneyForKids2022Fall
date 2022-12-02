@@ -4,12 +4,13 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { removeFromUserArray, addToUserArray, getChildAccounts} from "../../services/firebase/db";
+import { removeFromUserArray, updateUserData, getChildAccounts} from "../../services/firebase/db";
 import fields from "../../services/firebase/fields"
 
 function CurrentTasks(props) {
     const [tasks, setTasks] = useState([]);
     const [name, setName] = useState("")
+    const [balance, setBalance] = useState("");
 
     useEffect(() => {
       const getCurrentUser = async () => {
@@ -19,6 +20,7 @@ function CurrentTasks(props) {
               console.log(user)
               setName(user[0].name);
               setTasks(user[0].tasks);
+              setBalance(user[0].balance);
               
           } catch (error) {
               console.log(error);
@@ -33,10 +35,9 @@ function CurrentTasks(props) {
     event.preventDefault();
     event.persist();
 
-    let valuesToAdd = {
-      ["requestBody"]: event.target[0].value,
-      ["price"]: event.target[1].value,
-    }
+    let deposit = event.target[1].value;
+    
+    let newBalance = parseInt(balance) + parseInt(deposit);
 
     let valuesToDelete = {
       "childName": name,
@@ -44,7 +45,7 @@ function CurrentTasks(props) {
       [event.target[1].name]: event.target[1].value,
     }
 
-    const added = addToUserArray(props.id, fields.REQUESTS, valuesToAdd);
+    const added = updateUserData(props.id, fields.BALANCE, newBalance);
     console.log(added);
     const removed = removeFromUserArray(props.id, fields.TASKS, valuesToDelete);
     console.log(removed);
