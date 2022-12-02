@@ -50,8 +50,8 @@ function Requests(props) {
                 requestBody: body,
                 price: price
             }
-            removeFromUserArray(id, fields.REQUESTS, remove);
             updateUserData(id, fields.BALANCE, (balance - price));
+            removeFromUserArray(id, fields.REQUESTS, remove)
         }
     }
 

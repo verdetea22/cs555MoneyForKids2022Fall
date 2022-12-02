@@ -27,7 +27,7 @@ function About() {
                 </Row>
                 <Row>
                     <div>
-                        <img src={image1}  size="small"></img>
+                        <img class="about-img" src={image1}  size="small"></img>
                         <p class="body">
                             As a parent, you will be able to create an account for yourself and for your children. From there, the parent account will be able to add and deduct
                             funds from the children's accounts. Kids will be able to do chores for allowance or deposit their gift money with you, the parent, and have it reflect in their
