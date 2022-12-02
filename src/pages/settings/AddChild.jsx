@@ -14,12 +14,14 @@ function AddChild() {
     const [show, setShow] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
 
+    const [successText, setSuccessText] = useState("");
+
     const submit = async ({ name, username, balance, password }) => {
 
         if (username === username.toLowerCase()) {
             try {
                 await requestChildAccountCreation({ name, username, balance: parseFloat(balance), password });
-                navigate("/");
+                setSuccessText("The child account has been created successfully. Login into to child account to activate it.");
             } catch (error) {
                 console.log(error);
                 setErrorMessage("Something went wrong when creating the child's account!");
@@ -42,7 +44,7 @@ function AddChild() {
             <Form.Group className="mx-5 mb-2">
                 <Form.Label>Username</Form.Label>
                 <Form.Control type="text" placeholder="Enter child's username" required minLength="5" {...register("username")}></Form.Control>
-                <Form.Text muted>The username must <strong>not</strong> have any uppercase letters and must be at least five characters long</Form.Text>
+                <Form.Text muted>The username must <strong>not</strong> have any uppercase letters and must be at least 5 characters long</Form.Text>
             </Form.Group>
             <Form.Group className="mx-5 mb-2">
                 <Form.Label>Starting Balance</Form.Label>
@@ -54,9 +56,14 @@ function AddChild() {
                 <Form.Text muted>The password must be at least 6 characters long</Form.Text>
             </Form.Group>
             <ErrorLabel className="mx-5" show={show} message={errorMessage} onClick={() => setShow(false)} />
+            <Form.Group>
+                <p className="mx-5 text-break text-left text-success"><strong>{successText}</strong></p>
+            </Form.Group>
+            
             <Form.Group className="mx-5 mb-2">
                 <Button type="submit">Submit</Button>
             </Form.Group>
+            
         </Form>
     );
 }
