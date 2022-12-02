@@ -23,14 +23,14 @@ function AddGoal(props) {
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
+        } else {
+            setValidated(true);
+            event.preventDefault();
+            event.persist();
+
+            const added = addToUserArray(props.id, fields.GOALS, values)
+            console.log(added);
         }
-
-        setValidated(true);
-        event.preventDefault();
-        event.persist();
-
-        const added = addToUserArray(props.id, fields.GOALS, values)
-        console.log(added);
 
     };
 

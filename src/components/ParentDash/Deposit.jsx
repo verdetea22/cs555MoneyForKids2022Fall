@@ -45,23 +45,23 @@ function AddTasks(props) {
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
-        }
+        } else {
+            setValidated(true);
+            event.preventDefault();
+            event.persist();
 
-        setValidated(true);
-        event.preventDefault();
-        event.persist();
+            let id = (event.target[0].value)
+            let child = children.filter(child => child.id == id)
+            let balance = child[0].balance;
 
-        let id = (event.target[0].value)
-        let child = children.filter(child => child.id == id)
-        let balance = child[0].balance;
+            let newBalance = parseInt(balance) + parseInt(values.price);
 
-        let newBalance = parseInt(balance) + parseInt(values.price);
+            //console.log(newBalance);
+            //console.log(values);
 
-        //console.log(newBalance);
-        //console.log(values);
-
-        const added = updateUserData(id, fields.BALANCE, newBalance)
-        console.log(added);
+            const added = updateUserData(id, fields.BALANCE, newBalance)
+            console.log(added);
+        }       
 
     };
 
