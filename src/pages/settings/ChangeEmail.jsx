@@ -30,18 +30,26 @@ function ChangeEmail() {
     }, []);
 
     const submit = async ({ oldEmail, newEmail }) => {
-        try {
-            if (oldEmail === email) {
-                await changeEmail(newEmail);
-                naviagte("/");
-            } else {
-                setErrorMessage("Incorrect email! Please type email again!");
+        
+        if (newEmail === newEmail.toLowerCase()) {
+
+            try {
+
+                if (oldEmail === email) {
+                    await changeEmail(newEmail);
+                    naviagte("/");
+                } else {
+                    setErrorMessage("Incorrect email! Please type email again!");
+                    setShow(true);
+                }
+
+            
+            } catch (error) {
+                setErrorMessage("Something went wrong when trying to change your email! Please try again!");
                 setShow(true);
             }
-
-        
-        } catch (error) {
-            setErrorMessage("Something went wrong when trying to change your email! Please try again!");
+        } else {
+            setErrorMessage("Invalid Email! The email must not have any uppercase letters!");
             setShow(true);
         }
     }
