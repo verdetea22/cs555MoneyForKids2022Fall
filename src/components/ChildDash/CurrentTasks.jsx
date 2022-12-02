@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { removeFromUserArray, updateUserData, getChildAccounts} from "../../services/firebase/db";
+import { removeFromUserArray, addToUserArray, getChildAccounts} from "../../services/firebase/db";
 import fields from "../../services/firebase/fields"
 
 function CurrentTasks(props) {
