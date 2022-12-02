@@ -23,14 +23,14 @@ function AddGoal(props) {
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
+        } else {
+            setValidated(true);
+            event.preventDefault();
+            event.persist();
+
+            const added = addToUserArray(props.id, fields.GOALS, values)
+            console.log(added);
         }
-
-        setValidated(true);
-        event.preventDefault();
-        event.persist();
-
-        const added = addToUserArray(props.id, fields.GOALS, values)
-        console.log(added);
 
     };
 
@@ -50,7 +50,7 @@ function AddGoal(props) {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="amount">
                             <Form.Label>Amount</Form.Label>
-                            <Form.Control required type="number" placeholder="$0.00" name="price" onChange={onFormChange}/>
+                            <Form.Control required type="number" placeholder="$0.00" name="price" min="0" onChange={onFormChange}/>
                             <Form.Control.Feedback type="invalid">Please enter a valid price.</Form.Control.Feedback>
                         </Form.Group>
                         <Button variant="primary" type="submit">
