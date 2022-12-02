@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import ErrorLabel from "../../components/Error/ErrorLabel";
 import { requestChildAccountCreation } from "../../services/firebase/db";
 
 function AddChild() {
@@ -10,25 +11,40 @@ function AddChild() {
 
     const navigate = useNavigate();
 
+    const [show, setShow] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const [successText, setSuccessText] = useState("");
+
     const submit = async ({ name, username, balance, password }) => {
-        try {
-            await requestChildAccountCreation({ name, username, balance: parseFloat(balance), password });
-            navigate("/");
-        } catch (error) {
-            console.log(error);
+
+        if (username === username.toLowerCase()) {
+            try {
+                await requestChildAccountCreation({ name, username, balance: parseFloat(balance), password });
+                setSuccessText("The child account has been created successfully. Login into to child account to activate it.");
+            } catch (error) {
+                console.log(error);
+                setErrorMessage("Something went wrong when creating the child's account!");
+                setShow(true);
+            }
+        } else {
+            setErrorMessage("Username has some uppercase letters!");
+            setShow(true);
         }
+        
        
     }
 
     return (
         <Form className="w-50 mx-auto mt-4 border rounded-4" onSubmit={handleSubmit(submit)}>
-            <Form.Group className="mx-5 mb-2">
+            <Form.Group className="mx-5 my-2">
                 <Form.Label>Child's Name</Form.Label>
                 <Form.Control type="text" placeholder="Enter child's name" required {...register("name")}></Form.Control>
             </Form.Group>
             <Form.Group className="mx-5 mb-2">
                 <Form.Label>Username</Form.Label>
-                <Form.Control type="text" placeholder="Enter child's username" required {...register("username")}></Form.Control>
+                <Form.Control type="text" placeholder="Enter child's username" required minLength="5" {...register("username")}></Form.Control>
+                <Form.Text muted>The username must <strong>not</strong> have any uppercase letters and must be at least 5 characters long</Form.Text>
             </Form.Group>
             <Form.Group className="mx-5 mb-2">
                 <Form.Label>Starting Balance</Form.Label>
@@ -37,10 +53,17 @@ function AddChild() {
             <Form.Group className="mx-5 mb-3">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Enter child's password" required minLength="6" {...register("password")}></Form.Control>
+                <Form.Text muted>The password must be at least 6 characters long</Form.Text>
             </Form.Group>
+            <ErrorLabel className="mx-5" show={show} message={errorMessage} onClick={() => setShow(false)} />
+            <Form.Group>
+                <p className="mx-5 text-break text-left text-success"><strong>{successText}</strong></p>
+            </Form.Group>
+            
             <Form.Group className="mx-5 mb-2">
                 <Button type="submit">Submit</Button>
             </Form.Group>
+            
         </Form>
     );
 }
