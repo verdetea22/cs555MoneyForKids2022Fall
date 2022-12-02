@@ -36,7 +36,7 @@ function About() {
                         </p>   
                         <p class="body">
                             As a child, you will be able to see how much money you've save up and manage it in using your own account! You can set up goals to save for or request some pocket money
-                            to go to the movies! It also helps prepare you for a real bank account! There are also learning modules ot help you better understand some concept surrounding money, such as taxes.
+                            to go to the movies! It also helps prepare you for a real bank account! There are also learning modules to help you better understand some concept surrounding money, such as taxes.
                         </p> 
                     </div>
                 </Row>
