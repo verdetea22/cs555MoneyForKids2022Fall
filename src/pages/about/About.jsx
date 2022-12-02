@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 
 function About() {
     return <div>
-            <Container>
+            <Container class="container">
                 <Row>
                     <Col>
                     <div>

@@ -28,7 +28,7 @@ function Home() {
         getCurrentUser();
     }, []);
     
-    return (<Container>
+    return (<Container class="container">
             <Row>
                 <Col>
                 <div>

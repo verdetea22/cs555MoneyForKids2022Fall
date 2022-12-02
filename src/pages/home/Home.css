@@ -38,6 +38,10 @@ label {
     color: #34495e;
 }
 
+.container{
+    text-align: center;
+}
+
 .pure-img-responsive {
     max-width: 100%;
     height: auto;

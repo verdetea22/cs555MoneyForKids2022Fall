@@ -2,7 +2,6 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    text-align: center;
 }
 
 /*
@@ -25,6 +24,10 @@ img{
     margin-right: auto;
 }
 
+.container{
+    text-align: center;
+}
+
 .bg {
     background-image: "../../images/piggybank.jpeg";
     /* Full height */
@@ -42,6 +45,8 @@ h3,
 h4,
 h5,
 h6,
+a,
+p,
 label {
     color: #34495e;
     text-align: center;
